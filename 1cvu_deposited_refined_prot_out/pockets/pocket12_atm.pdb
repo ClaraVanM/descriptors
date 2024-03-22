@@ -1,0 +1,51 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    12:
+HEADER 0  - Pocket Score                      : 0.0302
+HEADER 1  - Drug Score                        : 0.0015
+HEADER 2  - Number of alpha spheres           :    38
+HEADER 3  - Mean alpha-sphere radius          : 3.8265
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5634
+HEADER 5  - Mean B-factor of pocket residues  : 0.3907
+HEADER 6  - Hydrophobicity Score              : 15.5000
+HEADER 7  - Polarity Score                    :     8
+HEADER 8  - Amino Acid based volume Score     : 3.3333
+HEADER 9  - Pocket volume (Monte Carlo)       : 364.6018
+HEADER 10 - Pocket volume (convex hull)       : 34.3916
+HEADER 11 - Charge Score                      :     6
+HEADER 12 - Local hydrophobic density Score   : 14.4706
+HEADER 13 - Number of apolar alpha sphere     :    17
+HEADER 14 - Proportion of apolar alpha sphere : 0.4474
+ATOM   8073    C ALA B2446      78.510  37.356  28.684  0.00  0.00           C 0
+ATOM   8075    N VAL B2447      78.257  36.097  28.330  0.00  0.00           N 0
+ATOM   8079  CG2 VAL B2447      76.207  34.387  26.728  0.00  0.00           C 0
+ATOM   8072   CB ALA B2446      79.527  38.675  26.803  0.00  0.00           C 0
+ATOM   8074    O ALA B2446      77.762  38.012  29.417  0.00  0.00           O 0
+ATOM   9664    O HOH X3259      72.315  40.396  28.894  0.06  6.43           O 0
+ATOM   9686    O HOH X3281      77.646  40.693  29.372  0.70  5.36           O 0
+ATOM   9333   C6 BOG B2704      68.737  34.036  30.219  0.00  0.00           C 0
+ATOM   9330   O4 BOG B2704      68.364  34.330  27.365  0.73  7.50           O 0
+ATOM   8128  OE1 GLN B2454      70.486  39.444  30.984  0.36  5.36           O 0
+ATOM   9334   O6 BOG B2704      69.806  34.094  31.150  0.38  1.07           O 0
+ATOM   6156  CE1 HIS B2214      67.607  37.181  27.077  0.00  0.00           C 0
+ATOM   9326   O2 BOG B2704      68.417  29.606  26.899  0.56  9.64           O 0
+ATOM   9335  C1' BOG B2704      70.542  29.270  30.061  0.00  0.00           C 0
+ATOM   6059  OE1 GLN B2203      71.933  26.387  25.738  0.61  4.29           O 0
+ATOM   9323   C1 BOG B2704      69.212  30.693  28.876  0.00  0.00           C 0
+ATOM   9331   C5 BOG B2704      69.044  32.975  29.188  0.00  0.00           C 0
+ATOM   9327   C3 BOG B2704      68.219  31.982  27.057  0.00  0.00           C 0
+ATOM   8078  CG1 VAL B2447      75.968  33.122  28.878  0.00  0.00           C 0
+ATOM   7607  NE2 HIS B2388      75.199  30.198  30.028  0.50  1.09           N 0
+ATOM   8098   CB ALA B2450      74.681  38.271  30.882  0.00  0.00           C 0
+ATOM   8076   CA VAL B2447      77.107  35.371  28.859  0.00  0.00           C 0
+ATOM   7582  CE1 HIS B2386      71.839  32.215  32.166  0.00  0.00           C 0
+ATOM   7606  CE1 HIS B2388      75.177  29.674  28.815  0.00  0.00           C 0
+ATOM   9337  C3' BOG B2704      71.328  27.084  29.240  0.00  0.00           C 0
+ATOM   6060  NE2 GLN B2203      71.769  27.348  23.714  0.00  4.37           N 0
+ATOM   7581  ND1 HIS B2386      72.949  31.499  32.153  0.00  0.00           N 0
+ATOM  10174    O HOH X3780      73.245  34.759  31.096  0.69  4.29           O 0
+ATOM   8129  NE2 GLN B2454      70.720  37.654  32.321  0.71  3.28           N 0
+TER
+END

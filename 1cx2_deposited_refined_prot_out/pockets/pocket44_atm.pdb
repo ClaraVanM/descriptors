@@ -1,0 +1,40 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    44:
+HEADER 0  - Pocket Score                      : -0.0386
+HEADER 1  - Drug Score                        : 0.0011
+HEADER 2  - Number of alpha spheres           :    20
+HEADER 3  - Mean alpha-sphere radius          : 3.9039
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.6002
+HEADER 5  - Mean B-factor of pocket residues  : 0.3218
+HEADER 6  - Hydrophobicity Score              : -1.7500
+HEADER 7  - Polarity Score                    :     3
+HEADER 8  - Amino Acid based volume Score     : 2.8750
+HEADER 9  - Pocket volume (Monte Carlo)       : 260.2708
+HEADER 10 - Pocket volume (convex hull)       : 4.5067
+HEADER 11 - Charge Score                      :    -1
+HEADER 12 - Local hydrophobic density Score   : 9.0000
+HEADER 13 - Number of apolar alpha sphere     :    10
+HEADER 14 - Proportion of apolar alpha sphere : 0.5000
+ATOM  14820    O ASP D 158      17.241  18.286  82.413  0.70  7.50           O 0
+ATOM  14827    N PRO D 160      13.776  20.142  83.085  0.00  0.00           N 0
+ATOM  14828   CA PRO D 160      12.509  19.414  83.221  0.00  0.00           C 0
+ATOM  14829   CB PRO D 160      12.165  19.621  84.686  0.00  0.00           C 0
+ATOM  13795    N ALA D  33      18.608  17.781  84.577  0.00  0.00           N 0
+ATOM  14831   CD PRO D 160      13.952  21.106  84.189  0.00  0.00           C 0
+ATOM  13823   CB CYS D  37      17.238  23.602  85.081  0.00  0.00           C 0
+ATOM  13799    O ALA D  33      19.891  19.413  87.510  0.00  0.00           O 0
+ATOM  13824   SG CYS D  37      17.891  22.412  83.918  0.00  0.00           S 0
+ATOM  14863  CG1 VAL D 165      13.289  23.792  87.232  0.00  0.00           C 0
+ATOM  14830   CG PRO D 160      12.638  21.024  84.953  0.00  0.00           C 0
+ATOM  13807    O ASN D  34      19.709  22.376  86.271  0.43  1.07           O 0
+ATOM  13798    C ALA D  33      19.868  18.987  86.341  0.00  0.00           C 0
+ATOM  13809   CA PRO D  35      21.052  22.783  88.804  0.00  0.00           C 0
+ATOM  13796   CA ALA D  33      19.141  17.692  85.979  0.00  0.00           C 0
+ATOM  13830   OG SER D  38      16.983  26.676  89.484  0.40  6.43           O 0
+ATOM  13814    O PRO D  35      20.500  25.087  89.294  0.00  0.00           O 0
+ATOM  13827    N SER D  38      16.798  26.173  86.687  0.00  0.00           N 0
+TER
+END

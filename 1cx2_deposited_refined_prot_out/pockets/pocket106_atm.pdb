@@ -1,0 +1,36 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket   106:
+HEADER 0  - Pocket Score                      : -0.1525
+HEADER 1  - Drug Score                        : 0.0003
+HEADER 2  - Number of alpha spheres           :    15
+HEADER 3  - Mean alpha-sphere radius          : 4.0903
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5849
+HEADER 5  - Mean B-factor of pocket residues  : 0.4613
+HEADER 6  - Hydrophobicity Score              : 20.6250
+HEADER 7  - Polarity Score                    :     4
+HEADER 8  - Amino Acid based volume Score     : 3.7500
+HEADER 9  - Pocket volume (Monte Carlo)       : 149.3666
+HEADER 10 - Pocket volume (convex hull)       : 1.7741
+HEADER 11 - Charge Score                      :     1
+HEADER 12 - Local hydrophobic density Score   : 5.0000
+HEADER 13 - Number of apolar alpha sphere     :     6
+HEADER 14 - Proportion of apolar alpha sphere : 0.4000
+ATOM  11209   CD PRO C 280      60.648   8.242  61.771  0.00  0.00           C 0
+ATOM  11198   CA ILE C 279      60.273   9.762  59.415  0.00  0.00           C 0
+ATOM  11194  CD2 HIS C 278      63.789  11.153  57.411  0.00  0.00           C 0
+ATOM  11196    O HIS C 278      61.805   7.902  57.992  0.42  7.50           O 0
+ATOM  12315    O TYR C 409      63.695  14.625  62.645  0.00  0.00           O 0
+ATOM  13749   C8 NAG C 681      69.395  12.222  61.016  0.00  0.00           C 0
+ATOM  13746   N2 NAG C 681      69.215  11.743  63.380  0.93  3.28           N 0
+ATOM  11201  CD1 ILE C 279      61.663  12.556  59.498  0.00  0.00           C 0
+ATOM  11200  CG1 ILE C 279      60.707  11.999  60.530  0.00  0.00           C 0
+ATOM  11234  CD2 LEU C 283      60.477  12.839  64.311  0.00  0.00           C 0
+ATOM  12324    N ASN C 411      62.926  12.554  65.942  0.59  1.09           N 0
+ATOM  12326   CB ASN C 411      61.795  10.355  66.075  0.00  0.00           C 0
+ATOM  12319   CG ASN C 410      66.332  13.096  65.690  0.00  0.00           C 0
+ATOM  12320  OD1 ASN C 410      65.680  12.071  65.934  0.39  3.21           O 0
+TER
+END

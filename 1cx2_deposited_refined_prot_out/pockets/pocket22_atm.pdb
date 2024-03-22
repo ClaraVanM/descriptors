@@ -1,0 +1,37 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    22:
+HEADER 0  - Pocket Score                      : 0.0003
+HEADER 1  - Drug Score                        : 0.0002
+HEADER 2  - Number of alpha spheres           :    17
+HEADER 3  - Mean alpha-sphere radius          : 3.5570
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.4524
+HEADER 5  - Mean B-factor of pocket residues  : 0.3834
+HEADER 6  - Hydrophobicity Score              : 28.5000
+HEADER 7  - Polarity Score                    :     3
+HEADER 8  - Amino Acid based volume Score     : 4.0000
+HEADER 9  - Pocket volume (Monte Carlo)       : 134.2255
+HEADER 10 - Pocket volume (convex hull)       : 3.8347
+HEADER 11 - Charge Score                      :    -1
+HEADER 12 - Local hydrophobic density Score   : 0.0000
+HEADER 13 - Number of apolar alpha sphere     :     1
+HEADER 14 - Proportion of apolar alpha sphere : 0.0588
+ATOM  14905    O GLU D 170       4.772  22.871  77.749  0.00  0.00           O 0
+ATOM  14885  ND2 ASN D 168       1.469  23.275  81.219  0.00  0.00           N 0
+ATOM  14913    O LEU D 171       2.537  23.662  74.529  0.50  7.50           O 0
+ATOM  14882   CB ASN D 168       3.048  21.560  80.449  0.00  0.00           C 0
+ATOM  14902  OE1 GLU D 170       3.421  18.489  76.691  0.35  4.29           O 0
+ATOM  17631  CG1 VAL D 500       5.929  28.486  79.970  0.00  0.00           C 0
+ATOM  14880    N ASN D 168       4.728  23.080  81.398  0.00  0.00           N 0
+ATOM  14877   CA GLY D 167       5.389  24.993  82.688  0.00  0.00           C 0
+ATOM  14918   CD PRO D 172       2.748  27.134  75.701  0.00  0.00           C 0
+ATOM  14914    N PRO D 172       2.395  25.885  74.987  0.00  0.00           N 0
+ATOM  17585    O LEU D 494      -0.851  27.247  78.071  0.04  7.50           O 0
+ATOM  14915   CA PRO D 172       1.188  26.025  74.164  0.00  0.00           C 0
+ATOM  14912    C LEU D 171       3.034  24.695  75.007  0.00  0.00           C 0
+ATOM  14910  CD1 LEU D 171       6.643  26.206  77.181  0.00  0.00           C 0
+ATOM  17597    O TYR D 495       1.446  28.965  80.873  0.52  5.36           O 0
+TER
+END

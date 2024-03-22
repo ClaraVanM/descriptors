@@ -1,0 +1,42 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    53:
+HEADER 0  - Pocket Score                      : -0.0606
+HEADER 1  - Drug Score                        : 0.0012
+HEADER 2  - Number of alpha spheres           :    20
+HEADER 3  - Mean alpha-sphere radius          : 3.9698
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5725
+HEADER 5  - Mean B-factor of pocket residues  : 0.2572
+HEADER 6  - Hydrophobicity Score              : 57.2222
+HEADER 7  - Polarity Score                    :     2
+HEADER 8  - Amino Acid based volume Score     : 4.2222
+HEADER 9  - Pocket volume (Monte Carlo)       : 348.8380
+HEADER 10 - Pocket volume (convex hull)       : 27.1152
+HEADER 11 - Charge Score                      :     2
+HEADER 12 - Local hydrophobic density Score   : 17.0000
+HEADER 13 - Number of apolar alpha sphere     :    18
+HEADER 14 - Proportion of apolar alpha sphere : 0.9000
+ATOM  18277  CMA HEM D 601       9.557  34.107  54.158  0.00  0.00           C 0
+ATOM  17197  CG2 VAL D 447       7.884  33.903  56.920  0.00  0.00           C 0
+ATOM  17171    O ALA D 443       1.716  33.786  54.603  0.00  0.00           O 0
+ATOM  17190   CB ALA D 446       4.061  30.528  56.590  0.00  0.00           C 0
+ATOM  16898  CD1 LEU D 408       5.420  36.850  48.665  0.00  0.00           C 0
+ATOM  16865    N LYS D 405       0.569  37.668  46.401  0.83  1.09           N 0
+ATOM  16866   CA LYS D 405       0.753  36.767  45.266  0.00  0.00           C 0
+ATOM  16869   CD LYS D 405      -1.447  35.469  47.235  0.00  0.00           C 0
+ATOM  16868   CG LYS D 405      -0.933  34.948  45.899  0.00  0.00           C 0
+ATOM  16870   CE LYS D 405      -1.839  34.296  48.140  0.00  0.00           C 0
+ATOM  17166    O ILE D 442      -1.734  33.868  55.538  0.72  2.14           O 0
+ATOM  17168   CA ALA D 443      -0.035  35.344  53.948  0.00  0.00           C 0
+ATOM  16871   NZ LYS D 405      -2.558  34.703  49.392  0.00  0.00           N 0
+ATOM  17169   CB ALA D 443       0.287  36.376  52.877  0.00  0.00           C 0
+ATOM  16856   CB PHE D 404       1.180  38.543  49.195  0.00  0.00           C 0
+ATOM  16862  CD2 PHE D 404       2.462  38.969  51.300  0.00  0.00           C 0
+ATOM  17176  CG2 VAL D 444       4.074  37.493  54.692  0.00  0.00           C 0
+ATOM  18283  CMB HEM D 601       7.150  38.521  51.818  0.00  0.00           C 0
+ATOM  18280  CHB HEM D 601       8.904  37.200  54.129  0.00  0.00           C 0
+ATOM  17173   CA VAL D 444       3.020  35.729  56.158  0.00  0.00           C 0
+TER
+END

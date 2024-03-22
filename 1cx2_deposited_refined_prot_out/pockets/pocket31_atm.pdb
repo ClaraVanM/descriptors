@@ -1,0 +1,38 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    31:
+HEADER 0  - Pocket Score                      : -0.0222
+HEADER 1  - Drug Score                        : 0.0002
+HEADER 2  - Number of alpha spheres           :    19
+HEADER 3  - Mean alpha-sphere radius          : 3.6610
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.4890
+HEADER 5  - Mean B-factor of pocket residues  : 0.3039
+HEADER 6  - Hydrophobicity Score              : 28.5000
+HEADER 7  - Polarity Score                    :     3
+HEADER 8  - Amino Acid based volume Score     : 4.0000
+HEADER 9  - Pocket volume (Monte Carlo)       : 183.5249
+HEADER 10 - Pocket volume (convex hull)       : 6.6203
+HEADER 11 - Charge Score                      :    -1
+HEADER 12 - Local hydrophobic density Score   : 0.0000
+HEADER 13 - Number of apolar alpha sphere     :     0
+HEADER 14 - Proportion of apolar alpha sphere : 0.0000
+ATOM  10317   CA PRO C 172      71.555  46.972  48.642  0.00  0.00           C 0
+ATOM  10315    O LEU C 171      70.132  47.277  46.275  0.60  5.36           O 0
+ATOM  10316    N PRO C 172      70.412  47.866  48.456  0.00  0.00           N 0
+ATOM  12987    O LEU C 494      73.880  50.826  49.570  0.00  0.00           O 0
+ATOM  10285   CG ASN C 168      71.346  53.984  44.334  0.00  0.00           C 0
+ATOM  10287  ND2 ASN C 168      71.710  53.925  45.610  0.63  5.47           N 0
+ATOM  10284   CB ASN C 168      70.102  53.191  43.936  0.00  0.00           C 0
+ATOM  10307    O GLU C 170      68.518  50.475  45.361  0.55  3.21           O 0
+ATOM  10304  OE1 GLU C 170      68.503  49.105  40.835  0.00  0.00           O 0
+ATOM  10301   CB GLU C 170      67.832  47.865  43.174  0.00  0.00           C 0
+ATOM  12999    O TYR C 495      72.048  53.983  50.903  0.36  4.29           O 0
+ATOM  10279   CA GLY C 167      67.713  55.595  47.304  0.00  0.00           C 0
+ATOM  10282    N ASN C 168      68.523  54.302  45.432  0.66  2.19           N 0
+ATOM  10314    C LEU C 171      69.710  47.833  47.306  0.00  0.00           C 0
+ATOM  10320   CD PRO C 172      70.190  48.743  49.623  0.00  0.00           C 0
+ATOM  13033  CG1 VAL C 500      67.463  53.425  50.941  0.00  0.00           C 0
+TER
+END

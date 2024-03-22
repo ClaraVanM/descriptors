@@ -1,0 +1,40 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    71:
+HEADER 0  - Pocket Score                      : -0.0819
+HEADER 1  - Drug Score                        : 0.0001
+HEADER 2  - Number of alpha spheres           :    23
+HEADER 3  - Mean alpha-sphere radius          : 4.0120
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.6782
+HEADER 5  - Mean B-factor of pocket residues  : 0.1738
+HEADER 6  - Hydrophobicity Score              : 27.6667
+HEADER 7  - Polarity Score                    :     5
+HEADER 8  - Amino Acid based volume Score     : 4.8333
+HEADER 9  - Pocket volume (Monte Carlo)       : 224.4941
+HEADER 10 - Pocket volume (convex hull)       : 3.2507
+HEADER 11 - Charge Score                      :     0
+HEADER 12 - Local hydrophobic density Score   : 2.0000
+HEADER 13 - Number of apolar alpha sphere     :     3
+HEADER 14 - Proportion of apolar alpha sphere : 0.1304
+ATOM  16183   CB GLU D 326      41.055  49.039  43.306  0.00  0.00           C 0
+ATOM  16186  OE1 GLU D 326      40.439  47.935  45.772  0.00  0.00           O 0
+ATOM  16184   CG GLU D 326      40.704  47.548  43.408  0.00  0.00           C 0
+ATOM  10039   OH TYR C 136      42.407  50.652  46.477  0.71  7.50           O 0
+ATOM  16185   CD GLU D 326      40.371  47.115  44.830  0.00  0.00           C 0
+ATOM  10023   OH TYR C 134      41.372  45.520  47.908  0.00  9.64           O 0
+ATOM  10021  CE1 TYR C 134      42.257  47.586  48.725  0.00  0.00           C 0
+ATOM  13741   O6 NAG C 671      42.552  39.530  47.517  0.00  0.00           O 0
+ATOM  10010  ND1 HIS C 133      46.851  42.197  48.567  0.00  0.00           N 0
+ATOM  10011  CE1 HIS C 133      47.564  41.315  47.893  0.00  0.00           C 0
+ATOM  10012  NE2 HIS C 133      48.297  41.963  47.002  0.00  0.00           N 0
+ATOM  10008   CB HIS C 133      46.493  44.684  48.641  0.00  0.00           C 0
+ATOM  16187  OE2 GLU D 326      40.036  45.932  45.004  0.65  6.43           O 0
+ATOM  10022   CZ TYR C 134      42.168  46.209  48.809  0.00  0.00           C 0
+ATOM  10015    O HIS C 133      46.352  47.572  48.437  0.00  0.00           O 0
+ATOM  10009   CG HIS C 133      47.131  43.460  48.090  0.00  0.00           C 0
+ATOM  10013  CD2 HIS C 133      48.046  43.306  47.105  0.00  0.00           C 0
+ATOM  10133   OH TYR C 147      44.601  41.763  49.834  0.70  1.07           O 0
+TER
+END

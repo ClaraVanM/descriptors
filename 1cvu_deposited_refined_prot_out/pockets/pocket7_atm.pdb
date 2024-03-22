@@ -1,0 +1,42 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket     7:
+HEADER 0  - Pocket Score                      : 0.0518
+HEADER 1  - Drug Score                        : 0.0009
+HEADER 2  - Number of alpha spheres           :    26
+HEADER 3  - Mean alpha-sphere radius          : 3.7124
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.4817
+HEADER 5  - Mean B-factor of pocket residues  : 0.4176
+HEADER 6  - Hydrophobicity Score              : 16.8000
+HEADER 7  - Polarity Score                    :     6
+HEADER 8  - Amino Acid based volume Score     : 3.6000
+HEADER 9  - Pocket volume (Monte Carlo)       : 197.7051
+HEADER 10 - Pocket volume (convex hull)       : 11.9934
+HEADER 11 - Charge Score                      :     2
+HEADER 12 - Local hydrophobic density Score   : 8.0000
+HEADER 13 - Number of apolar alpha sphere     :     9
+HEADER 14 - Proportion of apolar alpha sphere : 0.3462
+ATOM   7800  OD1 ASN B2410      77.016  26.875   7.847  0.63  2.14           O 0
+ATOM   9238   N2 NAG B2681      80.319  29.413   6.029  0.57  3.28           N 0
+ATOM   6674  CD2 HIS B2278      75.147  33.805   5.353  0.00  0.00           C 0
+ATOM   9241   C8 NAG B2681      80.043  31.806   6.042  0.00  0.00           C 0
+ATOM   6689   CD PRO B2280      72.259  29.415   2.979  0.00  0.00           C 0
+ATOM   6713  CD1 LEU B2283      72.582  25.528   4.664  0.00  0.00           C 0
+ATOM   7815   OG SER B2412      76.748  25.520   5.867  0.00  0.00           O 0
+ATOM   9235   C1 NAG B2681      79.524  27.268   6.848  0.00  0.00           C 0
+ATOM   6688   CG PRO B2280      72.355  28.342   1.923  0.00  0.00           C 0
+ATOM   7814   CB SER B2412      75.984  24.420   5.403  0.00  0.00           C 0
+ATOM   6680  CG1 ILE B2279      71.570  31.503   7.064  0.00  0.00           C 0
+ATOM   6678   CA ILE B2279      71.276  31.618   4.559  0.00  0.00           C 0
+ATOM   6682  CG2 ILE B2279      70.149  29.835   5.940  0.00  0.00           C 0
+ATOM   7808  OD1 ASN B2411      70.806  27.335   8.899  0.00  0.00           O 0
+ATOM   7804    N ASN B2411      74.218  26.287   9.647  0.00  0.00           N 0
+ATOM   7795    O TYR B2409      74.248  29.761  10.421  0.58  3.21           O 0
+ATOM   6673  NE2 HIS B2278      75.305  33.926   6.713  0.67  2.19           N 0
+ATOM   9730    O HOH X3325      75.548  32.776   9.449  0.68  3.21           O 0
+ATOM   7799   CG ASN B2410      77.899  27.260   8.618  0.00  0.00           C 0
+ATOM   9239   C7 NAG B2681      80.568  30.549   6.681  0.00  0.00           C 0
+TER
+END

@@ -1,0 +1,35 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    29:
+HEADER 0  - Pocket Score                      : -0.0565
+HEADER 1  - Drug Score                        : 0.0002
+HEADER 2  - Number of alpha spheres           :    15
+HEADER 3  - Mean alpha-sphere radius          : 3.7869
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5286
+HEADER 5  - Mean B-factor of pocket residues  : 0.1478
+HEADER 6  - Hydrophobicity Score              : 10.6667
+HEADER 7  - Polarity Score                    :     4
+HEADER 8  - Amino Acid based volume Score     : 4.6667
+HEADER 9  - Pocket volume (Monte Carlo)       : 144.3026
+HEADER 10 - Pocket volume (convex hull)       : 1.1916
+HEADER 11 - Charge Score                      :     4
+HEADER 12 - Local hydrophobic density Score   : 5.0000
+HEADER 13 - Number of apolar alpha sphere     :     6
+HEADER 14 - Proportion of apolar alpha sphere : 0.4000
+ATOM  10115    O HOH X3715      41.508  10.815  40.389  0.23  4.29           O 0
+ATOM    218    O ARG A  61      39.858   4.138  40.001  0.00  0.00           O 0
+ATOM   9623    O HOH X3218      42.391   7.822  37.763  0.54  7.50           O 0
+ATOM    210   CB ARG A  61      42.507   4.471  38.967  0.00  0.00           C 0
+ATOM   8828   CG PRO B2542      46.175  10.747  40.309  0.00  0.00           C 0
+ATOM    212   CD ARG A  61      44.737   5.553  39.495  0.00  0.00           C 0
+ATOM   7408   CB PHE B2367      49.016   7.611  43.032  0.00  0.00           C 0
+ATOM  10166    O HOH X3771      42.003  10.817  42.943  0.00  0.00           O 0
+ATOM    211   CG ARG A  61      43.754   4.432  39.850  0.00  0.00           C 0
+ATOM   8827   CB PRO B2542      45.405   9.904  39.353  0.00  0.00           C 0
+ATOM   7410  CD1 PHE B2367      48.718   6.766  40.680  0.00  0.00           C 0
+ATOM   7409   CG PHE B2367      49.111   7.784  41.532  0.00  0.00           C 0
+ATOM   7416    O PHE B2367      47.975   9.225  45.539  0.62  4.29           O 0
+TER
+END

@@ -1,0 +1,41 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    88:
+HEADER 0  - Pocket Score                      : -0.1243
+HEADER 1  - Drug Score                        : 0.0009
+HEADER 2  - Number of alpha spheres           :    27
+HEADER 3  - Mean alpha-sphere radius          : 3.9215
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5026
+HEADER 5  - Mean B-factor of pocket residues  : 0.3321
+HEADER 6  - Hydrophobicity Score              : -2.4000
+HEADER 7  - Polarity Score                    :     5
+HEADER 8  - Amino Acid based volume Score     : 3.1000
+HEADER 9  - Pocket volume (Monte Carlo)       : 229.6586
+HEADER 10 - Pocket volume (convex hull)       : 8.6709
+HEADER 11 - Charge Score                      :    -1
+HEADER 12 - Local hydrophobic density Score   : 9.0000
+HEADER 13 - Number of apolar alpha sphere     :    10
+HEADER 14 - Proportion of apolar alpha sphere : 0.3704
+ATOM   4784    O CYS B  57      56.977  34.847  31.518  0.00  0.00           O 0
+ATOM   4772   CB LYS B  56      56.544  39.484  31.970  0.00  0.00           C 0
+ATOM   4785    N ASP B  58      57.031  34.600  29.265  0.00  0.00           N 0
+ATOM   4789  OD1 ASP B  58      53.140  33.614  29.339  0.57  5.36           O 0
+ATOM   4783    C CYS B  57      57.504  35.064  30.420  0.00  0.00           C 0
+ATOM   4778    O LYS B  56      57.950  38.376  29.412  0.00  0.00           O 0
+ATOM   4786   CA ASP B  58      55.868  33.710  29.222  0.00  0.00           C 0
+ATOM   4239    N GLU A 553      48.604  38.840  30.119  0.51  4.37           N 0
+ATOM   4774   CD LYS B  56      54.846  39.942  33.756  0.00  0.00           C 0
+ATOM   4244  OE1 GLU A 553      49.056  35.112  32.623  0.00  0.00           O 0
+ATOM   4241   CB GLU A 553      47.976  37.984  32.321  0.00  0.00           C 0
+ATOM   4236   CA GLY A 552      49.594  39.988  28.268  0.00  0.00           C 0
+ATOM   4209   CB SER A 548      52.732  36.817  26.219  0.00  0.00           C 0
+ATOM   4707   CB MET B  48      55.884  40.520  26.247  0.00  0.00           C 0
+ATOM   4234    O GLY A 551      50.735  41.980  26.805  0.58  2.14           O 0
+ATOM   4787   CB ASP B  58      55.034  33.979  27.961  0.00  0.00           C 0
+ATOM   4723  CG2 THR B  50      55.339  42.996  30.766  0.00  0.00           C 0
+ATOM   4202   CB PRO A 547      49.532  35.008  28.909  0.00  0.00           C 0
+ATOM   4207    N SER A 548      50.271  36.800  26.711  0.00  0.00           N 0
+TER
+END
