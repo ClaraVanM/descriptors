@@ -1,0 +1,36 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    10:
+HEADER 0  - Pocket Score                      : 0.1538
+HEADER 1  - Drug Score                        : 0.0003
+HEADER 2  - Number of alpha spheres           :    17
+HEADER 3  - Mean alpha-sphere radius          : 3.8514
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.7043
+HEADER 5  - Mean B-factor of pocket residues  : 0.3156
+HEADER 6  - Hydrophobicity Score              : -6.6667
+HEADER 7  - Polarity Score                    :     3
+HEADER 8  - Amino Acid based volume Score     : 4.0000
+HEADER 9  - Pocket volume (Monte Carlo)       : 133.9650
+HEADER 10 - Pocket volume (convex hull)       : 0.4115
+HEADER 11 - Charge Score                      :     2
+HEADER 12 - Local hydrophobic density Score   : 3.0000
+HEADER 13 - Number of apolar alpha sphere     :     4
+HEADER 14 - Proportion of apolar alpha sphere : 0.2353
+ATOM   1545   NZ LYS A 194      95.099  34.214  41.816  0.92  9.84           N 0
+ATOM   1520  NE2 HIS A 191      90.636  33.371  39.637  0.57  6.56           N 0
+ATOM   1510   OG SER A 190      87.306  34.100  43.993  0.00  0.00           O 0
+ATOM   1543   CD LYS A 194      94.907  35.534  43.862  0.00  0.00           C 0
+ATOM   1508    O SER A 190      89.848  36.949  44.843  0.67  4.29           O 0
+ATOM   1509   CB SER A 190      87.478  34.777  45.218  0.00  0.00           C 0
+ATOM   1518  CD2 HIS A 191      90.977  34.680  39.845  0.00  0.00           C 0
+ATOM   1544   CE LYS A 194      94.701  35.534  42.369  0.00  0.00           C 0
+ATOM   1512   CA HIS A 191      89.866  37.088  42.087  0.00  0.00           C 0
+ATOM   1516   CG HIS A 191      89.856  35.330  40.251  0.00  0.00           C 0
+ATOM   1517  ND1 HIS A 191      88.860  34.378  40.276  0.00  0.00           N 0
+ATOM   1519  CE1 HIS A 191      89.349  33.208  39.904  0.00  0.00           C 0
+ATOM   1507    C SER A 190      88.808  36.677  44.243  0.00  0.00           C 0
+ATOM   1511    N HIS A 191      88.714  36.715  42.915  0.00  0.00           N 0
+TER
+END

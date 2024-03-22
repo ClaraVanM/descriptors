@@ -1,0 +1,42 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket     8:
+HEADER 0  - Pocket Score                      : 0.2013
+HEADER 1  - Drug Score                        : 0.0174
+HEADER 2  - Number of alpha spheres           :    20
+HEADER 3  - Mean alpha-sphere radius          : 4.1736
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.7183
+HEADER 5  - Mean B-factor of pocket residues  : 0.3295
+HEADER 6  - Hydrophobicity Score              : 16.2857
+HEADER 7  - Polarity Score                    :     5
+HEADER 8  - Amino Acid based volume Score     : 5.0000
+HEADER 9  - Pocket volume (Monte Carlo)       : 295.2282
+HEADER 10 - Pocket volume (convex hull)       : 16.6292
+HEADER 11 - Charge Score                      :     0
+HEADER 12 - Local hydrophobic density Score   : 7.0000
+HEADER 13 - Number of apolar alpha sphere     :     8
+HEADER 14 - Proportion of apolar alpha sphere : 0.4000
+ATOM   1542   CG LYS A 194      94.836  36.932  44.440  0.00  0.00           C 0
+ATOM   1544   CE LYS A 194      94.701  35.534  42.369  0.00  0.00           C 0
+ATOM   1577   CB ALA A 198      98.587  41.181  44.099  0.00  0.00           C 0
+ATOM   1543   CD LYS A 194      94.907  35.534  43.862  0.00  0.00           C 0
+ATOM   1552  CD1 TRP A 195      94.625  39.053  40.508  0.00  0.00           C 0
+ATOM   1195   CG GLU A 151      95.991  35.228  37.071  0.00  0.00           C 0
+ATOM   1589  CD1 ILE A 200      96.985  41.796  39.591  0.00  0.00           C 0
+ATOM   1193    O GLU A 151      97.286  37.363  35.398  0.63  3.21           O 0
+ATOM   1194   CB GLU A 151      97.024  34.429  36.291  0.00  0.00           C 0
+ATOM   1199    N ASP A 152      99.255  36.492  34.767  0.58  2.19           N 0
+ATOM   1192    C GLU A 151      97.965  36.393  35.061  0.00  0.00           C 0
+ATOM   1205  OD1 ASP A 152     101.895  39.212  36.411  0.00  0.00           O 0
+ATOM   1587  CG1 ILE A 200      97.396  43.193  40.009  0.00  0.00           C 0
+ATOM   1233   CDAARG A 155     101.943  42.504  37.942  0.00  0.00           C 0
+ATOM   1576    O ALA A 198     100.108  43.744  44.045  0.77  8.57           O 0
+ATOM   1554  NE1 TRP A 195      94.298  38.018  39.664  0.76  1.09           N 0
+ATOM   1230   CB ARG A 155      99.654  42.091  36.906  0.00  0.00           C 0
+ATOM   1198  OE2 GLU A 151      94.776  35.124  39.107  0.74  1.07           O 0
+ATOM   1200   CA ASP A 152      99.973  37.756  34.883  0.00  0.00           C 0
+ATOM   1203   CB ASP A 152     101.490  37.546  34.754  0.00  0.00           C 0
+TER
+END

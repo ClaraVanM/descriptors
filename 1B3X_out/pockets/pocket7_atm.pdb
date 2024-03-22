@@ -1,0 +1,37 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket     7:
+HEADER 0  - Pocket Score                      : 0.2110
+HEADER 1  - Drug Score                        : 0.2299
+HEADER 2  - Number of alpha spheres           :    18
+HEADER 3  - Mean alpha-sphere radius          : 4.0969
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.6990
+HEADER 5  - Mean B-factor of pocket residues  : 0.1821
+HEADER 6  - Hydrophobicity Score              : 25.0000
+HEADER 7  - Polarity Score                    :     4
+HEADER 8  - Amino Acid based volume Score     : 4.4000
+HEADER 9  - Pocket volume (Monte Carlo)       : 240.5272
+HEADER 10 - Pocket volume (convex hull)       : 3.6290
+HEADER 11 - Charge Score                      :     1
+HEADER 12 - Local hydrophobic density Score   : 12.0000
+HEADER 13 - Number of apolar alpha sphere     :    13
+HEADER 14 - Proportion of apolar alpha sphere : 0.7222
+ATOM    926   CB ARG A 119      94.275  57.865  20.404  0.00  0.00           C 0
+ATOM    921  CG2 THR A 118      99.078  58.682  23.506  0.00  0.00           C 0
+ATOM    899  CG2 THR A 115      98.233  53.697  18.949  0.00  0.00           C 0
+ATOM    931  NH1 ARG A 119      95.080  58.928  15.973  0.62  5.47           N 0
+ATOM    894   CA THR A 115      98.141  53.429  21.444  0.00  0.00           C 0
+ATOM    898  OG1 THR A 115      99.755  52.230  20.114  0.74  6.43           O 0
+ATOM    919   CB THR A 118      98.425  57.355  23.841  0.00  0.00           C 0
+ATOM    896    O THR A 115      96.373  55.028  21.308  0.70  1.07           O 0
+ATOM    500  CE2 PHE A  64      94.741  54.586  16.866  0.00  0.00           C 0
+ATOM    928   CD ARG A 119      93.469  57.875  18.063  0.00  0.00           C 0
+ATOM    920  OG1 THR A 118      99.230  56.690  24.817  0.64  7.50           O 0
+ATOM    892  CG2 THR A 114     101.293  53.472  24.884  0.00  0.00           C 0
+ATOM    923   CA ARG A 119      94.822  58.723  21.539  0.00  0.00           C 0
+ATOM    927   CG ARG A 119      93.744  58.703  19.268  0.00  0.00           C 0
+ATOM    922    N ARG A 119      95.580  57.916  22.476  0.00  0.00           N 0
+TER
+END
