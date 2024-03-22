@@ -1,0 +1,39 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    74:
+HEADER 0  - Pocket Score                      : -0.0909
+HEADER 1  - Drug Score                        : 0.0001
+HEADER 2  - Number of alpha spheres           :    18
+HEADER 3  - Mean alpha-sphere radius          : 3.8756
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5229
+HEADER 5  - Mean B-factor of pocket residues  : 0.4207
+HEADER 6  - Hydrophobicity Score              : 3.3333
+HEADER 7  - Polarity Score                    :     5
+HEADER 8  - Amino Acid based volume Score     : 3.8333
+HEADER 9  - Pocket volume (Monte Carlo)       : 255.6726
+HEADER 10 - Pocket volume (convex hull)       : 4.6810
+HEADER 11 - Charge Score                      :     0
+HEADER 12 - Local hydrophobic density Score   : 0.0000
+HEADER 13 - Number of apolar alpha sphere     :     1
+HEADER 14 - Proportion of apolar alpha sphere : 0.0556
+ATOM  12364   CB GLU C 416      66.927   9.328  73.179  0.00  0.00           C 0
+ATOM  12367  OE1 GLU C 416      67.128   6.563  73.893  0.00  0.00           O 0
+ATOM  12365   CG GLU C 416      66.955   8.193  72.145  0.00  0.00           C 0
+ATOM  12225  OE1 GLN C 400      74.141  11.760  72.732  0.62  7.50           O 0
+ATOM  12370    O GLU C 416      65.798   9.448  76.442  0.56  7.50           O 0
+ATOM  12378  CD2 HIS C 417      69.641  12.526  75.778  0.00  0.00           C 0
+ATOM  12377  NE2 HIS C 417      70.655  12.837  74.904  0.00  0.00           N 0
+ATOM  12245   OH TYR C 402      71.341  13.262  71.627  0.71  2.14           O 0
+ATOM  12369    C GLU C 416      65.911  10.049  75.370  0.00  0.00           C 0
+ATOM  13753   O4 NAG C 681      70.865   8.811  66.982  0.00  0.00           O 0
+ATOM  13751   O3 NAG C 681      71.743  10.529  64.702  0.73  5.36           O 0
+ATOM  13752   C4 NAG C 681      70.392  10.119  66.671  0.00  0.00           C 0
+ATOM  12226  NE2 GLN C 400      75.497  12.040  70.946  0.52  7.66           N 0
+ATOM  13756   O6 NAG C 681      69.221  11.359  69.506  0.88  2.14           O 0
+ATOM  13755   C6 NAG C 681      69.017  10.137  68.807  0.00  0.00           C 0
+ATOM  12246  CE2 TYR C 402      71.749  14.303  69.534  0.00  0.00           C 0
+ATOM  12282  NE2 GLN C 406      74.404  13.956  64.816  0.57  6.56           N 0
+TER
+END

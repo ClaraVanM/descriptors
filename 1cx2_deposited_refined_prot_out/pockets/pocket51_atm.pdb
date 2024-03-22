@@ -1,0 +1,42 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    51:
+HEADER 0  - Pocket Score                      : -0.0579
+HEADER 1  - Drug Score                        : 0.0004
+HEADER 2  - Number of alpha spheres           :    19
+HEADER 3  - Mean alpha-sphere radius          : 3.9676
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5798
+HEADER 5  - Mean B-factor of pocket residues  : 0.2466
+HEADER 6  - Hydrophobicity Score              : 12.6667
+HEADER 7  - Polarity Score                    :     5
+HEADER 8  - Amino Acid based volume Score     : 3.7778
+HEADER 9  - Pocket volume (Monte Carlo)       : 385.3113
+HEADER 10 - Pocket volume (convex hull)       : 35.0102
+HEADER 11 - Charge Score                      :     0
+HEADER 12 - Local hydrophobic density Score   : 1.0000
+HEADER 13 - Number of apolar alpha sphere     :     2
+HEADER 14 - Proportion of apolar alpha sphere : 0.1053
+ATOM   7654   CB SER B 403      86.756  28.060 -15.715  0.00  0.00           C 0
+ATOM   7658    N PHE B 404      84.617  28.039 -13.513  0.00  0.00           N 0
+ATOM   7570    O ASP B 393      87.455  25.213 -10.542  0.76  5.36           O 0
+ATOM   7675   NZ LYS B 405      86.434  32.963 -11.769  0.70  4.37           N 0
+ATOM   7673   CD LYS B 405      85.839  32.204 -14.198  0.00  0.00           C 0
+ATOM   7662  CD1 PHE B 404      84.162  27.921 -10.107  0.00  0.00           C 0
+ATOM   7567  OD1 ASP B 393      88.382  26.402  -6.143  0.90  7.50           O 0
+ATOM   7970    O ILE B 442      85.415  34.101  -5.317  0.00  0.00           O 0
+ATOM   7989  NE2 GLN B 445      86.179  37.749  -4.533  0.00  0.00           N 0
+ATOM   7968  CG2 ILE B 442      88.244  34.136  -5.236  0.00  0.00           C 0
+ATOM   7971    N ALA B 443      85.194  32.148  -6.446  0.00  0.00           N 0
+ATOM   7965   CB ILE B 442      88.188  32.679  -4.822  0.00  0.00           C 0
+ATOM   7653   CA SER B 403      86.102  26.859 -15.031  0.00  0.00           C 0
+ATOM   7575  CG2 THR B 394      88.711  23.324 -13.190  0.00  0.00           C 0
+ATOM   7663  CE1 PHE B 404      83.968  27.206  -8.915  0.00  0.00           C 0
+ATOM   7973   CB ALA B 443      83.961  31.622  -8.511  0.00  0.00           C 0
+ATOM   7963    N ILE B 442      86.545  30.782  -4.535  0.55  1.09           N 0
+ATOM   7958   CB PRO B 441      84.313  28.098  -4.956  0.00  0.00           C 0
+ATOM   7967  CD1 ILE B 442      89.720  31.113  -3.355  0.00  0.00           C 0
+ATOM   7972   CA ALA B 443      84.202  32.650  -7.417  0.00  0.00           C 0
+TER
+END

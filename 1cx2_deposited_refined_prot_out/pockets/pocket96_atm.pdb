@@ -1,0 +1,49 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    96:
+HEADER 0  - Pocket Score                      : -0.1320
+HEADER 1  - Drug Score                        : 0.0011
+HEADER 2  - Number of alpha spheres           :    42
+HEADER 3  - Mean alpha-sphere radius          : 3.9719
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.4597
+HEADER 5  - Mean B-factor of pocket residues  : 0.0919
+HEADER 6  - Hydrophobicity Score              : 2.2308
+HEADER 7  - Polarity Score                    :     7
+HEADER 8  - Amino Acid based volume Score     : 3.3077
+HEADER 9  - Pocket volume (Monte Carlo)       : 532.9615
+HEADER 10 - Pocket volume (convex hull)       : 64.5489
+HEADER 11 - Charge Score                      :    -1
+HEADER 12 - Local hydrophobic density Score   : 16.7778
+HEADER 13 - Number of apolar alpha sphere     :    18
+HEADER 14 - Proportion of apolar alpha sphere : 0.4286
+ATOM  18030   CA GLY D 552      38.599  63.976  51.390  0.00  0.00           C 0
+ATOM   9372   CD LYS C  56      43.945  68.929  50.813  0.00  0.00           C 0
+ATOM   9321  CG2 THR C  50      44.229  66.130  47.661  0.00  0.00           C 0
+ATOM  16125  OE1 GLU D 319      37.729  67.034  46.567  0.00  0.00           O 0
+ATOM   9373   CE LYS C  56      43.746  70.224  49.960  0.00  0.00           C 0
+ATOM  18028    O GLY D 551      39.709  62.540  49.326  0.52  4.29           O 0
+ATOM  18003   CB SER D 548      41.768  61.778  54.348  0.00  0.00           C 0
+ATOM   9305   CB MET C  48      44.858  61.858  50.515  0.00  0.00           C 0
+ATOM   9319   CB THR C  50      44.667  66.624  46.296  0.00  0.00           C 0
+ATOM  18033    N GLU D 553      37.533  65.860  52.435  0.69  2.19           N 0
+ATOM  18035   CB GLU D 553      37.049  68.013  53.472  0.00  0.00           C 0
+ATOM   9387  OD1 ASP C  58      42.266  64.767  57.465  0.00  0.00           O 0
+ATOM  18038  OE1 GLU D 553      37.933  68.608  56.325  0.65  8.57           O 0
+ATOM   9370   CB LYS C  56      45.507  66.970  51.294  0.00  0.00           C 0
+ATOM   9385   CB ASP C  58      44.166  63.431  56.885  0.00  0.00           C 0
+ATOM   9383    N ASP C  58      46.116  64.766  56.185  0.51  1.09           N 0
+ATOM   9382    O CYS C  57      46.272  67.013  56.344  0.35  8.57           O 0
+ATOM   9381    C CYS C  57      46.666  65.938  55.889  0.00  0.00           C 0
+ATOM  16128    O GLU D 319      40.587  64.858  43.770  0.61  8.57           O 0
+ATOM   9323    O THR C  50      44.654  67.119  43.586  0.00  0.00           O 0
+ATOM  16126  OE2 GLU D 319      36.730  68.124  44.935  0.00  0.00           O 0
+ATOM  18046  CG2 VAL D 554      35.779  67.010  48.703  0.00  0.00           C 0
+ATOM  17996   CB PRO D 547      38.562  64.550  56.020  0.00  0.00           C 0
+ATOM  16135  NE2 HIS D 320      41.139  62.472  46.990  0.90  3.28           N 0
+ATOM   9384   CA ASP C  58      45.029  64.672  57.140  0.00  0.00           C 0
+ATOM  18001    N SER D 548      39.359  62.243  54.349  0.00  0.00           N 0
+ATOM   9376    O LYS C  56      47.418  64.620  52.487  0.47  1.07           O 0
+TER
+END

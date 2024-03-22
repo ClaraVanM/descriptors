@@ -1,0 +1,40 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket     6:
+HEADER 0  - Pocket Score                      : 0.0598
+HEADER 1  - Drug Score                        : 0.0001
+HEADER 2  - Number of alpha spheres           :    16
+HEADER 3  - Mean alpha-sphere radius          : 3.9113
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.6054
+HEADER 5  - Mean B-factor of pocket residues  : 0.0886
+HEADER 6  - Hydrophobicity Score              : 2.5714
+HEADER 7  - Polarity Score                    :    13
+HEADER 8  - Amino Acid based volume Score     : 3.6429
+HEADER 9  - Pocket volume (Monte Carlo)       : 270.0148
+HEADER 10 - Pocket volume (convex hull)       : 11.2687
+HEADER 11 - Charge Score                      :     7
+HEADER 12 - Local hydrophobic density Score   : 0.0000
+HEADER 13 - Number of apolar alpha sphere     :     0
+HEADER 14 - Proportion of apolar alpha sphere : 0.0000
+ATOM  10014    O HOH X3609      22.124  40.607  61.756  0.56  6.43           O 0
+ATOM   9828    O HOH X3423      28.066  42.681  61.249  0.00  0.00           O 0
+ATOM  10139    O HOH X3743      26.559  35.080  61.079  0.00  0.00           O 0
+ATOM   4327   CG GLN A 565      24.892  41.693  59.616  0.00  0.00           C 0
+ATOM   2516   NZ LYS A 342      34.384  32.388  59.216  0.00  0.00           N 0
+ATOM   2547  OE1 GLU A 346      31.693  31.000  58.978  0.38  5.36           O 0
+ATOM   4304    O THR A 561      32.975  38.008  60.033  0.00  0.00           O 0
+ATOM   9481    O HOH X3076      30.144  34.461  57.666  0.60  2.14           O 0
+ATOM   4326   CB GLN A 565      25.274  40.612  58.610  0.00  0.00           C 0
+ATOM  10109    O HOH X3708      21.899  37.406  60.786  0.29  5.36           O 0
+ATOM   9501    O HOH X3096      25.720  37.055  57.897  0.45  1.07           O 0
+ATOM   4312   CB SER A 563      29.079  37.640  58.003  0.00  0.00           C 0
+ATOM   4313   OG SER A 563      28.725  38.939  58.455  0.42  2.14           O 0
+ATOM   9892    O HOH X3487      32.033  40.264  61.626  0.00  0.00           O 0
+ATOM   4336   OG SER A 566      30.327  41.236  59.792  0.44  1.07           O 0
+ATOM   4299   CA THR A 561      35.061  37.006  60.662  0.00  0.00           C 0
+ATOM   2515   CE LYS A 342      33.881  33.388  58.221  0.00  0.00           C 0
+ATOM   4309    O ALA A 562      32.060  36.233  57.475  0.00  0.00           O 0
+TER
+END

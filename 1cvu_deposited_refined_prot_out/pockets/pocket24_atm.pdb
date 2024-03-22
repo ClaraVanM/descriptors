@@ -1,0 +1,40 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    24:
+HEADER 0  - Pocket Score                      : -0.0345
+HEADER 1  - Drug Score                        : 0.0001
+HEADER 2  - Number of alpha spheres           :    21
+HEADER 3  - Mean alpha-sphere radius          : 4.0607
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.6075
+HEADER 5  - Mean B-factor of pocket residues  : 0.1858
+HEADER 6  - Hydrophobicity Score              : -7.6364
+HEADER 7  - Polarity Score                    :    10
+HEADER 8  - Amino Acid based volume Score     : 4.0000
+HEADER 9  - Pocket volume (Monte Carlo)       : 254.1405
+HEADER 10 - Pocket volume (convex hull)       : 7.1779
+HEADER 11 - Charge Score                      :     6
+HEADER 12 - Local hydrophobic density Score   : 1.0000
+HEADER 13 - Number of apolar alpha sphere     :     2
+HEADER 14 - Proportion of apolar alpha sphere : 0.0952
+ATOM   9065    N LYS B2573      69.914   7.342  10.797  0.00  0.00           N 0
+ATOM  10116    O HOH X3716      63.576   9.954   8.946  0.00  0.00           O 0
+ATOM   6905  NH2 ARG B2307      67.633  10.887  10.262  0.32  1.09           N 0
+ATOM   9739    O HOH X3334      65.518  10.656   7.177  0.52  2.14           O 0
+ATOM   9057    O ASN B2571      66.777   9.695  12.641  0.58  1.07           O 0
+ATOM  10170    O HOH X3776      67.379   4.118  11.894  0.42  6.43           O 0
+ATOM   9066   CA LYS B2573      70.383   6.280   9.906  0.00  0.00           C 0
+ATOM   9056    C ASN B2571      66.789   8.682  13.341  0.00  0.00           C 0
+ATOM   6525  OE1 GLU B2260      69.419   9.854   5.557  0.30  3.21           O 0
+ATOM   9069   CD LYS B2573      71.127   6.350   6.078  0.00  0.00           C 0
+ATOM   9070   CE LYS B2573      71.177   5.231   5.044  0.00  0.00           C 0
+ATOM   9071   NZ LYS B2573      71.273   5.757   3.652  0.00  7.66           N 0
+ATOM   9067   CB LYS B2573      70.668   6.838   8.508  0.00  0.00           C 0
+ATOM   9068   CG LYS B2573      71.047   5.776   7.486  0.00  0.00           C 0
+ATOM   9049    O ASN B2570      64.228   5.812  13.652  0.26  2.14           O 0
+ATOM  10039    O HOH X3634      61.386   5.184  11.597  0.00  0.00           O 0
+ATOM   6519    O GLY B2259      66.386  10.412   3.271  0.62  7.50           O 0
+ATOM   9644    O HOH X3239      62.223   7.958  12.296  0.29  3.21           O 0
+TER
+END

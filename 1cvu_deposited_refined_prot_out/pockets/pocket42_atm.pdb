@@ -1,0 +1,68 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    42:
+HEADER 0  - Pocket Score                      : -0.1961
+HEADER 1  - Drug Score                        : 0.0019
+HEADER 2  - Number of alpha spheres           :    55
+HEADER 3  - Mean alpha-sphere radius          : 4.0597
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5441
+HEADER 5  - Mean B-factor of pocket residues  : 0.3383
+HEADER 6  - Hydrophobicity Score              : 12.2174
+HEADER 7  - Polarity Score                    :    20
+HEADER 8  - Amino Acid based volume Score     : 4.2609
+HEADER 9  - Pocket volume (Monte Carlo)       : 807.7670
+HEADER 10 - Pocket volume (convex hull)       : 265.8961
+HEADER 11 - Charge Score                      :    12
+HEADER 12 - Local hydrophobic density Score   : 15.2222
+HEADER 13 - Number of apolar alpha sphere     :    18
+HEADER 14 - Proportion of apolar alpha sphere : 0.3273
+ATOM   5351   OH TYR B2115      67.200  10.642  52.121  0.89  6.43           O 0
+ATOM   5072   CG LYS B2083      67.413  15.391  57.274  0.00  0.00           C 0
+ATOM   5349  CE1 TYR B2115      65.020   9.677  52.131  0.00  0.00           C 0
+ATOM  10050    O HOH X3645      65.213  10.798  58.833  0.61  8.57           O 0
+ATOM   5383    O SER B2119      63.171  16.128  50.372  0.54  3.21           O 0
+ATOM   5409  CE2 TYR B2122      62.635  18.646  52.756  0.00  0.00           C 0
+ATOM   5410  CD2 TYR B2122      61.297  18.623  52.353  0.00  0.00           C 0
+ATOM   5379   CA SER B2119      62.612  13.803  50.163  0.00  0.00           C 0
+ATOM   5074   CE LYS B2083      67.230  17.251  55.604  0.00  0.00           C 0
+ATOM   5073   CD LYS B2083      67.130  16.870  57.073  0.00  0.00           C 0
+ATOM   5043    C LYS B2079      64.950  15.705  62.544  0.00  0.00           C 0
+ATOM   5044    O LYS B2079      65.585  15.026  61.739  0.69  3.21           O 0
+ATOM   5050  CD2 LEU B2080      66.314  20.227  61.442  0.00  0.00           C 0
+ATOM   5377    O THR B2118      59.958  14.509  49.951  0.59  2.14           O 0
+ATOM  10156    O HOH X3761      67.569  13.161  51.711  0.38  3.21           O 0
+ATOM   8283   CB SER B2471      67.363  22.040  54.305  0.00  0.00           C 0
+ATOM   8286    O SER B2471      70.084  21.831  54.694  0.35  4.29           O 0
+ATOM   9945    O HOH X3540      70.609  25.498  56.885  0.00  0.00           O 0
+ATOM   5075   NZ LYS B2083      67.076  18.722  55.402  0.60  4.37           N 0
+ATOM   9701    O HOH X3296      70.914  18.169  56.175  0.00  0.00           O 0
+ATOM   5052    O LEU B2080      68.912  16.413  62.416  0.50  6.43           O 0
+ATOM   5077    O LYS B2083      70.252  14.431  59.228  0.38  9.64           O 0
+ATOM   8298   CG LYS B2473      75.007  22.647  57.555  0.00  0.00           C 0
+ATOM   8300   CE LYS B2473      75.425  20.965  59.383  0.00  0.00           C 0
+ATOM   5082   CD PRO B2084      69.015  11.783  57.054  0.00  0.00           C 0
+ATOM   9692    O HOH X3287      61.242  25.467  58.584  0.00  0.00           O 0
+ATOM   4916  CE1 PHE B2064      62.995  24.766  62.119  0.00  0.00           C 0
+ATOM   5014  CG2 THR B2076      62.421  21.514  63.915  0.00  0.00           C 0
+ATOM   4906    O THR B2062      59.721  24.807  60.644  0.00  0.00           O 0
+ATOM   5380   CB SER B2119      63.943  13.048  50.174  0.00  0.00           C 0
+ATOM   5408   OH TYR B2122      64.425  19.757  53.913  0.67  1.07           O 0
+ATOM   5407   CZ TYR B2122      63.107  19.715  53.505  0.00  0.00           C 0
+ATOM   8282   CA SER B2471      68.241  23.293  54.233  0.00  0.00           C 0
+ATOM   8284   OG SER B2471      66.043  22.375  54.693  0.42  6.43           O 0
+ATOM   9782    O HOH X3377      65.136  27.288  55.725  0.23  4.29           O 0
+ATOM   9754    O HOH X3349      64.305  24.592  53.484  0.35  1.07           O 0
+ATOM   5038   CB LYS B2079      62.476  15.991  62.205  0.00  0.00           C 0
+ATOM   5045    N LEU B2080      65.415  16.842  63.058  0.00  0.00           N 0
+ATOM   5016    O THR B2076      63.639  18.566  64.558  0.00  0.00           O 0
+ATOM   5040   CD LYS B2079      60.871  14.057  62.513  0.00  0.00           C 0
+ATOM   5071   CB LYS B2083      67.360  15.011  58.745  0.00  0.00           C 0
+ATOM   9793    O HOH X3388      61.638  23.745  53.856  0.42  3.21           O 0
+ATOM   4754  OD1 ASN B2043      65.782  26.850  60.270  0.48  6.43           O 0
+ATOM   4917   CZ PHE B2064      64.130  24.516  62.864  0.00  0.00           C 0
+ATOM   5406  CE1 TYR B2122      62.259  20.752  53.851  0.00  0.00           C 0
+ATOM   9626    O HOH X3221      58.844  24.591  56.229  0.17  8.57           O 0
+TER
+END

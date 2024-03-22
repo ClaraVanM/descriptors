@@ -1,0 +1,39 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    30:
+HEADER 0  - Pocket Score                      : -0.0173
+HEADER 1  - Drug Score                        : 0.0002
+HEADER 2  - Number of alpha spheres           :    16
+HEADER 3  - Mean alpha-sphere radius          : 4.0405
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.6358
+HEADER 5  - Mean B-factor of pocket residues  : 0.2614
+HEADER 6  - Hydrophobicity Score              : -1.1250
+HEADER 7  - Polarity Score                    :     4
+HEADER 8  - Amino Acid based volume Score     : 4.1250
+HEADER 9  - Pocket volume (Monte Carlo)       : 329.4347
+HEADER 10 - Pocket volume (convex hull)       : 9.9329
+HEADER 11 - Charge Score                      :     0
+HEADER 12 - Local hydrophobic density Score   : 1.0000
+HEADER 13 - Number of apolar alpha sphere     :     2
+HEADER 14 - Proportion of apolar alpha sphere : 0.1250
+ATOM   6620  OE2 GLU B 281      66.768  35.780 -29.141  0.64  7.50           O 0
+ATOM   6587    C PRO B 277      72.715  38.004 -24.481  0.00  0.00           C 0
+ATOM   6589    N HIS B 278      72.782  36.738 -24.881  0.67  2.19           N 0
+ATOM   6588    O PRO B 277      73.385  38.924 -24.955  0.00  0.00           O 0
+ATOM   6598    O HIS B 278      73.922  34.199 -27.073  0.58  6.43           O 0
+ATOM   6606    O ILE B 279      70.650  33.159 -26.532  0.37  4.29           O 0
+ATOM   6617   CG GLU B 281      67.601  33.571 -28.690  0.00  0.00           C 0
+ATOM   6608   CA PRO B 280      71.679  31.423 -28.704  0.00  0.00           C 0
+ATOM   6618   CD GLU B 281      66.686  34.550 -29.435  0.00  0.00           C 0
+ATOM   6613    O PRO B 280      69.708  31.192 -30.063  0.00  0.00           O 0
+ATOM   6583   CA PRO B 277      71.734  38.296 -23.368  0.00  0.00           C 0
+ATOM   6612    C PRO B 280      70.160  31.305 -28.913  0.00  0.00           C 0
+ATOM   6590   CA HIS B 278      73.700  36.272 -25.899  0.00  0.00           C 0
+ATOM   6597    C HIS B 278      73.515  34.772 -26.060  0.00  0.00           C 0
+ATOM   6645  NE2 GLN B 284      66.996  33.345 -25.561  0.92  8.75           N 0
+ATOM   6581    O PRO B 276      72.109  35.437 -22.752  0.00  0.00           O 0
+ATOM   6574    O TYR B 275      69.686  35.994 -20.219  0.43  7.50           O 0
+TER
+END

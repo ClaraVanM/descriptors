@@ -1,0 +1,47 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    20:
+HEADER 0  - Pocket Score                      : -0.0150
+HEADER 1  - Drug Score                        : 0.0005
+HEADER 2  - Number of alpha spheres           :    31
+HEADER 3  - Mean alpha-sphere radius          : 4.0499
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5133
+HEADER 5  - Mean B-factor of pocket residues  : 0.3635
+HEADER 6  - Hydrophobicity Score              : 9.2500
+HEADER 7  - Polarity Score                    :    10
+HEADER 8  - Amino Acid based volume Score     : 3.6667
+HEADER 9  - Pocket volume (Monte Carlo)       : 464.1594
+HEADER 10 - Pocket volume (convex hull)       : 39.8204
+HEADER 11 - Charge Score                      :     3
+HEADER 12 - Local hydrophobic density Score   : 5.0000
+HEADER 13 - Number of apolar alpha sphere     :     6
+HEADER 14 - Proportion of apolar alpha sphere : 0.1935
+ATOM   9355   CE LYS F2596      64.689  -1.820  23.706  0.00  0.00           C 0
+ATOM   9343    N THR F2595      68.823  -0.923  23.774  0.41  2.19           N 0
+ATOM   9679    O HOH X3274      64.631   3.076  30.094  0.00  0.00           O 0
+ATOM   9346  OG1 THR F2595      70.222  -1.834  25.972  0.00  0.00           O 0
+ATOM   8994   OG SER B2563      66.748   4.208  25.186  0.44  4.29           O 0
+ATOM   9699    O HOH X3294      70.036   5.040  26.388  0.00  0.00           O 0
+ATOM   7236  OD1 ASP B2347      69.243   6.593  29.542  0.00  5.36           O 0
+ATOM   8993   CB SER B2563      66.521   4.803  26.457  0.00  0.00           C 0
+ATOM   8985    O THR B2561      62.575   2.763  26.141  0.19  3.21           O 0
+ATOM   9356   NZ LYS F2596      64.498  -0.494  23.056  0.00  0.00           N 0
+ATOM   9735    O HOH X3330      72.822   5.140  26.407  0.00  5.36           O 0
+ATOM   9008   CG GLN B2565      70.763   3.041  22.403  0.00  0.00           C 0
+ATOM   9096  CE1 PHE B2577      76.226   2.468  23.854  0.00  0.00           C 0
+ATOM   9344   CA THR F2595      69.840  -2.000  23.575  0.00  0.00           C 0
+ATOM   9095  CD1 PHE B2577      76.074   2.381  22.479  0.00  0.00           C 0
+ATOM   9347  CG2 THR F2595      71.442  -3.540  24.778  0.00  0.00           C 0
+ATOM   9368   CB ALA F2598      71.112  -0.310  19.995  0.00  0.00           C 0
+ATOM   9372   CA THR F2599      71.523  -4.509  18.552  0.00  0.00           C 0
+ATOM   9370    O ALA F2598      71.684  -2.053  17.240  0.59  4.29           O 0
+ATOM   9374  OG1 THR F2599      71.809  -5.309  20.829  0.00  0.00           O 0
+ATOM   9349    O THR F2595      70.046  -3.226  21.523  0.00  0.00           O 0
+ATOM   9010  OE1 GLN B2565      73.045   3.136  21.644  0.57  1.07           O 0
+ATOM   9371    N THR F2599      70.879  -3.267  18.959  0.00  0.00           N 0
+ATOM   9369    C ALA F2598      71.022  -2.136  18.275  0.00  0.00           C 0
+ATOM   9007   CB GLN B2565      70.326   4.105  23.407  0.00  0.00           C 0
+TER
+END

@@ -1,0 +1,46 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    33:
+HEADER 0  - Pocket Score                      : -0.0916
+HEADER 1  - Drug Score                        : 0.0001
+HEADER 2  - Number of alpha spheres           :    26
+HEADER 3  - Mean alpha-sphere radius          : 4.1331
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.6204
+HEADER 5  - Mean B-factor of pocket residues  : 0.2010
+HEADER 6  - Hydrophobicity Score              : 21.9231
+HEADER 7  - Polarity Score                    :    10
+HEADER 8  - Amino Acid based volume Score     : 4.0000
+HEADER 9  - Pocket volume (Monte Carlo)       : 467.9540
+HEADER 10 - Pocket volume (convex hull)       : 39.6471
+HEADER 11 - Charge Score                      :     6
+HEADER 12 - Local hydrophobic density Score   : 8.0000
+HEADER 13 - Number of apolar alpha sphere     :     9
+HEADER 14 - Proportion of apolar alpha sphere : 0.3462
+ATOM   3133   CB SER A 412      18.478  57.217  37.627  0.00  0.00           C 0
+ATOM   3157  CD1 LEU A 415      23.415  58.429  40.751  0.00  0.00           C 0
+ATOM   2032  CD1 LEU A 283      21.806  58.629  35.347  0.00  0.00           C 0
+ATOM  10176    O HOH X3782      22.108  63.598  35.198  0.00  0.00           O 0
+ATOM   9523    O HOH X3118      17.346  65.514  39.431  0.00  0.00           O 0
+ATOM   3164   CG GLU A 416      15.322  58.370  42.245  0.00  0.00           C 0
+ATOM   3136    O SER A 412      18.192  56.506  40.701  0.00  0.00           O 0
+ATOM   3162   CA GLU A 416      17.313  57.584  43.659  0.00  0.00           C 0
+ATOM   9998    O HOH X3593      16.179  60.994  45.979  0.38  8.57           O 0
+ATOM   3161    N GLU A 416      18.604  57.062  43.235  0.79  1.09           N 0
+ATOM   1827  CD1 ILE A 257      27.447  59.789  41.899  0.00  0.00           C 0
+ATOM   2025  ND2 ASN A 282      24.877  63.391  35.768  0.28  6.56           N 0
+ATOM   1828  CG2 ILE A 257      26.000  61.888  43.429  0.00  0.00           C 0
+ATOM   9604    O HOH X3199      28.914  60.417  38.238  0.64  3.21           O 0
+ATOM   2027    O ASN A 282      27.020  59.378  36.746  0.66  3.21           O 0
+ATOM   2022   CB ASN A 282      26.947  62.139  35.544  0.00  0.00           C 0
+ATOM   9426    O HOH X3021      30.663  62.399  37.123  0.14  7.50           O 0
+ATOM  10063    O HOH X3658      28.018  65.347  33.361  0.00  0.00           O 0
+ATOM   3155   CB LEU A 415      21.558  57.654  42.251  0.00  0.00           C 0
+ATOM   3159    C LEU A 415      19.723  57.284  43.915  0.00  0.00           C 0
+ATOM   3160    O LEU A 415      19.759  57.911  44.975  0.57  6.43           O 0
+ATOM   3132   CA SER A 412      19.279  56.333  38.587  0.00  0.00           C 0
+ATOM   2033  CD2 LEU A 283      23.270  58.019  37.294  0.00  0.00           C 0
+ATOM   9950    O HOH X3545      30.360  62.917  41.091  0.48  7.50           O 0
+TER
+END

@@ -1,0 +1,42 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket   114:
+HEADER 0  - Pocket Score                      : -0.1784
+HEADER 1  - Drug Score                        : 0.0014
+HEADER 2  - Number of alpha spheres           :    25
+HEADER 3  - Mean alpha-sphere radius          : 3.9671
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5441
+HEADER 5  - Mean B-factor of pocket residues  : 0.3488
+HEADER 6  - Hydrophobicity Score              : 23.9000
+HEADER 7  - Polarity Score                    :     5
+HEADER 8  - Amino Acid based volume Score     : 4.1000
+HEADER 9  - Pocket volume (Monte Carlo)       : 296.6643
+HEADER 10 - Pocket volume (convex hull)       : 13.7089
+HEADER 11 - Charge Score                      :     2
+HEADER 12 - Local hydrophobic density Score   : 5.7143
+HEADER 13 - Number of apolar alpha sphere     :     7
+HEADER 14 - Proportion of apolar alpha sphere : 0.2800
+ATOM   3119    O TYR A 409      20.465  51.558   2.013  0.60  6.43           O 0
+ATOM   4553   C8 NAG A 681      13.833  52.935  -0.028  0.00  0.00           C 0
+ATOM   1997  NE2 HIS A 278      18.935  53.897  -3.133  0.77  8.75           N 0
+ATOM   3107    O LEU A 408      18.021  48.995   1.464  0.24  4.29           O 0
+ATOM   3117  CD2 TYR A 409      19.276  48.226  -0.993  0.00  0.00           C 0
+ATOM   1996  CE1 HIS A 278      19.115  53.220  -4.252  0.00  0.00           C 0
+ATOM   3079    O LYS A 405      13.797  49.015   0.393  0.73  2.14           O 0
+ATOM   3116  CE2 TYR A 409      18.868  47.129  -1.773  0.00  0.00           C 0
+ATOM   2004  CG1 ILE A 279      22.789  53.826  -0.444  0.00  0.00           C 0
+ATOM   2005  CD1 ILE A 279      21.950  53.100  -1.424  0.00  0.00           C 0
+ATOM   1998  CD2 HIS A 278      19.347  55.197  -3.328  0.00  0.00           C 0
+ATOM   2013   CD PRO A 280      22.270  57.906   0.508  0.00  0.00           C 0
+ATOM   2038  CD2 LEU A 283      23.103  53.680   2.730  0.00  0.00           C 0
+ATOM   3124  OD1 ASN A 410      17.898  53.915   5.390  0.00  0.00           O 0
+ATOM   3128    N ASN A 411      20.689  53.723   5.153  0.81  1.09           N 0
+ATOM   3130   CB ASN A 411      21.631  55.992   5.165  0.00  0.00           C 0
+ATOM   4550   N2 NAG A 681      14.305  53.797   2.202  0.93  4.37           N 0
+ATOM   3125  ND2 ASN A 410      16.084  52.880   4.508  0.60  2.19           N 0
+ATOM   4547   C1 NAG A 681      15.246  54.067   4.502  0.00  0.00           C 0
+ATOM   3123   CG ASN A 410      17.339  52.886   4.996  0.00  0.00           C 0
+TER
+END

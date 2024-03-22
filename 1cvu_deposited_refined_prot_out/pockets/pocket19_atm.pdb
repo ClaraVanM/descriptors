@@ -1,0 +1,44 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    19:
+HEADER 0  - Pocket Score                      : -0.0079
+HEADER 1  - Drug Score                        : 0.0001
+HEADER 2  - Number of alpha spheres           :    34
+HEADER 3  - Mean alpha-sphere radius          : 4.0453
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.4560
+HEADER 5  - Mean B-factor of pocket residues  : 0.2096
+HEADER 6  - Hydrophobicity Score              : -2.7857
+HEADER 7  - Polarity Score                    :    13
+HEADER 8  - Amino Acid based volume Score     : 4.3571
+HEADER 9  - Pocket volume (Monte Carlo)       : 304.9680
+HEADER 10 - Pocket volume (convex hull)       : 31.9650
+HEADER 11 - Charge Score                      :     7
+HEADER 12 - Local hydrophobic density Score   : 0.0000
+HEADER 13 - Number of apolar alpha sphere     :     0
+HEADER 14 - Proportion of apolar alpha sphere : 0.0000
+ATOM   9741    O HOH X3336      80.296  20.505  47.403  0.34  1.07           O 0
+ATOM   8364    O GLU B2480      84.057  24.727  50.936  0.53  2.14           O 0
+ATOM   8318   OH TYR B2475      79.322  24.164  49.352  0.38  1.07           O 0
+ATOM   8319  CE2 TYR B2475      80.213  25.033  51.400  0.00  0.00           C 0
+ATOM   8359   CG GLU B2480      83.464  25.005  54.341  0.00  0.00           C 0
+ATOM   8604   NZ LYS B2511      85.667  18.599  50.538  0.62  5.47           N 0
+ATOM  10040    O HOH X3635      87.703  20.121  51.464  0.00  0.00           O 0
+ATOM   8357   CA GLU B2480      85.115  26.003  52.680  0.00  0.00           C 0
+ATOM   9794    O HOH X3389      74.590  21.232  53.929  0.58  5.36           O 0
+ATOM   8247  NH2 ARG B2467      76.362  23.846  52.155  0.18  1.09           N 0
+ATOM   8297   CB LYS B2473      75.615  23.783  56.751  0.00  0.00           C 0
+ATOM   9917    O HOH X3512      79.322  24.875  56.387  0.58  4.29           O 0
+ATOM   8361  OE1 GLU B2480      81.749  24.317  55.832  0.00  0.00           O 0
+ATOM  10171    O HOH X3777      79.365  17.691  54.528  0.00  0.00           O 0
+ATOM   8299   CD LYS B2473      76.039  22.049  58.505  0.00  0.00           C 0
+ATOM   8602   CD LYS B2511      85.174  20.367  48.822  0.00  0.00           C 0
+ATOM   8600   CB LYS B2511      84.478  22.038  47.086  0.00  0.00           C 0
+ATOM   8674  OE2 GLU B2520      76.398  21.521  50.961  0.26  2.14           O 0
+ATOM   9308   O3 BOG B2702      81.238  15.837  54.053  0.72  4.29           O 0
+ATOM   5104  ND2 ASN B2087      78.814  17.679  51.728  0.20  4.37           N 0
+ATOM   9865    O HOH X3460      80.930  17.366  48.780  0.33  2.14           O 0
+ATOM   9310   O4 BOG B2702      82.708  15.162  51.750  0.53  4.29           O 0
+TER
+END

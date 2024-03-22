@@ -1,0 +1,39 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    29:
+HEADER 0  - Pocket Score                      : -0.0148
+HEADER 1  - Drug Score                        : 0.0002
+HEADER 2  - Number of alpha spheres           :    21
+HEADER 3  - Mean alpha-sphere radius          : 3.7323
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.4413
+HEADER 5  - Mean B-factor of pocket residues  : 0.1814
+HEADER 6  - Hydrophobicity Score              : 10.2727
+HEADER 7  - Polarity Score                    :     8
+HEADER 8  - Amino Acid based volume Score     : 3.9091
+HEADER 9  - Pocket volume (Monte Carlo)       : 246.7785
+HEADER 10 - Pocket volume (convex hull)       : 8.9398
+HEADER 11 - Charge Score                      :     0
+HEADER 12 - Local hydrophobic density Score   : 0.0000
+HEADER 13 - Number of apolar alpha sphere     :     1
+HEADER 14 - Proportion of apolar alpha sphere : 0.0476
+ATOM   4340   CB SER A 566      30.773  40.966  27.617  0.00  0.00           C 0
+ATOM   4341   OG SER A 566      30.545  40.099  28.704  0.04  4.29           O 0
+ATOM   4309    O THR A 561      33.640  37.620  28.883  0.50  5.36           O 0
+ATOM   4371  ND2 ASN A 570      33.119  44.441  27.497  0.57  9.84           N 0
+ATOM   4306  OG1 THR A 561      36.827  38.181  29.798  0.71  5.36           O 0
+ATOM   2268  NH2 ARG A 311      36.886  44.387  26.867  0.12  9.84           N 0
+ATOM   4284  CG2 ILE A 558      38.952  40.722  25.809  0.00  0.00           C 0
+ATOM   4286    O ILE A 558      37.565  37.900  26.597  0.63  1.07           O 0
+ATOM   4282  CG1 ILE A 558      40.706  41.160  27.555  0.00  0.00           C 0
+ATOM   4278    O LYS A 557      39.915  38.733  30.370  0.42  6.43           O 0
+ATOM   2497  OE2 GLU A 339      35.956  40.509  23.212  0.33  5.36           O 0
+ATOM   4311   CA ALA A 562      33.912  36.874  26.170  0.00  0.00           C 0
+ATOM   4320    O SER A 563      29.757  39.023  24.928  0.00  0.00           O 0
+ATOM   4344    N LEU A 567      29.823  41.780  24.848  0.00  0.00           N 0
+ATOM   4280   CA ILE A 558      39.449  38.994  27.548  0.00  0.00           C 0
+ATOM   2238  OE2 GLU A 308      35.130  43.576  23.194  0.44  3.21           O 0
+ATOM   4315    N SER A 563      31.557  37.147  25.748  0.00  0.00           N 0
+TER
+END

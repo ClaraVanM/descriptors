@@ -1,0 +1,36 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    25:
+HEADER 0  - Pocket Score                      : -0.0350
+HEADER 1  - Drug Score                        : 0.0008
+HEADER 2  - Number of alpha spheres           :    15
+HEADER 3  - Mean alpha-sphere radius          : 3.7459
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.6265
+HEADER 5  - Mean B-factor of pocket residues  : 0.2679
+HEADER 6  - Hydrophobicity Score              : 74.4000
+HEADER 7  - Polarity Score                    :     1
+HEADER 8  - Amino Acid based volume Score     : 4.6000
+HEADER 9  - Pocket volume (Monte Carlo)       : 129.8394
+HEADER 10 - Pocket volume (convex hull)       : 1.2990
+HEADER 11 - Charge Score                      :     0
+HEADER 12 - Local hydrophobic density Score   : 14.0000
+HEADER 13 - Number of apolar alpha sphere     :    15
+HEADER 14 - Proportion of apolar alpha sphere : 1.0000
+ATOM   5180  CD1 PHE B2096      77.169   2.345  50.215  0.00  0.00           C 0
+ATOM   5184  CD2 PHE B2096      77.822   0.274  51.212  0.00  0.00           C 0
+ATOM   9322  C8' BOG B2702      75.719   2.864  55.434  0.00  0.00           C 0
+ATOM   5179   CG PHE B2096      77.284   0.965  50.134  0.00  0.00           C 0
+ATOM   5183  CE2 PHE B2096      78.237   0.949  52.351  0.00  0.00           C 0
+ATOM   5204  CG2 VAL B2099      72.692  -2.153  48.858  0.00  0.00           C 0
+ATOM   5203  CG1 VAL B2099      75.168  -2.521  49.055  0.00  0.00           C 0
+ATOM   5148  CG2 ILE B2092      73.572   4.933  51.138  0.00  0.00           C 0
+ATOM   5178   CB PHE B2096      76.834   0.232  48.901  0.00  0.00           C 0
+ATOM   5181  CE1 PHE B2096      77.581   3.025  51.346  0.00  0.00           C 0
+ATOM   5212  NE1 TRP B2100      73.849   2.565  46.755  0.58  1.09           N 0
+ATOM   5182   CZ PHE B2096      78.116   2.327  52.417  0.00  0.00           C 0
+ATOM   5218  CZ2 TRP B2100      71.649   3.346  47.664  0.00  0.00           C 0
+ATOM   5213  CE2 TRP B2100      72.483   2.600  46.833  0.00  0.00           C 0
+TER
+END

@@ -1,0 +1,44 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    58:
+HEADER 0  - Pocket Score                      : -0.0685
+HEADER 1  - Drug Score                        : 0.0004
+HEADER 2  - Number of alpha spheres           :    27
+HEADER 3  - Mean alpha-sphere radius          : 3.8843
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.4540
+HEADER 5  - Mean B-factor of pocket residues  : 0.2873
+HEADER 6  - Hydrophobicity Score              : 3.9091
+HEADER 7  - Polarity Score                    :     5
+HEADER 8  - Amino Acid based volume Score     : 4.1818
+HEADER 9  - Pocket volume (Monte Carlo)       : 311.8176
+HEADER 10 - Pocket volume (convex hull)       : 25.4526
+HEADER 11 - Charge Score                      :     1
+HEADER 12 - Local hydrophobic density Score   : 6.0000
+HEADER 13 - Number of apolar alpha sphere     :     7
+HEADER 14 - Proportion of apolar alpha sphere : 0.2593
+ATOM   6104   CA GLY B 217      63.882  41.691  -0.095  0.00  0.00           C 0
+ATOM   6113    O PRO B 218      64.266  39.696   3.741  0.69  5.36           O 0
+ATOM   6111   CD PRO B 218      66.230  41.163   1.574  0.00  0.00           C 0
+ATOM   8077  OE2 GLU B 457      67.842  44.373   3.283  0.00  0.00           O 0
+ATOM   6102    O ARG B 216      61.590  43.214  -0.166  0.21  7.50           O 0
+ATOM   8075   CD GLU B 457      68.642  43.588   3.864  0.00  0.00           C 0
+ATOM   8074   CG GLU B 457      68.828  43.721   5.378  0.00  0.00           C 0
+ATOM   5404  CG1 VAL B 132      62.880  40.789   7.935  0.00  0.00           C 0
+ATOM   8079    O GLU B 457      68.024  43.121   8.543  0.30  6.43           O 0
+ATOM   8081   CA MET B 458      67.397  40.354   8.320  0.00  0.00           C 0
+ATOM   8083   CG MET B 458      67.090  38.833   6.325  0.00  0.00           C 0
+ATOM   8091   CG LYS B 459      67.655  43.616  11.834  0.00  0.00           C 0
+ATOM   8086    C MET B 458      67.384  40.347   9.832  0.00  0.00           C 0
+ATOM   8087    O MET B 458      66.578  39.651  10.433  0.81  1.07           O 0
+ATOM   5414  NE2 HIS B 133      60.076  44.250   6.596  0.00  0.00           N 0
+ATOM   5415  CD2 HIS B 133      59.954  44.097   7.958  0.00  0.00           C 0
+ATOM   5614  OD2 ASP B 157      63.700  47.777  12.323  0.42  9.64           O 0
+ATOM   6125  CE2 PHE B 220      59.789  41.751   2.180  0.00  0.00           C 0
+ATOM   8090   CB LYS B 459      67.506  42.230  12.486  0.00  0.00           C 0
+ATOM   5613  OD1 ASP B 157      63.697  46.199  13.884  0.40  8.57           O 0
+ATOM   5592   CB PRO B 154      63.909  40.202  13.642  0.00  0.00           C 0
+ATOM   5407    O VAL B 132      61.496  41.319  10.758  0.61  6.43           O 0
+TER
+END
