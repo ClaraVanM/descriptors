@@ -1,6 +1,6 @@
-from aaindex import aaindex1
+from autocorrelation import get_normalized_props
 
-#list of amino acids
+# list of amino acids
 amino_acids = ["A", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "Y"]
 
 def aa_composition(sequence):
@@ -21,5 +21,3 @@ def tripeptide_composition(sequence):
     tripep_comp = {i+j+h : sequence.count(i+j+h)/(len(sequence)/3) for i in amino_acids for j in amino_acids for h in amino_acids}
     return tripep_comp
 
-
-print(tripeptide_composition('aaa'))
