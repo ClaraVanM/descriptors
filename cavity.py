@@ -1,6 +1,5 @@
 import pymolPy3
-import os
-from PyBioMed.PyProtein import PyProtein
+
 
 def get_cavity_atoms(protein_file, fpocket_out):
     """
@@ -27,9 +26,3 @@ def get_cavity_atoms(protein_file, fpocket_out):
                     output.write(line)
         output.close()
     input.close()
-
-
-pr = PyProtein.PyProtein("AADDDQDA")
-#print(pr.GetDPComp())
-
-get_cavity_atoms("1GNY.pdb", "1GNY_out")
