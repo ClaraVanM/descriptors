@@ -5,7 +5,6 @@ from composition import aa_composition
 amino_acids = ["A", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "Y"]
 
 
-
 def pseaac(sequence, l=30, weight=0.05, properties=['PRAM900101', 'GRAR740102', 'PONJ960101']):
     #l determines the number of thetas, every theta increases the calculating window
     sequence = sequence.upper()
