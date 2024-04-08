@@ -1,4 +1,5 @@
 from itertools import product
+import math
 # <editor-fold desc="AA grouped per property">
 properties = {"hydrophobicity":{"R":1, "K":1, "E":1, "D":1, "Q":1, "N":1,"G":2,"A":2,"S":2,"T":2,"P":2,"H":2,"Y":2,"C":3,"L":3,"V":3,"I":3,"M":3,"F":3,"W":3},
               "normalized_vdw":{"G":1,"A":1,"S":1,"T":1,"P":1,"D":1,"N":2,"V":2,"E":2,"Q":2,"I":2,"L":2,"M":3,"H":3,"K":3,"F":3,"R":3,"Y":3,"W":3},
@@ -51,7 +52,25 @@ def ctd_transition(sequence):
 
 
 def ctd_distribution(sequence):
-    return None
+    """
+    for every property there are 3 categories. this function calculates where the first, the first 25%, 50%, 75% and 100% of
+    this category are in the protein sequence
+    :param sequence:
+    :return:
+    """
+    sequence = sequence.upper()
+    total_distr = {}
+    for prop, values in properties.items():
+        convert = str_to_num(sequence, prop)
+        distr = {}
+        for i in set(values.values()):
+            count = convert.count(str(i))
+            occurences = [i for i, number in enumerate(convert)]
+            distr["0.01"] = occurences[0]
+            for j in [0.25, 0.50, 0.75, 1]:
+                distr[str(j)] = occurences[math.ceil(count*j)-1]
+        total_distr[prop] = distr
+    return distr
 
 
-print(ctd_transition('AAA'))
+print(ctd_distribution('AAA'))
