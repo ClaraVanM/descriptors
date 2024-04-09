@@ -1,72 +1,45 @@
 import pandas as pd
-import os
 
-from sequence import Sequence
-from Getdata.Structures import Structures
-from Getdata.Cavity import Cavity
-from shape.Shape import Shape
-from FindCavity.fpocket import Fpocket
-from Distance.Distance import Distance
+import process_file
+import shape
+import depth_comp
 
+# <editor-fold desc="workflow">
 
-def get_results(protein_file, fpocket, pocket):
-    """
+"""
+1) select neigborhood
+2) calculate descriptors
+        composition
+        CTD
+        ammPseAAC
+        pseAAC
+        autocorrelation
+        sequence order
+        buriedness
+        deepness
+        exposed residues
+"""
+# </editor-fold>
 
-    :param protein_file: pdb file of protein
-    :param fpocket: fpocket output of protein
-    :return: calculates all descriptors and puts them in dictionary
-    """
-    results = dict()
-    #import structures
-    protein = Structures(protein_file)
-    cavity = Cavity(protein_file, fpocket, pocket)
-    assert not cavity.ligand.empty
-    results['name'] = protein.name
-    #get shape descriptors
-    shape = Shape(cavity.cavity, cavity.ligand)
-    results.update(shape.getDescriptors())
-    #get sequence descriptors
-    seq = Sequence.Sequence(cavity.cavity)
-    results.update(seq.sequence_descriptors())
-    # get distance descriptors
-    d = Distance(cavity.cavity, cavity.ligand)
-    results.update(d.getDescriptors())
-    return results
+process_file.get_cavity_atoms("1B3X.pdb", "1B3X_out")
+cavity = process_file.load_pdb("1B3X_neighbor.pdb")
+protein = process_file.load_pdb("1GNY.pdb")
+#center data
+cavity[["x","y","z"]] = cavity[["x","y","z"]] - shape.COG(protein)
+protein[["x","y","z"]] = protein[["x","y","z"]] - shape.COG(protein)
 
+axis = shape.find_cavity_axis(cavity)
+cavity_pr = shape.projection(cavity, axis)
+#depth is first descriptor
+df, depth = shape.add_buriedness(cavity,cavity_pr, axis)
+narrow = shape.narrowness(df[df['buriedness'] ==1][['x','y','z']], axis, shape.COG(cavity))
+#second descriptor
+l_nar = shape.list_narrowness(df, axis, shape.COG(cavity))
+#add distances of redidues to axis to df
+df = shape.residue_dist_from_axis(df, axis)
 
-def main(protein_folder,fpocket_folder, pockets):
-    # proces pdb files
-    b = True
-    correspond = pd.read_csv(pockets, index_col=0)
-    fpocket_list = os.listdir(fpocket_folder)
-    for file in os.listdir(protein_folder):
-        print(file)
-        if pd.isna(list(correspond.loc[correspond['id'] == file]['pocket'])):
-            continue
-
-        else:
-            try:
-                pocket = list(correspond.loc[correspond['id'] == file]['pocket'])[0]
-                print(pocket)
-                if os.path.isfile(os.path.join(protein_folder,file)):
-                    name = file.replace('.pdb','_out')
-                    fpocket = [x for x in fpocket_list if name in x][0]
-                    if b:
-                        df = pd.DataFrame(get_results(os.path.join(protein_folder, file), os.path.join(fpocket_folder, fpocket), pocket), index=[0])
-                        b = False
-                    else:
-                        df.loc[len(df)] = get_results(os.path.join(protein_folder, file), os.path.join(fpocket_folder, fpocket), pocket)
-            except:
-                df.loc[len(df)] = [file] + [-2] * (len(df.columns)-1)
-    return df
-
-
-
-
-if __name__ == "__main__":
-    """pockets = Fpocket("pdbfiles_folder", "fpocket_folder")
-    pockets.pockets.to_csv("ids_with_pockets_not_3.2.1.csv")"""
-
-    """df1 = main("pdbfile_folder","fpocket folder",'ids_with_pockets_not_3.2.1.csv')
-    df1.to_csv('not3.2.1.csv')"""
-
+#next use df to collect composition of protein based on buriedness, so per buriedness say how many of each AA?
+df.to_csv('dataset')
+l_nar = pd.DataFrame(l_nar, columns=['Values'])
+l_nar.to_csv('list')
+depth_comp.AA_per_buriedness(df)
