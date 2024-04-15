@@ -6,8 +6,15 @@ AA_symb = {'CYS': 'C', 'ASP': 'D', 'SER': 'S', 'GLN': 'Q', 'LYS': 'K',
 'GLY': 'G', 'HIS': 'H', 'LEU': 'L', 'ARG': 'R', 'TRP': 'W',
 'ALA': 'A', 'VAL':'V', 'GLU': 'E', 'TYR': 'Y', 'MET': 'M'}
 
+residues = ['O', 'C', 'N', 'O']
+
 
 def AA_per_buriedness(df):
+    """
+
+    :param df: df with buriedness level column and distances from axis.
+    :return: dictionary with frequency of amino acids per buriedness level
+    """
     df = df.drop_duplicates(subset=["AA_number"])
     total_count = {}
     for i in df["buriedness"].unique():
@@ -17,10 +24,17 @@ def AA_per_buriedness(df):
     return total_count
 
 
-#take only nonzero narrowness depths into account or 1 0 to have the floor of the pocket
+#take only burriedness up to first 0 into account to have the floor of the pocket
+#should i take CA, CB or just C?
 def exposed_aa(df, narrow_list):
-    if not narrow_list.count(0.0) == 0:
-        index = narrow_list.count(0.0)-1
+    """
+
+    :param df: cavity df with buriedness level column and distances from axis
+    :param narrow_list: list of narrowness per buriedness level
+    :return: closest 30% of residues to cavity
+    """
+    if narrow_list.count(0) != 0:
+        index = narrow_list.count(0)-1
     else: index = 0
     depth = list(range(index,5))
     df = df[df['buriedness'].isin(depth)]
@@ -29,4 +43,8 @@ def exposed_aa(df, narrow_list):
     df = df.loc[subset_index]
     # take closest 5 of aa to axes
     df = df.sort_values(by='dist_from_axis').head(int(len(df)*0.3))
-    return df
+    d_count = {residue:0 for residue in residues}
+    for value in df['atom']:
+        atom = value[0]
+        d_count[atom] += 1
+    return d_count

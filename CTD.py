@@ -19,15 +19,27 @@ properties = {"hydrophobicity":{"R":1, "K":1, "E":1, "D":1, "Q":1, "N":1,"G":2,"
 
 
 def str_to_num(sequence, prop):
-    sequence = sequence.upper()
+    """
+
+    :param sequence: protein seqence
+    :param prop: one of the properties from the properties dictionary
+    :return: string with amino acids replaced by their respective group number
+    """
     seq=""
     for i in sequence:
-        seq += str(properties[prop][i])
+        if i != 'X':
+            seq += str(properties[prop][i])
+        else:
+            seq += "X"
     return seq
 
 
 def ctd_composition(sequence):
-    sequence = sequence.upper()
+    """
+
+    :param sequence: sequence with group numbers
+    :return: frequencies of the groups per property
+    """
     comp = {}
     count = {}
     for prop, values in properties.items():
@@ -40,14 +52,27 @@ def ctd_composition(sequence):
 
 
 def ctd_transition(sequence):
-    sequence = sequence.upper()
+    """
+
+    :param sequence: sequence of group numbers
+    :return: frequencies of transition from one group to another per property
+    """
     total_trans = {}
     for prop, values in properties.items():
         trans_values = {''.join(map(str, triad)): 0 for triad in product(range(1, 4), repeat=2)}
+        trans_values['gap'] = 0
         convert = str_to_num(sequence, prop)
         for i in range(len(convert)-1):
-            trans_values[convert[i:i+2]] += 1
-        total_trans[prop] = trans_values
+            if not 'X' in convert[i:i+2]:
+                trans_values[convert[i:i+2]] += 1
+            else:
+                trans_values['gap'] += 1
+        trans = {}
+        trans[1] = trans_values['12'] + trans_values['21']
+        trans[2] = trans_values['13'] + trans_values['31']
+        trans[3] = trans_values['23'] + trans_values['32']
+        trans[4] = trans_values['gap']
+        total_trans[prop] = trans
     return total_trans
 
 #should devide by length to normalize
@@ -55,13 +80,12 @@ def ctd_distribution(sequence):
     """
     for every property there are 3 categories. this function calculates where the first, the first 25%, 50%, 75% and 100% of
     this category are in the protein sequence
-    :param sequence:
-    :return:
+    :param sequence: sequence of the group numbers
+    :return: dictionary with distribution per property
     """
-    sequence = sequence.upper()
     total_distr = {}
     for prop, values in properties.items():
-        convert = str_to_num(sequence, prop)
+        convert = str_to_num(sequence, prop).replace('X','')
         distr = {}
         for i in set(values.values()):
             count = convert.count(str(i))
@@ -70,7 +94,5 @@ def ctd_distribution(sequence):
             for j in [0.25, 0.50, 0.75, 1]:
                 distr[str(j)] = occurences[math.ceil(count*j)-1]
         total_distr[prop] = distr
-    return distr
+    return total_distr
 
-
-print(ctd_distribution('AAA'))
