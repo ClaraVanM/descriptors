@@ -5,12 +5,6 @@ from Bio.PDB import PDBParser
 from Bio import SeqIO
 
 
-"""#following code gives me: WRGNASGSTSHSGIXXXXXXXXFXXXGDGVGAVFDIXXXXXXXXXXXXXXXXXXXXXXXXXXXXQIFAQLKEDWSKGEWDCXXXXXXXXXXXXXXXXXXXXEXXXKFXXXXRDVQVGIQAK
-we can delete the X's
-for record in SeqIO.parse("1GNY_neighbor.pdb", "pdb-atom"):
-    print(record.seq)"""
-
-
 def get_cavity_atoms(protein_file, fpocket_out):
     """
     Selects all atoms/AA around the predicted cavity and puts them in new file
@@ -45,3 +39,8 @@ def load_pdb(file):
             line = f.readline()
     df[['x', 'y', 'z']] = df[['x', 'y', 'z']].astype(float)
     return df
+
+
+def get_sequence(pdbfile):
+    record = list(SeqIO.parse(pdbfile, "pdb-atom"))
+    return record[0].seq

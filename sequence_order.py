@@ -406,29 +406,43 @@ amino_acids = ["A", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M", "N", "P",
 
 
 def tau_soc_number(sequence, d=1):
-    sequence = sequence.upper()
+    """
+
+    :param sequence: protein sequence
+    :param d: window
+    :return: sequenc order coupling number
+    """
     tau = 0.0
     for i in range(len(sequence)-d):
-        tau += schneider_wrede_matrix[sequence[i]+sequence[i+d]]
+        if not "X" in (sequence[i], sequence[i+d]):
+            tau += schneider_wrede_matrix[sequence[i]+sequence[i+d]]
     return tau
 
 
 def soc_numbers(sequence, lag=30):
-    if lag >= len(sequence) or lag < 0:
-        lag = 30
-    sequence = sequence.upper()
+    """
+
+    :param sequence: protein sequence
+    :param lag: max window
+    :return: dictionary with sequence order coupling numbers
+    """
     soc = {}
     for i in range(lag):
-        tau = tau_soc_number(sequence, i+1)
-        soc[i] = tau
+        soc[i] = tau_soc_number(sequence, i+1)
     return soc
 
 
 def tau_qsoc(sequence, lag=30, w=0.1):
-    sequence = sequence.upper()
+    """
+
+    :param sequence: protein sequence
+    :param lag: max window
+    :param w: weight
+    :return: quasi sequence order descriptors
+    """
     comp = aa_composition(sequence)
     total_weighted_tau = w*sum(soc_numbers(sequence, lag).values())
-    total_comp = sum(comp.values())
+    total_comp = sum(comp.values()) - comp["X"]
     devider = total_comp+total_weighted_tau
     QSO = {i:comp[i]/devider for i in amino_acids}
     for i in range(lag):

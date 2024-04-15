@@ -138,7 +138,7 @@ def list_narrowness(df_burriednes, cavity_axis, cavity_center):
 
 
 def residue_dist_from_axis(df, axis):
-    df['dist_from_axis'] = 0
+    df['dist_from_axis'] = float(0)
     for index, row in df.iterrows():
         df.loc[index, 'dist_from_axis'] = axis.distance_point(Point([row["x"], row["y"], row["z"]]))
     return df
