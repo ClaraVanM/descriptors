@@ -19,8 +19,9 @@ def get_cavity_atoms(protein_file, fpocket_out):
     protein_name = protein_file.split("/")[-1].split(".")[0]
     pm(f"select prot, {protein_name}")
     pm(f"select neighborhood, prot near_to 10 of cavity")
+    print(protein_name+'_neighbor.pdb')
     pm(f"save {protein_name}_neighbor.pdb, neighborhood")
-    return None
+    return protein_name+'_neighbor.pdb'
 
 
 def load_pdb(file):
@@ -29,6 +30,7 @@ def load_pdb(file):
     :param file: path to file
     :return: pandas dataframe with coordinates
     """
+    print(file)
     assert os.path.isfile(file), "No valid file."
     df = pd.DataFrame(columns=['atom', 'AA','AA_number', 'x', 'y', 'z'])
     with open(file, 'r') as f:

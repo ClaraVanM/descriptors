@@ -21,11 +21,11 @@ def pseaac(sequence, l=30, weight=0.05, properties=['PRAM900101', 'GRAR740102', 
     aa_comp = aa_composition(sequence)
     devider = sum(aa_comp.values()) + weight*sum_thetas
     # first 20 components
-    pseudo_aac = {aa:aa_comp[aa]/devider for aa in amino_acids}
+    pseudo_aac = {'pse_'+aa:aa_comp['AAC_'+aa]/devider for aa in amino_acids}
     #other components
     numerator = [sequence_order_correlation_factor(sequence, props, x+1) for x in range (l-20)]
     for i in range(l-20):
-        pseudo_aac[i] = (weight * numerator[i])/devider
+        pseudo_aac['pse_' + str(i)] = (weight * numerator[i])/devider
     return pseudo_aac
 
 

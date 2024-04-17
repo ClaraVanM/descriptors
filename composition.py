@@ -12,7 +12,7 @@ def aa_composition(sequence):
     :param sequence: protein sequence
     :return: dictionary of normalized frequencies for the amino acid
     """
-    aa = {a:(sequence.count(a)/len(sequence)) for a in amino_acids}
+    aa = {'AAC_'+a:(sequence.count(a)/len(sequence)) for a in amino_acids}
     return aa
 
 
@@ -23,7 +23,7 @@ def dipeptide_composition(sequence):
     :return: dictionary with dipeptide frequencies
     """
     #drawback: does not count overlaps, 'AAA' is 1 count for 'AA'
-    dipeptide_composition= {i+j : sequence.count(i+j)/(len(sequence)/2) for i in amino_acids for j in amino_acids}
+    dipeptide_composition= {i+j: sequence.count(i+j)/(len(sequence)/2) for i in amino_acids for j in amino_acids}
     return dipeptide_composition
 
 

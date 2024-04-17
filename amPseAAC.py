@@ -57,10 +57,10 @@ def amp_pse_AAC(sequence, l=30, weight = 0.5):
         sum_thetas += sum(am_sequence_order_cor_factor(sequence, i+1))
     devider = sum(aa_comp.values()) + weight*sum_thetas
     #first 20 components
-    amp_pse_aac = {aa: aa_comp[aa] / devider for aa in amino_acids}
+    amp_pse_aac = {'ampPSE_'+aa: aa_comp['AAC_'+aa] / devider for aa in amino_acids}
     #other components
     numerator = [am_sequence_order_cor_factor(sequence, x + 1) for x in range(21, 21 + l)]
     for i in range(l):
-        amp_pse_aac[str(i)+".1"] = numerator[i][0] / devider
-        amp_pse_aac[str(i)+".2"] = numerator[i][1] / devider
+        amp_pse_aac['amPse_'+ str(i)+".1"] = numerator[i][0] / devider
+        amp_pse_aac['amPse_' + str(i)+".2"] = numerator[i][1] / devider
     return amp_pse_aac

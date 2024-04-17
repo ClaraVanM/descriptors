@@ -6,7 +6,7 @@ AA_symb = {'CYS': 'C', 'ASP': 'D', 'SER': 'S', 'GLN': 'Q', 'LYS': 'K',
 'GLY': 'G', 'HIS': 'H', 'LEU': 'L', 'ARG': 'R', 'TRP': 'W',
 'ALA': 'A', 'VAL':'V', 'GLU': 'E', 'TYR': 'Y', 'MET': 'M'}
 
-residues = ['O', 'C', 'N', 'O']
+residues = ['O', 'C', 'N', 'S']
 
 
 def AA_per_buriedness(df):
@@ -20,7 +20,7 @@ def AA_per_buriedness(df):
     for i in df["buriedness"].unique():
         df_temp = df[df["buriedness"]==i]
         aa_count = df_temp['AA'].value_counts()
-        total_count[i] = {aa:aa_count.get(aa,0) for aa in AA_symb.keys()}
+        total_count[i] = {'buried_' + aa+str(i):aa_count.get(aa,0) for aa in AA_symb.keys()}
     return total_count
 
 
