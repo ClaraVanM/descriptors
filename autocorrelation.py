@@ -108,6 +108,6 @@ def autocorrelation(sequence, function, lag = 30, properties=["CIDH920105", "BHA
     for prop, values in aai_props.items():
         ac = {}
         for i in range(lag):
-            ac[i] = function(sequence, values, i)
+            ac[str(function).split()[1] + '_' + prop + '_' + str(i)] = function(sequence, values, i)
         ac_all_props[prop] = ac
     return ac_all_props

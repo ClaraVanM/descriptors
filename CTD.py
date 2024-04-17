@@ -2,7 +2,7 @@ from itertools import product
 import math
 # <editor-fold desc="AA grouped per property">
 properties = {"hydrophobicity":{"R":1, "K":1, "E":1, "D":1, "Q":1, "N":1,"G":2,"A":2,"S":2,"T":2,"P":2,"H":2,"Y":2,"C":3,"L":3,"V":3,"I":3,"M":3,"F":3,"W":3},
-              "normalized_vdw":{"G":1,"A":1,"S":1,"T":1,"P":1,"D":1,"N":2,"V":2,"E":2,"Q":2,"I":2,"L":2,"M":3,"H":3,"K":3,"F":3,"R":3,"Y":3,"W":3},
+              "normalized_vdw":{"G":1,"C":1,"A":1,"S":1,"T":1,"P":1,"D":1,"N":2,"V":2,"E":2,"Q":2,"I":2,"L":2,"M":3,"H":3,"K":3,"F":3,"R":3,"Y":3,"W":3},
               "polarity":{"L":1,"I":1,"F":1,"W":1,"C":1,"M":1,"V":1,"Y":1,"A":2,"P":2,"T":2,"G":2,"S":2,"K":3,"N":3,"H":3,"R":3,"Q":3,"E":3,"D":3},
               "charge":{"K":1,"R":1,"A":2,"N":2,"C":2,"Q":2,"G":2,"H":2,"I":2,"L":2,"M":2,"F":2,"P":2,"S":2,"T":2,"W":2,"Y":2,"V":2,"D":3,"E":3},
               "secondary_struct":{"E":1,"A":1,"L":1,"M":1,"Q":1,"K":1,"R":1,"H":1,"V":2,"I":2,"Y":2,"C":2,"W":2,"F":2,"T":2,"G":3,"N":3,"P":3,"S":3,"D":3},
@@ -46,7 +46,7 @@ def ctd_composition(sequence):
         converted_sequence = str_to_num(sequence, prop)
         for i in range(1,4):
             count[i] = converted_sequence.count(str(i))
-        norm_count = {i:count/len(sequence) for i, count in count.items()}
+        norm_count = {prop+str(i):count/len(sequence) for i, count in count.items()}
         comp[prop] = norm_count
     return comp
 
@@ -68,10 +68,10 @@ def ctd_transition(sequence):
             else:
                 trans_values['gap'] += 1
         trans = {}
-        trans[1] = trans_values['12'] + trans_values['21']
-        trans[2] = trans_values['13'] + trans_values['31']
-        trans[3] = trans_values['23'] + trans_values['32']
-        trans[4] = trans_values['gap']
+        trans[prop + 'trans' + str(1)] = trans_values['12'] + trans_values['21']
+        trans[prop+ 'trans' + str(2)] = trans_values['13'] + trans_values['31']
+        trans[prop+ 'trans' + str(3)] = trans_values['23'] + trans_values['32']
+        trans[prop+ 'trans' + str(4)] = trans_values['gap']
         total_trans[prop] = trans
     return total_trans
 
@@ -92,7 +92,7 @@ def ctd_distribution(sequence):
             occurences = [i for i, number in enumerate(convert)]
             distr["0.01"] = occurences[0]
             for j in [0.25, 0.50, 0.75, 1]:
-                distr[str(j)] = occurences[math.ceil(count*j)-1]
+                distr[prop + str(j)] = occurences[math.ceil(count*j)-1]
         total_distr[prop] = distr
     return total_distr
 

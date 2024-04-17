@@ -442,11 +442,11 @@ def tau_qsoc(sequence, lag=30, w=0.1):
     """
     comp = aa_composition(sequence)
     total_weighted_tau = w*sum(soc_numbers(sequence, lag).values())
-    total_comp = sum(comp.values()) - comp["X"]
+    total_comp = sum(comp.values()) - comp["AAC_X"]
     devider = total_comp+total_weighted_tau
-    QSO = {i:comp[i]/devider for i in amino_acids}
+    QSO = {'QSO_'+ i:comp['AAC_'+i]/devider for i in amino_acids}
     for i in range(lag):
-        QSO[i] = (w*tau_soc_number(sequence, i+1))/devider
+        QSO['QSO_' + str(i)] = (w*tau_soc_number(sequence, i+1))/devider
     return QSO
 
 
