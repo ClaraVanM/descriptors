@@ -1,11 +1,11 @@
 import pymolPy3
 import os
 import pandas as pd
-from Bio.PDB import PDBParser
+import re
 from Bio import SeqIO
 
 
-def get_cavity_atoms(protein_file, fpocket_out):
+def get_cavity_atoms(protein_file, fpocket_out, pocket_file):
     """
     Selects all atoms/AA around the predicted cavity and puts them in new file
     :param protein_file: full protein.pdb file
@@ -14,8 +14,8 @@ def get_cavity_atoms(protein_file, fpocket_out):
     """
     pm = pymolPy3.pymolPy3(0)
     pm(f"load {protein_file}")
-    pm(f"load {fpocket_out}/pockets/pocket1_atm.pdb")
-    pm(f"select cavity, pocket1_atm")
+    pm(f"load {fpocket_out}/pockets/{pocket_file}")
+    pm(f"select cavity, {pocket_file.split('.')[0]}")
     protein_name = protein_file.split("/")[-1].split(".")[0]
     pm(f"select prot, {protein_name}")
     pm(f"select neighborhood, prot near_to 10 of cavity")
@@ -37,6 +37,12 @@ def load_pdb(file):
         line = f.readline()
         while line:
             if line.startswith('ATOM'):
+                if re.match(r'.*\d{2}-\d{2}.*', line):
+                    line = re.sub(r'(.*\d{2})(-\d{2}.*)', r'\1 \2', line)
+                if re.match(r'.*\.\d{2}\d*\..*', line):
+                    line = re.sub(r'(.*\.\d{2})(\d*\..*)', r'\1 \2', line)
+                if re.match(r'HETATM\d*.*', line):
+                    line = re.sub(r'(HETATM)(\d*.*)', r'\1 \2', line)
                 df.loc[len(df)] = [line.split()[i] for i in [2,3,5,6,7,8]]
             line = f.readline()
     df[['x', 'y', 'z']] = df[['x', 'y', 'z']].astype(float)

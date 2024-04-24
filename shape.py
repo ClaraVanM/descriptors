@@ -9,6 +9,7 @@ from skspatial.objects import Sphere
 from skspatial.objects import Vector
 from skspatial.objects import Point
 from scipy.spatial.distance import cdist
+from scipy.cluster.hierarchy import linkage, dendrogram
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
@@ -40,16 +41,25 @@ def find_cavity_axis(cavity):
     for point in cavity[["x","y","z"]].to_numpy():
         pr = sphere1.project_point(point)
         projection_sphere.loc[len(projection_sphere)] = pr
-    grid_sphere = Sphere(point=COG(cavity), radius=15).to_points(n_angles=20).unique()
+    grid_sphere = Sphere(point=COG(cavity), radius=15).to_points(n_angles=30).unique()
     # compute pairwise distance
     distances = cdist(grid_sphere, projection_sphere)
-    # filter distances with threshold and sum remaining number
-    distances = np.sum(distances < 4, axis=1)
+    # filter distances with threshold and sum remaining number, so only pr close enough are taken into account (<4 in neighbourhood), and are summed together, --> distance = distance of grid points to all neighbouring pr points
+    distances = np.sum(distances < 2, axis=1)
     df = pd.DataFrame(grid_sphere, columns=['x', 'y', 'z'])
     df['distance'] = distances
     df = df[df['distance'] == 0]
+    #do clustering and extract the point group with most members as ultimate cavity opening
+
     vector = COG(df[['x', 'y', 'z']]) - COG(cavity)
     cavity_axis = Line(point=COG(cavity), direction=vector)
+
+    """matplotlib.use('TkAgg')
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.scatter(projection_sphere['x'],projection_sphere['y'],projection_sphere['z'], s=1)
+    ax.scatter(df['x'], df['y'], df['z'], s=1)
+    plt.show()"""
     return cavity_axis
 
 
@@ -142,3 +152,7 @@ def residue_dist_from_axis(df, axis):
     for index, row in df.iterrows():
         df.loc[index, 'dist_from_axis'] = axis.distance_point(Point([row["x"], row["y"], row["z"]]))
     return df
+
+def cluster(opening):
+    #do clustering on points that represent opening of cavity in find_cavity_axis.
+    return None
