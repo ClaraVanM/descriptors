@@ -13,14 +13,14 @@ import autocorrelation
 import sequence_order
 
 
-def get_results(protein_file, fpocket):
+def get_results(protein_file, fpocket, pocket):
     """
 
     :param protein_file: pdb file of protein
     :param fpocket: fpocket output of protein
     :return: calculates all descriptors and puts them in dictionary
     """
-    cavity_selection = process_file.get_cavity_atoms(protein_file, fpocket)
+    cavity_selection = process_file.get_cavity_atoms(protein_file, fpocket, pocket)
     cavity = process_file.load_pdb(cavity_selection)
     protein = process_file.load_pdb(protein_file)
 
@@ -105,24 +105,35 @@ def get_results(protein_file, fpocket):
 def main():
     # proces pdb files
     b = True
-    protein_folder = sys.argv[1]   # folder with all protein .pdb files
-    fpocket_folder = sys.argv[2]        # folder with fpocket output for every protein
+    """protein_folder = sys.argv[1]   # folder with all protein .pdb files
+    fpocket_folder = sys.argv[2]        # folder with fpocket output for every protein"""
+    protein_folder = "/home/r0934354/Downloads/EC3.2.1/structures"
+    fpocket_folder = "/home/r0934354/Downloads/EC3.2.1/fpocket"
+    correspond = pd.read_csv('ids_with_pockets', index_col=0)
     fpocket_list = os.listdir(fpocket_folder)
     for file in os.listdir(protein_folder):
-        if os.path.isfile(os.path.join(protein_folder,file)):
-            name = file.replace('.pdb','_out')
-            fpocket = [x for x in fpocket_list if name in x][0]
-            if b:
-                df = pd.DataFrame(get_results(os.path.join(protein_folder, file), os.path.join(fpocket_folder, fpocket)), index=[0])
-                b = False
-            else:
-                df.loc[len(df)] = get_results(os.path.join(protein_folder, file), os.path.join(fpocket_folder, fpocket))
+        if pd.isna(list(correspond.loc[correspond['id'] == file, ['pocket']]['pocket'])[0]):
+            print(correspond.loc[correspond['id'] == file, ['pocket']])
+        else:
+            pocket = list(correspond.loc[correspond['id'] == file, ['pocket']]['pocket'])[0]
+            print(pocket)
+            if os.path.isfile(os.path.join(protein_folder,file)):
+                name = file.replace('.pdb','_out')
+                fpocket = [x for x in fpocket_list if name in x][0]
+                if b:
+                    df = pd.DataFrame(get_results(os.path.join(protein_folder, file), os.path.join(fpocket_folder, fpocket), pocket), index=[0])
+                    b = False
+                else:
+                    df.loc[len(df)] = get_results(os.path.join(protein_folder, file), os.path.join(fpocket_folder, fpocket), pocket)
     return df
 
 
+
+
 if __name__ == "__main__":
-    df = main()
-    df.to_csv('out.csv')
+    """df = main()
+    df.to_csv('out.csv')"""
+    get_results("/home/r0934354/Downloads/EC3.2.1/structures/4XWN.pdb", '/home/r0934354/Downloads/EC.3.2.1/fpocket/4XWN.pdb','pocket1_atm.pdb')
 
 
 
