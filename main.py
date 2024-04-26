@@ -107,33 +107,37 @@ def main():
     b = True
     """protein_folder = sys.argv[1]   # folder with all protein .pdb files
     fpocket_folder = sys.argv[2]        # folder with fpocket output for every protein"""
-    protein_folder = "/home/r0934354/Downloads/EC3.2.1/structures"
-    fpocket_folder = "/home/r0934354/Downloads/EC3.2.1/fpocket"
-    correspond = pd.read_csv('ids_with_pockets', index_col=0)
+    protein_folder = "/home/r0934354/Downloads/not_3.2.1/structures"
+    fpocket_folder = "/home/r0934354/Downloads/not_3.2.1/fpocket"
+    correspond = pd.read_csv('ids_with_pockets_not_3.2.1', index_col=0)
     fpocket_list = os.listdir(fpocket_folder)
     for file in os.listdir(protein_folder):
+        print(file)
         if pd.isna(list(correspond.loc[correspond['id'] == file, ['pocket']]['pocket'])[0]):
-            print(correspond.loc[correspond['id'] == file, ['pocket']])
+            continue
         else:
-            pocket = list(correspond.loc[correspond['id'] == file, ['pocket']]['pocket'])[0]
-            print(pocket)
-            if os.path.isfile(os.path.join(protein_folder,file)):
-                name = file.replace('.pdb','_out')
-                fpocket = [x for x in fpocket_list if name in x][0]
-                if b:
-                    df = pd.DataFrame(get_results(os.path.join(protein_folder, file), os.path.join(fpocket_folder, fpocket), pocket), index=[0])
-                    b = False
-                else:
-                    df.loc[len(df)] = get_results(os.path.join(protein_folder, file), os.path.join(fpocket_folder, fpocket), pocket)
+            try:
+                pocket = list(correspond.loc[correspond['id'] == file, ['pocket']]['pocket'])[0]
+                print(pocket)
+                if os.path.isfile(os.path.join(protein_folder,file)):
+                    name = file.replace('.pdb','_out')
+                    fpocket = [x for x in fpocket_list if name in x][0]
+                    if b:
+                        df = pd.DataFrame(get_results(os.path.join(protein_folder, file), os.path.join(fpocket_folder, fpocket), pocket), index=[0])
+                        b = False
+                    else:
+                        df.loc[len(df)] = get_results(os.path.join(protein_folder, file), os.path.join(fpocket_folder, fpocket), pocket)
+            except:
+                row = pd.Series([-2] * len(df.columns), index=df.columns)
+                df.loc[len(df)] = row
     return df
 
 
 
 
 if __name__ == "__main__":
-    """df = main()
-    df.to_csv('out.csv')"""
-    get_results("/home/r0934354/Downloads/EC3.2.1/structures/4XWN.pdb", '/home/r0934354/Downloads/EC.3.2.1/fpocket/4XWN.pdb','pocket1_atm.pdb')
+    df = main()
+    df.to_csv('out.csv')
 
 
 
