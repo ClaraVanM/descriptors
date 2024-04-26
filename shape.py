@@ -9,7 +9,7 @@ from skspatial.objects import Sphere
 from skspatial.objects import Vector
 from skspatial.objects import Point
 from scipy.spatial.distance import cdist
-from scipy.cluster.hierarchy import linkage, dendrogram
+from sklearn.cluster import DBSCAN
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
@@ -50,16 +50,9 @@ def find_cavity_axis(cavity):
     df['distance'] = distances
     df = df[df['distance'] == 0]
     #do clustering and extract the point group with most members as ultimate cavity opening
-
+    df= cluster(df[['x','y','z']])
     vector = COG(df[['x', 'y', 'z']]) - COG(cavity)
     cavity_axis = Line(point=COG(cavity), direction=vector)
-
-    """matplotlib.use('TkAgg')
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
-    ax.scatter(projection_sphere['x'],projection_sphere['y'],projection_sphere['z'], s=1)
-    ax.scatter(df['x'], df['y'], df['z'], s=1)
-    plt.show()"""
     return cavity_axis
 
 
@@ -155,4 +148,32 @@ def residue_dist_from_axis(df, axis):
 
 def cluster(opening):
     #do clustering on points that represent opening of cavity in find_cavity_axis.
-    return None
+    opening = opening.reset_index(drop=True)
+    dist = cdist(opening, opening,'euclidean')
+    point_pairs = np.argwhere(dist<6)
+    clusters = []
+    for pairs in point_pairs:
+        #if point is with itself
+        if pairs[0] == pairs[1]:
+            b = False
+            for list in clusters:
+                #check if that point already clustered if so , b = true
+                    if pairs[0] in list:
+                        b = True
+            # if b = true continue, otherwise add
+            if not b:
+                clusters.append([pairs[0]])
+        #now add elements to their cluster, skip doubles by saying <
+        elif pairs[0] < pairs[1]:
+            for list in clusters:
+                if pairs[0] in list and not pairs[1] in list:
+                    list.append(pairs[1])
+    #put indexes of the points together with their cluster label in a dictionary
+    cluster_number = {}
+    for group, cluster in enumerate(clusters):
+        for i in cluster:
+            cluster_number[i] = group
+    #add to pandas df
+    opening['cluster'] = cluster_number
+    opening = opening[opening['cluster'] == opening['cluster'].value_counts().idxmax()]
+    return opening[['x','y','z']]
