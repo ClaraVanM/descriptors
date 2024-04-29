@@ -9,8 +9,6 @@ from skspatial.objects import Sphere
 from skspatial.objects import Vector
 from skspatial.objects import Point
 from scipy.spatial.distance import cdist
-from sklearn.cluster import DBSCAN
-
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
@@ -76,7 +74,7 @@ def add_buriedness(cavity, projection, axis):
     :param projection: projection of cavity, output of projection function
     :param axis: axis used for the projection
     :return:pandas dataframe of coordinates of cavity, with extra column of buriedness which has a value from 1 to 5
-    5 being the closest to the cavity opening. + deepness of the cavity + lowes point on axis
+    5 being the closest to the cavity opening. + deepness of the cavity
     """
     #calculate distances and devide based on those lenths
     projection["distance"] = np.dot(cavity[["x",'y',"z"]] - COG(cavity), axis.direction)
