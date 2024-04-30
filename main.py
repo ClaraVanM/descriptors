@@ -107,9 +107,9 @@ def main():
     b = True
     """protein_folder = sys.argv[1]   # folder with all protein .pdb files
     fpocket_folder = sys.argv[2]        # folder with fpocket output for every protein"""
-    protein_folder = "/home/r0934354/Downloads/not_3.2.1/structures"
-    fpocket_folder = "/home/r0934354/Downloads/not_3.2.1/fpocket"
-    correspond = pd.read_csv('ids_with_pockets_not_3.2.1', index_col=0)
+    protein_folder = "/home/r0934354/Downloads/EC3.2.1/structures"
+    fpocket_folder = "/home/r0934354/Downloads/EC3.2.1/fpocket"
+    correspond = pd.read_csv('ids_with_pockets', index_col=0)
     fpocket_list = os.listdir(fpocket_folder)
     for file in os.listdir(protein_folder):
         print(file)
