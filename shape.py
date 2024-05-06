@@ -22,7 +22,7 @@ def COG(data):
     return data[["x","y","z"]].mean()
 
 
-def find_cavity_axis(cavity):
+def find_cavity_axis(cavity, ligand):
     """
     makes a sphere with as center the cavity and then projects all cavity points on the shell of the sphere.
     make a grid sphere with poinst equaly distributed over the surface
@@ -34,12 +34,12 @@ def find_cavity_axis(cavity):
     :return:axis that goes through middle of cavity
     """
     # find the most appropriate line that represents the middle of the cavity.
-    sphere1 = Sphere(point=COG(cavity), radius=15)
+    sphere1 = Sphere(point=COG(ligand), radius=15)
     projection_sphere = pd.DataFrame(columns=["x", "y", "z"])
     for point in cavity[["x","y","z"]].to_numpy():
         pr = sphere1.project_point(point)
         projection_sphere.loc[len(projection_sphere)] = pr
-    grid_sphere = Sphere(point=COG(cavity), radius=15).to_points(n_angles=30).unique()
+    grid_sphere = Sphere(point=COG(ligand), radius=15).to_points(n_angles=30).unique()
     # compute pairwise distance
     distances = cdist(grid_sphere, projection_sphere)
     # filter distances with threshold and sum remaining number, so only pr close enough are taken into account (<4 in neighbourhood), and are summed together, --> distance = distance of grid points to all neighbouring pr points
@@ -85,6 +85,8 @@ def add_buriedness(cavity, projection, axis):
     # make 5 intervals
     jumps = deepness / 5
     cavity['buriedness'] = -1
+    print(cavity)
+    print(projection)
     for i in range(5):
         selection_index = projection[
             (projection["distance"] >= projection['distance'].min() + jumps * (i)) & (
