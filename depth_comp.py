@@ -24,8 +24,6 @@ def AA_per_buriedness(df):
     return total_count
 
 
-#take only burriedness up to first 0 into account to have the floor of the pocket
-#should i take CA, CB or just C?
 def exposed_aa(df, narrow_list):
     """
 
