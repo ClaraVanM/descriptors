@@ -85,8 +85,6 @@ def add_buriedness(cavity, projection, axis):
     # make 5 intervals
     jumps = deepness / 5
     cavity['buriedness'] = -1
-    print(cavity)
-    print(projection)
     for i in range(5):
         selection_index = projection[
             (projection["distance"] >= projection['distance'].min() + jumps * (i)) & (
@@ -177,3 +175,4 @@ def cluster(opening):
     opening['cluster'] = cluster_number
     opening = opening[opening['cluster'] == opening['cluster'].value_counts().idxmax()]
     return opening[['x','y','z']]
+

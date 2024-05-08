@@ -1,5 +1,4 @@
 import pandas as pd
-import sys
 import os
 
 import process_file
@@ -11,6 +10,79 @@ import pseAAC
 import amPseAAC
 import autocorrelation
 import sequence_order
+import distance_from_ligand
+
+def check_aa(aa):
+    if len(aa)>3:
+        return aa[1:]
+    else:
+        return aa
+
+
+def get_structures(protein_file, fpocket, pocket):
+    """
+
+    :param protein_file: pdb file of protein
+    :param fpocket: fpocket output folder
+    :param pocket: the corresponding output pocket for the binding cavity
+    :return: cavity, ligand and name
+    """
+    cavity_selection = process_file.get_cavity_atoms(protein_file, fpocket, pocket)
+    cavity, ligand = process_file.load_pdb(cavity_selection)
+    protein, t = process_file.load_pdb(protein_file)
+    # center data
+    cavity[["x", "y", "z"]] = cavity[["x", "y", "z"]] - shape.COG(protein)
+    protein[["x", "y", "z"]] = protein[["x", "y", "z"]] - shape.COG(protein)
+    name = protein_file.split('/')[-1].split('.')[0]
+    cavity['AA'] = cavity['AA'].apply(check_aa)
+    return cavity, ligand, name, cavity_selection
+
+
+def structure_descriptors(cavity, ligand):
+    """
+
+    :param cavity: cavity dataset
+    :param ligand: ligand dataset
+    :return: descriptors based on structure, depth, narrowness, AA comp per depth and exposed atoms per depth
+    """
+    axis = shape.find_cavity_axis(cavity, ligand)
+    cavity_pr = shape.projection(cavity, axis)
+    df, depth = shape.add_buriedness(cavity, cavity_pr, axis)
+    l_nar = shape.list_narrowness(df, axis, shape.COG(cavity))
+    df = shape.residue_dist_from_axis(df, axis)
+    AA_comp = depth_comp.AA_per_buriedness(df)
+    exposed = depth_comp.exposed_aa(df, l_nar)
+    return depth, l_nar, AA_comp, exposed
+
+
+def sequence_descriptors(cavity_name):
+    sequence = process_file.get_sequence(cavity_name)
+    aa_comp = composition.aa_composition(sequence)
+    dipep_comp = composition.dipeptide_composition(sequence)
+    tripep_comp = composition.tripeptide_composition(sequence)
+    triad = composition.conjoint_triad(sequence)
+    CTD_comp = CTD.ctd_composition(sequence)
+    CTD_trans = CTD.ctd_transition(sequence)
+    CTD_distr = CTD.ctd_distribution(sequence)
+    pseaac = pseAAC.pseaac(sequence)
+    ampseaac = amPseAAC.amp_pse_AAC(sequence)
+    moreau_broto = autocorrelation.autocorrelation(sequence, autocorrelation.moreaubroto_ac)
+    moran = autocorrelation.autocorrelation(sequence, autocorrelation.moran_ac)
+    geary = autocorrelation.autocorrelation(sequence, autocorrelation.geary_ac)
+    qsoc = sequence_order.tau_qsoc(sequence)
+    return aa_comp, dipep_comp, tripep_comp, triad, CTD_comp, CTD_trans, CTD_distr, pseaac, ampseaac, moreau_broto, moran, geary, qsoc
+
+
+def seq_struc_descriptors(cavity, ligand):
+    sequence, cavity = distance_from_ligand.get_sequence(cavity, ligand)
+    print(sequence)
+    pseaac = pseAAC.pseaac(sequence)
+    moran = autocorrelation.autocorrelation(sequence, autocorrelation.moran_ac)
+    qsoc = sequence_order.tau_qsoc(sequence)
+    cavity = distance_from_ligand.divide_cavity(cavity)
+    AA_groups = distance_from_ligand.AA_per_buriedness(cavity)
+    ctd_groups = distance_from_ligand.ctd_comp(cavity)
+    return pseaac, moran, qsoc, AA_groups, ctd_groups
 
 
 def get_results(protein_file, fpocket, pocket):
@@ -20,87 +92,50 @@ def get_results(protein_file, fpocket, pocket):
     :param fpocket: fpocket output of protein
     :return: calculates all descriptors and puts them in dictionary
     """
-    cavity_selection = process_file.get_cavity_atoms(protein_file, fpocket, pocket)
-    cavity = process_file.load_pdb(cavity_selection)
-    protein = process_file.load_pdb(protein_file)
-
-    # center data
-    cavity[["x", "y", "z"]] = cavity[["x", "y", "z"]] - shape.COG(protein)
-    protein[["x", "y", "z"]] = protein[["x", "y", "z"]] - shape.COG(protein)
-
     results = dict()
-    results['name'] = protein_file.split('/')[-1].split('.')[0]
-    # get axis and do projection of cavity on this axis, used later for buriedness
-    axis = shape.find_cavity_axis(cavity)
-    cavity_pr = shape.projection(cavity, axis)
+    cavity, ligand, name, cavity_name = get_structures(protein_file, fpocket, pocket)
+    results['name'] = name
 
-    # first descriptor depth, df is cavity df with residues devided into buriedness groups
-    ################################################################################################################## depth = float
-    df, depth = shape.add_buriedness(cavity, cavity_pr, axis)
+    depth, l_nar, AA_comp, exposed = structure_descriptors(cavity, ligand)
     results['depth'] = depth
-
-    # second descriptor, narrowness for every buriedness level
-    ################################################################################################################### l_nar is list with floats
-    l_nar = shape.list_narrowness(df, axis, shape.COG(cavity))
     for i in range(len(l_nar) - 1):
         results['narrowness_' + str(i)] = l_nar[i]
-
-    # add distances from redidues to axis to df
-    df = shape.residue_dist_from_axis(df, axis)
-
-    # 3th and 4th descriptors, AA frequency per buriedness level and exposed residues
-    ################################################################################################################# 3 is nested dictionary, 4 is dictionary
-    descriptor3 = depth_comp.AA_per_buriedness(df)
-    for values in descriptor3.values():
+    for values in AA_comp.values():
         results.update(values)
-    results.update(depth_comp.exposed_aa(df, l_nar))
+    results.update(exposed)
 
-    # get sequence with x's where gap in cavity sequence
-    sequence = process_file.get_sequence(cavity_selection)
-
-    # 5th, 6th, 7th and 8th descriptor
-    ################################################################################################################# 5, 6, 7, 8 dictionaries
-    results.update(composition.aa_composition(sequence))
-    results.update(composition.dipeptide_composition(sequence))
-    results.update(composition.tripeptide_composition(sequence))
-    results.update(composition.conjoint_triad(sequence))
-
-    # 9th, 10th, 11th descriptor
-    ##################################################################################################################### 9,10,11 nested dictionaries
-    CTD_comp = CTD.ctd_composition(sequence)
-    CTD_trans = CTD.ctd_transition(sequence)
-    CTD_distr = CTD.ctd_distribution(sequence)
+    aa_comp, dipep_comp, tripep_comp, triad, CTD_comp, CTD_trans, CTD_distr, pseaac, ampseaac, moreaubroto, moran, geary, qsoc = sequence_descriptors(cavity_name)
+    results.update(aa_comp)
+    results.update(dipep_comp)
+    results.update(tripep_comp)
+    results.update(triad)
     for values in CTD_comp.values():
         results.update(values)
     for values in CTD_trans.values():
         results.update(values)
     for values in CTD_distr.values():
         results.update(values)
-
-    # 12th descriptor
-    ################################################################################################# dictionary
-    results.update(pseAAC.pseaac(sequence))
-
-    # 13th descriptor
-    ################################################################################################ dictionary
-    results.update(amPseAAC.amp_pse_AAC(sequence))
-
-    # 14th, 15th and 16th descriptor
-    ##################################################################################################### nested dictionary
-    moreau_broto = autocorrelation.autocorrelation(sequence, autocorrelation.moreaubroto_ac)
-    for values in moreau_broto.values():
+    results.update(pseaac)
+    results.update(ampseaac)
+    for values in moreaubroto.values():
         results.update(values)
-    moran = autocorrelation.autocorrelation(sequence, autocorrelation.moran_ac)
     for values in moran.values():
         results.update(values)
-    geary = autocorrelation.autocorrelation(sequence, autocorrelation.geary_ac)
     for values in geary.values():
         results.update(values)
+    results.update(qsoc)
 
-    # 17th descriptor
-    ##################################################################################################### dictionary
-    results.update(sequence_order.tau_qsoc(sequence))
+    pseaac_ss, moran_ss, qsoc_ss, AA_groups, ctd_groups = seq_struc_descriptors(cavity, ligand)
+    results.update(pseaac_ss)
+    results.update(qsoc)
+    for values in moran_ss.values():
+        results.update(values)
+    for values in AA_groups.values():
+        results.update(values)
+    for values in ctd_groups.values():
+        results.update(values)
     return results
+
 
 def main():
     # proces pdb files
@@ -136,10 +171,8 @@ def main():
 
 
 if __name__ == "__main__":
-    df = main()
-    df.to_csv('out.csv')
+    get_results("1O8S.pdb", "1O8S_out","pocket1_atm.pdb")
+    """df = main()
+    df.to_csv('out.csv')"""
 
 
-
-#ipv AA per buriedness, AA verdelen in eigenschappen zoals hydro, arom,... === descriptor 3
-#descriptor 4 is C, N, O genoeg of OE, NE,...
