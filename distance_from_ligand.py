@@ -14,9 +14,9 @@ AA_symb = {'CYS': 'C', 'ASP': 'D', 'SER': 'S', 'GLN': 'Q', 'LYS': 'K',
 'GLY': 'G', 'HIS': 'H', 'LEU': 'L', 'ARG': 'R', 'TRP': 'W',
 'ALA': 'A', 'VAL':'V', 'GLU': 'E', 'TYR': 'Y', 'MET': 'M'}
 
+##problem: if an amino acid is not at that distance, an NaN value will be returned. this should be 0
 
 def ctd_comp(cavity):
-    cavity = cavity.drop_duplicates(subset=["AA_number"])
     cavity =  cavity.copy()
     ctd = {}
     for prop in properties.keys():
@@ -54,9 +54,6 @@ def sequence(cavity):
     :param cavity: cavity dataframe with distance from ligand
     :return: sequence of cavity based on distance from ligand
     """
-    # choose closest point of aa to axis as representative for aa
-    subset_index = cavity.groupby('AA_number')['dist_lig'].idxmin()
-    cavity = cavity.loc[subset_index]
     sorted_cavity = cavity.sort_values(by='dist_lig')
     sequence = ''.join(sorted_cavity['AA'].map(AA_symb))
     return sequence
@@ -64,6 +61,11 @@ def sequence(cavity):
 
 def get_sequence(cavity, ligand):
     COG_ligand = COG(ligand)
+    # drop dublicate AA number by taking center of gravity of every AA
+    cog = cavity.groupby('AA_number')[['x', 'y', 'z']].mean()
+    cavity = pd.merge(cavity, cog, on='AA_number', suffixes=('', 'center'))
+    cavity = cavity.drop(['atom', 'x','y','z', 'index'], axis=1)
+    cavity = cavity.rename(columns={'xcenter':"x", 'ycenter':"y", 'zcenter':'z'})
     cavity = dist_from_ligand(cavity, COG_ligand)
     seq = sequence(cavity)
     return seq, cavity
@@ -88,7 +90,6 @@ def AA_per_buriedness(df):
     :param df: df with buriedness level column and distances from axis.
     :return: dictionary with frequency of amino acids per buriedness level
     """
-    df = df.drop_duplicates(subset=["AA_number"])
     total_count = {}
     for i in df["group"].unique():
         df_temp = df[df["group"]==i]

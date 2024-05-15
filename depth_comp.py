@@ -15,7 +15,6 @@ def AA_per_buriedness(df):
     :param df: df with buriedness level column and distances from axis.
     :return: dictionary with frequency of amino acids per buriedness level
     """
-    df = df.drop_duplicates(subset=["AA_number"])
     total_count = {}
     for i in df["buriedness"].unique():
         df_temp = df[df["buriedness"]==i]
@@ -36,9 +35,6 @@ def exposed_aa(df, narrow_list):
     else: index = 0
     depth = list(range(index,5))
     df = df[df['buriedness'].isin(depth)]
-    #choose closest point of aa to axis as representative for aa
-    subset_index = df.groupby('AA')['dist_from_axis'].idxmin()
-    df = df.loc[subset_index]
     # take closest 5 of aa to axes
     df = df.sort_values(by='dist_from_axis').head(int(len(df)*0.3))
     d_count = {residue:0 for residue in residues}

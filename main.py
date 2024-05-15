@@ -46,10 +46,11 @@ def structure_descriptors(cavity, ligand):
     :return: descriptors based on structure, depth, narrowness, AA comp per depth and exposed atoms per depth
     """
     axis = shape.find_cavity_axis(cavity, ligand)
+    df = shape.residue_dist_from_axis(cavity, axis)
     cavity_pr = shape.projection(cavity, axis)
     df, depth = shape.add_buriedness(cavity, cavity_pr, axis)
     l_nar = shape.list_narrowness(df, axis, shape.COG(cavity))
-    df = shape.residue_dist_from_axis(df, axis)
+
     AA_comp = depth_comp.AA_per_buriedness(df)
     exposed = depth_comp.exposed_aa(df, l_nar)
     return depth, l_nar, AA_comp, exposed
@@ -96,9 +97,8 @@ def get_results(protein_file, fpocket, pocket):
     assert not ligand.empty
     results['name'] = name
 
-    depth, l_nar, AA_comp, exposed = structure_descriptors(cavity, ligand)
+    depth, l_nar, AA_comp, exposed = structure_descriptors(cavity.copy(), ligand)
     results['depth'] = depth
-    print(depth, l_nar)
     for i in range(len(l_nar) - 1):
         results['narrowness_' + str(i)] = l_nar[i]
     for values in AA_comp.values():
@@ -126,7 +126,7 @@ def get_results(protein_file, fpocket, pocket):
         results.update(values)
     results.update(qsoc)
 
-    pseaac_ss, moran_ss, qsoc_ss, AA_groups, ctd_groups = seq_struc_descriptors(cavity, ligand)
+    pseaac_ss, moran_ss, qsoc_ss, AA_groups, ctd_groups = seq_struc_descriptors(cavity.copy(), ligand)
     results.update(pseaac_ss)
     results.update(qsoc)
     for values in moran_ss.values():
@@ -141,9 +141,9 @@ def get_results(protein_file, fpocket, pocket):
 def main():
     # proces pdb files
     b = True
-    protein_folder = "/home/r0934354/Downloads/EC3.2.1/structures"
-    fpocket_folder = "/home/r0934354/Downloads/EC3.2.1/fpocket"
-    correspond = pd.read_csv('ids_with_pockets', index_col=0)
+    protein_folder = "/home/r0934354/Downloads/not_3.2.1/structures"
+    fpocket_folder = "/home/r0934354/Downloads/not_3.2.1/fpocket"
+    correspond = pd.read_csv('ids_with_pockets_not_3.2.1', index_col=0)
     fpocket_list = os.listdir(fpocket_folder)
     for file in os.listdir(protein_folder):
         print(file)
@@ -169,8 +169,7 @@ def main():
 
 
 if __name__ == "__main__":
-    """df = main()
-    df.to_csv('out.csv')"""
-    get_results("/home/r0934354/Downloads/not_3.2.1/structures/3IWY.pdb", "/home/r0934354/Downloads/not_3.2.1/fpocket/3IWY_out", "pocket10_atm.pdb")
-
+    df = main()
+    df.to_csv('out.csv')
+    #results = get_results("/home/r0934354/Downloads/EC3.2.1/structures/5D5A.pdb", "/home/r0934354/Downloads/EC3.2.1/fpocket/5D5A_out", "pocket22_atm.pdb")
 
