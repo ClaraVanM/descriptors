@@ -169,7 +169,7 @@ def main():
 
 
 if __name__ == "__main__":
-    """df = main()
-    df.to_csv('out.csv')"""
-    results = get_results("/home/r0934354/Downloads/EC3.2.1/structures/5D5A.pdb", "/home/r0934354/Downloads/EC3.2.1/fpocket/5D5A_out", "pocket22_atm.pdb")
-    print(results)
+    df = main()
+    df.to_csv('out.csv')
+    """results = get_results("/home/r0934354/Downloads/EC3.2.1/structures/5D5A.pdb", "/home/r0934354/Downloads/EC3.2.1/fpocket/5D5A_out", "pocket22_atm.pdb")
+    print(results)"""
