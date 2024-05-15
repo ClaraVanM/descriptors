@@ -2,9 +2,12 @@ import pymolPy3
 import os
 import pandas as pd
 import re
-from Bio import SeqIO
 import numpy as np
 
+AA_symb = {'CYS': 'C', 'ASP': 'D', 'SER': 'S', 'GLN': 'Q', 'LYS': 'K',
+'ILE': 'I', 'PRO': 'P', 'THR': 'T', 'PHE': 'F', 'ASN': 'N',
+'GLY': 'G', 'HIS': 'H', 'LEU': 'L', 'ARG': 'R', 'TRP': 'W',
+'ALA': 'A', 'VAL':'V', 'GLU': 'E', 'TYR': 'Y', 'MET': 'M'}
 
 def get_cavity_atoms(protein_file, fpocket_out, pocket_file):
     """
@@ -20,7 +23,6 @@ def get_cavity_atoms(protein_file, fpocket_out, pocket_file):
     protein_name = protein_file.split("/")[-1].split(".")[0]
     pm(f"select prot, {protein_name}")
     pm(f"select neighborhood, prot near_to 10 of cavity")
-    print(protein_name+'_neighbor.pdb')
     pm(f"save {protein_name}_neighbor.pdb, neighborhood")
     return protein_name+'_neighbor.pdb'
 
@@ -31,7 +33,6 @@ def load_pdb(file):
     :param file: path to file
     :return: pandas dataframe with coordinates of cavity and ligand
     """
-    print(file)
     assert os.path.isfile(file), "No valid file."
     df_cavity = pd.DataFrame(columns=['atom', 'AA','AA_number', 'x', 'y', 'z'])
     df_ligand = pd.DataFrame(columns=['atom', 'AA','AA_number', 'x','y','z'])
@@ -44,6 +45,8 @@ def load_pdb(file):
                     line = re.sub(r'(.*\d{2})(-\d{2}.*)', r'\1 \2', line)
                 if re.match(r'.*\.\d{2}\d*\..*', line):
                     line = re.sub(r'(.*\.\d{2})(\d*\..*)', r'\1 \2', line)
+                if re.match(r'^(ATOM|HETATM)\s*\d*\s*[A-Z]{2}\d[A-Z]{4}\s[A-Z].*', line):
+                    line = re.sub(r'(^(ATOM|HETATM)\s*\d*\s*[A-Z]{2}\d)([A-Z]{4}\s[A-Z].*)', r'\1 \3', line)
                 if re.match(r'HETATM\d*.*', line):
                     line = re.sub(r'(HETATM)(\d*.*)', r'\1 \2', line)
                 df_cavity.loc[len(df_cavity)] = [line.split()[i] for i in [2,3,5,6,7,8]]
@@ -61,17 +64,25 @@ def load_pdb(file):
     df_cavity[["x", "y", "z"]] = outliers(df_cavity[["x", "y", "z"]])
     df_cavity.dropna(inplace=True)
     df_cavity = df_cavity.reset_index(drop=True)
+    #sometimes ligand under atom instead of hetatm fix here
+    ligand_rows = df_cavity[~df_cavity['AA'].isin(AA_symb.keys())]
+    df_ligand = pd.concat([ligand_rows, df_ligand], ignore_index=True)
+    df_cavity = df_cavity[df_cavity['AA'].isin(AA_symb.keys())]
+    df_cavity.reset_index(inplace=True)
     return df_cavity, df_ligand
 
 
-def get_sequence(pdbfile):
+def get_sequence(cavity):
     """
 
     :param pdbfile: pdb file of structure
     :return: string with sequence of structure
     """
-    record = list(SeqIO.parse(pdbfile, "pdb-atom"))
-    return record[0].seq
+    cavity['AA_number'] = cavity['AA_number'].astype(float)
+    cavity = cavity.sort_values(by=['AA_number'], ascending=True)
+    cavity = cavity.drop_duplicates(subset=["AA_number"])
+    sequence = ''.join(cavity["AA"].map(AA_symb))
+    return sequence
 
 
 def outliers(cavity):

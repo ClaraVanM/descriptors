@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-df = pd.read_csv("descriptors_ec3.2.1.csv")
+df = pd.read_csv("descriptors_ec3.2.1_old.csv")
 
 cavity_file = "1O8S_neighbor.pdb"
 cavity, ligand = process_file.load_pdb(cavity_file)
