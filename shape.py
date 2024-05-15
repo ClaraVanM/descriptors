@@ -127,6 +127,10 @@ def list_narrowness(df_burriednes, cavity_axis, cavity_center):
     for i in values:
         l.append(narrowness(df_burriednes[df_burriednes["buriedness"] == values[i]][['x','y','z']], cavity_axis, cavity_center))
     boolean = False
+    mean = np.nanmean(l)
+    for i in range(len(l)):
+        if np.isnan(l[i]):
+            l[i] = mean
     # cut of from back of list to front when value drops under 1.5
     #then cavity is not open anymore
     for i in reversed(l):
@@ -142,6 +146,9 @@ def residue_dist_from_axis(df, axis):
     df['dist_from_axis'] = float(0)
     for index, row in df.iterrows():
         df.loc[index, 'dist_from_axis'] = axis.distance_point(Point([row["x"], row["y"], row["z"]]))
+    # choose closest point of aa to axis as representative for aa
+    subset_index = df.groupby('AA')['dist_from_axis'].idxmin()
+    df = df.loc[subset_index]
     return df
 
 def cluster(opening):
