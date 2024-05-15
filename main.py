@@ -99,7 +99,7 @@ def get_results(protein_file, fpocket, pocket):
 
     depth, l_nar, AA_comp, exposed = structure_descriptors(cavity.copy(), ligand)
     results['depth'] = depth
-    for i in range(len(l_nar) - 1):
+    for i in range(len(l_nar)):
         results['narrowness_' + str(i)] = l_nar[i]
     for values in AA_comp.values():
         results.update(values)
@@ -169,7 +169,7 @@ def main():
 
 
 if __name__ == "__main__":
-    df = main()
-    df.to_csv('out.csv')
-    #results = get_results("/home/r0934354/Downloads/EC3.2.1/structures/5D5A.pdb", "/home/r0934354/Downloads/EC3.2.1/fpocket/5D5A_out", "pocket22_atm.pdb")
-
+    """df = main()
+    df.to_csv('out.csv')"""
+    results = get_results("/home/r0934354/Downloads/EC3.2.1/structures/5D5A.pdb", "/home/r0934354/Downloads/EC3.2.1/fpocket/5D5A_out", "pocket22_atm.pdb")
+    print(results)
