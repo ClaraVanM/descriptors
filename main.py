@@ -75,7 +75,6 @@ def sequence_descriptors(cavity_name):
 
 def seq_struc_descriptors(cavity, ligand):
     sequence, cavity = distance_from_ligand.get_sequence(cavity, ligand)
-    print(sequence)
     pseaac = pseAAC.pseaac(sequence)
     moran = autocorrelation.autocorrelation(sequence, autocorrelation.moran_ac)
     qsoc = sequence_order.tau_qsoc(sequence)
@@ -94,17 +93,19 @@ def get_results(protein_file, fpocket, pocket):
     """
     results = dict()
     cavity, ligand, name, cavity_name = get_structures(protein_file, fpocket, pocket)
+    assert not ligand.empty
     results['name'] = name
 
     depth, l_nar, AA_comp, exposed = structure_descriptors(cavity, ligand)
     results['depth'] = depth
+    print(depth, l_nar)
     for i in range(len(l_nar) - 1):
         results['narrowness_' + str(i)] = l_nar[i]
     for values in AA_comp.values():
         results.update(values)
     results.update(exposed)
 
-    aa_comp, dipep_comp, tripep_comp, triad, CTD_comp, CTD_trans, CTD_distr, pseaac, ampseaac, moreaubroto, moran, geary, qsoc = sequence_descriptors(cavity_name)
+    aa_comp, dipep_comp, tripep_comp, triad, CTD_comp, CTD_trans, CTD_distr, pseaac, ampseaac, moreaubroto, moran, geary, qsoc = sequence_descriptors(cavity.copy())
     results.update(aa_comp)
     results.update(dipep_comp)
     results.update(tripep_comp)
@@ -140,8 +141,6 @@ def get_results(protein_file, fpocket, pocket):
 def main():
     # proces pdb files
     b = True
-    """protein_folder = sys.argv[1]   # folder with all protein .pdb files
-    fpocket_folder = sys.argv[2]        # folder with fpocket output for every protein"""
     protein_folder = "/home/r0934354/Downloads/EC3.2.1/structures"
     fpocket_folder = "/home/r0934354/Downloads/EC3.2.1/fpocket"
     correspond = pd.read_csv('ids_with_pockets', index_col=0)
@@ -163,16 +162,15 @@ def main():
                     else:
                         df.loc[len(df)] = get_results(os.path.join(protein_folder, file), os.path.join(fpocket_folder, fpocket), pocket)
             except:
-                row = pd.Series([-2] * len(df.columns), index=df.columns)
-                df.loc[len(df)] = row
+                df.loc[len(df)] = [file] + [-2] * (len(df.columns)-1)
     return df
 
 
 
 
 if __name__ == "__main__":
-    get_results("1O8S.pdb", "1O8S_out","pocket1_atm.pdb")
     """df = main()
     df.to_csv('out.csv')"""
+    get_results("/home/r0934354/Downloads/not_3.2.1/structures/3IWY.pdb", "/home/r0934354/Downloads/not_3.2.1/fpocket/3IWY_out", "pocket10_atm.pdb")
 
 
