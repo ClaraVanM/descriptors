@@ -47,8 +47,8 @@ def structure_descriptors(cavity, ligand):
     """
     axis = shape.find_cavity_axis(cavity, ligand)
     df = shape.residue_dist_from_axis(cavity, axis)
-    cavity_pr = shape.projection(cavity, axis)
-    df, depth = shape.add_buriedness(cavity, cavity_pr, axis)
+    cavity_pr = shape.projection(df, axis)
+    df, depth = shape.add_buriedness(df, cavity_pr, axis)
     l_nar = shape.list_narrowness(df, axis, shape.COG(cavity))
 
     AA_comp = depth_comp.AA_per_buriedness(df)
@@ -105,7 +105,7 @@ def get_results(protein_file, fpocket, pocket):
         results.update(values)
     results.update(exposed)
 
-    aa_comp, dipep_comp, tripep_comp, triad, CTD_comp, CTD_trans, CTD_distr, pseaac, ampseaac, moreaubroto, moran, geary, qsoc = sequence_descriptors(cavity.copy())
+    """aa_comp, dipep_comp, tripep_comp, triad, CTD_comp, CTD_trans, CTD_distr, pseaac, ampseaac, moreaubroto, moran, geary, qsoc = sequence_descriptors(cavity.copy())
     results.update(aa_comp)
     results.update(dipep_comp)
     results.update(tripep_comp)
@@ -134,16 +134,16 @@ def get_results(protein_file, fpocket, pocket):
     for values in AA_groups.values():
         results.update(values)
     for values in ctd_groups.values():
-        results.update(values)
+        results.update(values)"""
     return results
 
 
 def main():
     # proces pdb files
     b = True
-    protein_folder = "/home/r0934354/Downloads/not_3.2.1/structures"
-    fpocket_folder = "/home/r0934354/Downloads/not_3.2.1/fpocket"
-    correspond = pd.read_csv('ids_with_pockets_not_3.2.1', index_col=0)
+    protein_folder = "/home/r0934354/Downloads/EC3.2.1/structures"
+    fpocket_folder = "/home/r0934354/Downloads/EC3.2.1/fpocket"
+    correspond = pd.read_csv('ids_with_pockets', index_col=0)
     fpocket_list = os.listdir(fpocket_folder)
     for file in os.listdir(protein_folder):
         print(file)
@@ -169,7 +169,7 @@ def main():
 
 
 if __name__ == "__main__":
-    df = main()
-    df.to_csv('out.csv')
-    """results = get_results("/home/r0934354/Downloads/EC3.2.1/structures/5D5A.pdb", "/home/r0934354/Downloads/EC3.2.1/fpocket/5D5A_out", "pocket22_atm.pdb")
-    print(results)"""
+    """df = main()
+    df.to_csv('out.csv')"""
+    results = get_results("/home/r0934354/Downloads/EC3.2.1/structures/5D5A.pdb", "/home/r0934354/Downloads/EC3.2.1/fpocket/5D5A_out", "pocket22_atm.pdb")
+    print(results)

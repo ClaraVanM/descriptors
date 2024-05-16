@@ -14,7 +14,7 @@ import shape
 
 ###############################################################################################################################################################################
 ##necessary data
-cavity, ligand = process_file.load_pdb("8TC8_neighbor.pdb")
+#cavity, ligand = process_file.load_pdb("8TC8_neighbor.pdb")
 ####################################################################################################################################################################################
 ##sphere projection
 """
@@ -48,9 +48,9 @@ plt.show()"""
 
 ####################################################################################################################################################################
 #####plot buriedness
-axis = shape.find_cavity_axis(cavity,ligand)
+"""axis = shape.find_cavity_axis(cavity,ligand)
 projection = shape.projection(cavity, axis)
-buriedness, deepness = shape.add_buriedness(cavity, projection, axis)
+buriedness, deepness = shape.add_buriedness(cavity, projection, axis)"""
 
 """matplotlib.use('TkAgg')
 fig = plt.figure()
@@ -90,17 +90,16 @@ plt.show()"""
 
 
 #################################################################################
-cavity = distance_from_ligand.dist_from_ligand(cavity, distance_from_ligand.COG(ligand))
-cavity = distance_from_ligand.divide_cavity(cavity)
-
+#cavity = distance_from_ligand.dist_from_ligand(cavity, distance_from_ligand.COG(ligand))
+#cavity = distance_from_ligand.divide_cavity(cavity)
+cavity = pd.read_csv('5D5A')
+print(cavity)
 fig = plt.figure()
 ax = fig.add_subplot(111,projection='3d')
-ax.scatter(cavity[cavity["group"] ==0]['x'], cavity[cavity["group"] ==0]['y'], cavity[cavity["group"] ==0]['z'],c="grey", s=1 )
-ax.scatter(cavity[cavity["group"] ==1]['x'], cavity[cavity["group"] ==1]['y'], cavity[cavity["group"] ==1]['z'], c='coral',s=1 )
-ax.scatter(cavity[cavity["group"] ==2]['x'], cavity[cavity["group"] ==2]['y'], cavity[cavity["group"] ==2]['z'], c='cornflowerblue' ,s=1)
-ax.scatter(cavity[cavity["group"] ==3]['x'], cavity[cavity["group"] ==3]['y'], cavity[cavity["group"] ==3]['z'], c='springgreen',s=1 )
-ax.scatter(cavity[cavity["group"] ==4]['x'], cavity[cavity["group"] ==4]['y'], cavity[cavity["group"] ==4]['z'], c='sandybrown',s=1 )
-axis.plot_3d(ax)
-ax.set_axis_off()
-ax.patch.set_alpha(0)
+ax.scatter(cavity[cavity["buriedness"] ==0]['x'], cavity[cavity["buriedness"] ==0]['y'], cavity[cavity["buriedness"] ==0]['z'],c="grey", s=1 )
+ax.scatter(cavity[cavity["buriedness"] ==1]['x'], cavity[cavity["buriedness"] ==1]['y'], cavity[cavity["buriedness"] ==1]['z'], c='coral',s=1 )
+ax.scatter(cavity[cavity["buriedness"] ==2]['x'], cavity[cavity["buriedness"] ==2]['y'], cavity[cavity["buriedness"] ==2]['z'], c='cornflowerblue' ,s=1)
+ax.scatter(cavity[cavity["buriedness"] ==3]['x'], cavity[cavity["buriedness"] ==3]['y'], cavity[cavity["buriedness"] ==3]['z'], c='springgreen',s=1 )
+ax.scatter(cavity[cavity["buriedness"] ==4]['x'], cavity[cavity["buriedness"] ==4]['y'], cavity[cavity["buriedness"] ==4]['z'], c='sandybrown',s=1 )
+ax.scatter(cavity[cavity["buriedness"] ==-1]['x'], cavity[cavity["buriedness"] ==-1]['y'], cavity[cavity["buriedness"] ==-1]['z'],s=1 )
 plt.show()
