@@ -47,8 +47,8 @@ def load_pdb(file):
                     line = re.sub(r'(.*\.\d{2})(\d*\..*)', r'\1 \2', line)
                 if re.match(r'^(ATOM|HETATM)\s*\d*\s*[A-Z]{2}\d[A-Z]{4}\s[A-Z].*', line):
                     line = re.sub(r'(^(ATOM|HETATM)\s*\d*\s*[A-Z]{2}\d)([A-Z]{4}\s[A-Z].*)', r'\1 \3', line)
-                if re.match(r'HETATM\d*.*', line):
-                    line = re.sub(r'(HETATM)(\d*.*)', r'\1 \2', line)
+                if re.match(r'^(ATOM|HETATM)\s*\d*\s*[A-Z]{2}\d?\s*[A-Z]{3,4}\s[A-Z]{1}\d*\s*.*', line):
+                    line = re.sub(r'(^(ATOM|HETATM)\s*\d*\s*[A-Z]{2}\d?\s*[A-Z]{3,4}\s[A-Z]{1})(\d*\s*.*)', r'\1 \3', line)
                 df_cavity.loc[len(df_cavity)] = [line.split()[i] for i in [2,3,5,6,7,8]]
             if line.startswith("HETATM") and not "HOH" in line and not 'CA' in line and not "FE" in line and not 'SO4'in line:
                 if re.match(r'.*\d{2}-\d{2}.*', line):
@@ -62,13 +62,11 @@ def load_pdb(file):
     df_cavity[['x', 'y', 'z']] = df_cavity[['x', 'y', 'z']].astype(float)
     df_ligand[['x', 'y', 'z']] = df_ligand[['x', 'y', 'z']].astype(float)
     df_cavity[["x", "y", "z"]] = outliers(df_cavity[["x", "y", "z"]])
-    df_cavity.dropna(inplace=True)
-    df_cavity = df_cavity.reset_index(drop=True)
+    df_cavity.dropna()
     #sometimes ligand under atom instead of hetatm fix here
     ligand_rows = df_cavity[~df_cavity['AA'].isin(AA_symb.keys())]
-    df_ligand = pd.concat([ligand_rows, df_ligand], ignore_index=True)
+    df_ligand = pd.concat([ligand_rows, df_ligand])
     df_cavity = df_cavity[df_cavity['AA'].isin(AA_symb.keys())]
-    df_cavity.reset_index(inplace=True)
     return df_cavity, df_ligand
 
 

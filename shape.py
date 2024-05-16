@@ -78,7 +78,6 @@ def add_buriedness(cavity, projection, axis):
     """
     #calculate distances and devide based on those lenths
     projection["distance"] = np.dot(cavity[["x",'y',"z"]] - COG(cavity), axis.direction)
-    projection["index"] = projection.index
     projection = projection.sort_values(by=['distance'], ascending=True)
     # deepness of cavity (max-min distance)
     deepness = projection['distance'].max() - projection['distance'].min()
@@ -88,7 +87,7 @@ def add_buriedness(cavity, projection, axis):
     for i in range(5):
         selection_index = projection[
             (projection["distance"] >= projection['distance'].min() + jumps * (i)) & (
-                        projection["distance"] <= projection['distance'].min() + jumps * (i + 1))]['index']
+                        projection["distance"] <= projection['distance'].min() + jumps * (i + 1))].index
         cavity.loc[selection_index, 'buriedness'] = i
     return cavity, deepness
 
@@ -149,6 +148,7 @@ def residue_dist_from_axis(df, axis):
     # choose closest point of aa to axis as representative for aa
     subset_index = df.groupby('AA')['dist_from_axis'].idxmin()
     df = df.loc[subset_index]
+    df = df.reset_index()
     return df
 
 def cluster(opening):
