@@ -1,16 +1,5 @@
 import matplotlib.pyplot as plt
-import distance_from_ligand
-import matplotlib
-from skspatial.objects import Sphere
-from skspatial.objects import Line
-from skspatial.objects import Plane
-from skspatial.objects import Point
-from scipy.spatial.distance import cdist
 import pandas as pd
-import numpy as np
-
-import process_file
-import shape
 
 ###############################################################################################################################################################################
 ##necessary data

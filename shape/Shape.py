@@ -25,19 +25,12 @@ class Shape:
 
 
     def get_buriedness(self):
-        """
-        calculates buriedness of each amino acid in the cavity and calculates the length of the cavity
-        :return: dataset of cavity with added buriedness and a float representing the total length
-        """
         df = self.residue_dist_from_axis()
         cavity_projection = self.projection(df)
         df, depth = self.add_buriedness(df, cavity_projection)
         return df, depth
 
     def getDescriptors(self):
-        """
-        :return: shape-based descriptors.
-        """
         descripors = dict()
         list_narrowness = self.list_narrowness()
         AA_comp = self.AA_per_buriedness()
@@ -81,26 +74,10 @@ class Shape:
         df = Shape.cluster(df[['x', 'y', 'z']])
         vector = Shape.COG(df[['x', 'y', 'z']]) - self.center
         cavity_axis = Line(point=self.center, direction=vector)
-        matplotlib.use('TkAgg')
-        fig = plt.figure()
-        ax = fig.add_subplot(111, projection='3d')
-        ax.scatter(self.input['x'], self.input['y'], self.input['z'],s=2, c='sandybrown')
-        #ax.scatter(self.ligand['x'], self.ligand['y'], self.ligand['z'], s=1,c='coral')
-        #ax.scatter(projection_sphere['x'], projection_sphere['y'], projection_sphere['z'], s=2, c='springgreen', alpha=0.7)
-        #ax.scatter(df['x'], df['y'], df['z'], s=2,c='sandybrown')
-        cavity_axis.plot_3d(ax)
-        ax.set_axis_off()
-        ax.patch.set_alpha(0)
-        plt.show()
         return cavity_axis
 
     @staticmethod
     def cluster(opening):
-        """
-
-        :param opening: grid points that are selected as the opening of the cavity by the find_cavity_axis method
-        :return: grid points with filtered out outliers
-        """
         # do clustering on points that represent opening of cavity in find_cavity_axis.
         opening = opening.reset_index(drop=True)
         dist = cdist(opening, opening, 'euclidean')
@@ -133,10 +110,6 @@ class Shape:
         return opening[['x', 'y', 'z']]
 
     def residue_dist_from_axis(self):
-        """
-
-        :return: distance from every amino acid to the cavity axis
-        """
         df = self.input.copy()
         df.loc[:,'dist_from_axis'] = float(0)
         for index, row in df.iterrows():
@@ -229,7 +202,7 @@ class Shape:
         for i in self.cavity["buriedness"].unique():
             df_temp = self.cavity[self.cavity["buriedness"] == i]
             aa_count = df_temp['AA'].value_counts()
-            total_count[i] = {'shape_buried_' + aa + str(i): aa_count.get(aa, 0) for aa in Shape.AA_symb}
+            total_count[i] = {'buried_' + aa + str(i): aa_count.get(aa, 0) for aa in Shape.AA_symb}
         return total_count
 
     def exposed_aa(self, narrow_list):

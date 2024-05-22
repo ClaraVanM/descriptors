@@ -8,15 +8,11 @@ from skopt import BayesSearchCV
 
 ########################################################################################################################
 df1 = pd.read_csv("descriptors_not3.2.1.csv", index_col=0)
-print(df1.shape)
 df1 = df1[df1["AAC_C"] != -2]
-print(df1.shape)
 df1["group"] = 0
 
 df2 = pd.read_csv("descriptors_ec3.2.1.csv", index_col=0)
-print(df2.shape)
 df2 = df2[df2["AAC_C"] != -2]
-print(df2.shape)
 df2['group'] = 1
 df = pd.concat([df1, df2])
 

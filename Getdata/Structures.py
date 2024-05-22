@@ -18,11 +18,6 @@ class Structures:
 
     @staticmethod
     def getStructure(pdbfile):
-        """
-
-        :param pdbfile: pdb structure file
-        :return: dataframe with structure coordinates, amino acids and their order, atom and type of structure
-        """
         assert os.path.isfile(pdbfile), "No valid file."
         df = pd.DataFrame(columns=['type', 'atom', 'AA', 'AA_number', 'x', 'y', 'z'])
         with open(pdbfile, 'r') as f:
@@ -41,11 +36,6 @@ class Structures:
 
     @staticmethod
     def check_pdbline(line):
-        """
-        checks structure of the line and corrects if necessary
-        :param line: a line of a pdb file
-        :return:corrected line
-        """
         if re.match(r'.*\d{2}-\d{2}.*', line):
             line = re.sub(r'(.*\d{2})(-\d{2}.*)', r'\1 \2', line)
         if re.match(r'.*\.\d{2}\d*\..*', line):
@@ -62,11 +52,6 @@ class Structures:
 
     @staticmethod
     def check_atoms(df):
-        """
-        checks if line that is noted to be part of the structure is not a ligand
-        :param df: structure df
-        :return: corrected df
-        """
         for index, row in df.iterrows():
             if row['type'] == 'ATOM':
                 if row['AA'] not in Structures.AA_symb:
@@ -90,19 +75,10 @@ class Structures:
         return cleaned_cavity
 
     def extract_protein(self):
-        """
-
-        :return: protein without ligand
-        """
         return self.structures[self.structures['type']=='ATOM']
 
     @staticmethod
     def check_aa(aa):
-        """
-        checks if amino acid consists out of 3 characters and removes chain identifier if not
-        :param aa: amino acid
-        :return: corrected amino acid
-        """
         if len(aa) > 3:
             return aa[1:]
         else:

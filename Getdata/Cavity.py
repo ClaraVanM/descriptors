@@ -1,7 +1,5 @@
 from Getdata.Structures import Structures
 import pymolPy3
-import matplotlib
-import matplotlib.pyplot as plt
 
 class Cavity(Structures):
     def __init__(self,pdbfile, fpocket_out, pocket):
@@ -23,7 +21,7 @@ class Cavity(Structures):
         pm(f"load {pdbfile}")
         pm(f"load {fpocket_out}/pockets/{pocket}")
         pm(f"select cavity, {pocket.split('.')[0]}")
-        protein_name = pdbfile.split("/")[-1].split(".")[0]
+        protein_name = pdbfile.split("\\")[-1].split(".")[0]
         pm(f"select prot, {protein_name}")
         pm(f"select neighborhood, prot near_to 10 of cavity")
         pm(f"save {protein_name}_neighbor.pdb, neighborhood")
@@ -31,27 +29,12 @@ class Cavity(Structures):
 
     @staticmethod
     def get_cavity(pdbfile, fpocket_out, pocket):
-        """
-
-        :param pdbfile: structure pdb file
-        :param fpocket_out: folder with predicted cavities from fpocket
-        :param pocket: the corresponding cavity
-        :return: filename if the cavity
-        """
         file = Cavity.get_neighborhood(pdbfile, fpocket_out, pocket)
         return file
 
     def extract_cavity(self):
-        """
-
-        :return: cavity without ligand
-        """
         return self.structures[self.structures['type'] == 'ATOM']
 
     def extract_ligand(self):
-        """
-
-        :return: ligand
-        """
         return self.structures[self.structures['type'] == 'HETATM']
 

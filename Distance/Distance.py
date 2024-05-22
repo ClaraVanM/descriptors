@@ -55,12 +55,6 @@ class Distance():
 
     @staticmethod
     def get_sequence(cavity, ligand):
-        """
-
-        :param cavity: cavity dataframe
-        :param ligand: ligand dataframe
-        :return: sequence based on distance from ligand and cavity with filtered out duplicate aminoacids
-        """
         COG_ligand = Distance.COG(ligand)
         # drop dublicate AA number by taking center of gravity of every AA
         cog = cavity.groupby('AA_number')[['x', 'y', 'z']].mean()
@@ -74,11 +68,6 @@ class Distance():
 
     @staticmethod
     def divide_cavity(cavity):
-        """
-
-        :param cavity: cavity dataset
-        :return: cavity with added row for group depending on distance from ligand
-        """
         deepness = cavity['dist_lig'].max() - cavity['dist_lig'].min()
         # make 5 intervals
         jumps = deepness / 5
@@ -93,10 +82,6 @@ class Distance():
         return cavity
 
     def getDescriptors(self):
-        """
-
-        :return: distance-based descriptors
-        """
         descriptors = dict()
         descriptors.update(self.sequence.partial_descriptors())
         AA_groups = self.AA_per_buriedness()
@@ -105,14 +90,9 @@ class Distance():
             descriptors.update(values)
         for values in ctd_groups.values():
             descriptors.update(values)
-        new_descriptors = {str('distance_') + str(key):value for key, value in descriptors.items()}
-        return new_descriptors
+        return descriptors
 
     def ctd_comp(self):
-        """
-
-        :return: ctd descriptors
-        """
         cavity =  self.cavity.copy()
         ctd = {}
         for prop in Distance.properties.keys():
@@ -120,7 +100,7 @@ class Distance():
             for i in cavity["group"].unique():
                 df_temp = cavity[cavity["group"] == i]
                 prop_count = df_temp['prop'].value_counts().to_dict()
-                ctd[prop + 'group'+ str(i)] = prop_count
+                ctd[prop + str(i)] = prop_count
         return ctd
 
     def AA_per_buriedness(self):
