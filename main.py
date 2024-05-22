@@ -5,6 +5,7 @@ from sequence import Sequence
 from Getdata.Structures import Structures
 from Getdata.Cavity import Cavity
 from shape.Shape import Shape
+from FindCavity.fpocket import Fpocket
 
 
 def get_results(protein_file, fpocket, pocket):
@@ -29,9 +30,9 @@ def get_results(protein_file, fpocket, pocket):
 def main():
     # proces pdb files
     b = True
-    protein_folder = "C:/Users/32496/Desktop/not_3.2.1/structures"
-    fpocket_folder = "C:/Users/32496/Desktop/not_3.2.1/fpocket"
-    correspond = pd.read_csv('ids_with_pockets_not_3.2.1', index_col=0)
+    protein_folder = "/home/r0934354/Downloads/not_3.2.1/structures"
+    fpocket_folder = "/home/r0934354/Downloads/not_3.2.1/fpocket"
+    correspond = pd.read_csv('ids_with_pockets_not_3.2.1.csv', index_col=0)
     fpocket_list = os.listdir(fpocket_folder)
     for file in os.listdir(protein_folder):
         print(file)
@@ -58,8 +59,10 @@ def main():
 
 
 if __name__ == "__main__":
-    """df = main()
-    df.to_csv('out.csv')"""
-    results = get_results("C:/Users/32496/Desktop/not_3.2.1/structures\\8PPZ.pdb", "C:/Users/32496/Desktop/not_3.2.1/fpocket\\8PPZ_out", "pocket1_atm.pdb")
+    """pockets = Fpocket("/home/r0934354/Downloads/not_3.2.1/structures", "/home/r0934354/Downloads/not_3.2.1/fpocket")
+    pockets.pockets.to_csv("ids_with_pockets_not_3.2.1.csv")"""
+    df = main()
+    df.to_csv('out.csv')
+    #results = get_results("C:/Users/32496/Desktop/not_3.2.1/structures\\8PPZ.pdb", "C:/Users/32496/Desktop/not_3.2.1/fpocket\\8PPZ_out", "pocket1_atm.pdb")
 
     #remove 5E68, 6ASD from files

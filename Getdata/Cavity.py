@@ -21,7 +21,7 @@ class Cavity(Structures):
         pm(f"load {pdbfile}")
         pm(f"load {fpocket_out}/pockets/{pocket}")
         pm(f"select cavity, {pocket.split('.')[0]}")
-        protein_name = pdbfile.split("\\")[-1].split(".")[0]
+        protein_name = pdbfile.split("/")[-1].split(".")[0]
         pm(f"select prot, {protein_name}")
         pm(f"select neighborhood, prot near_to 10 of cavity")
         pm(f"save {protein_name}_neighbor.pdb, neighborhood")

@@ -50,11 +50,6 @@ class Fpocket:
 
     @staticmethod
     def check_line(line):
-        """
-        checks if pdb file line is correct
-        :param line: pdb file line
-        :return: corrected line
-        """
         if re.match(r'.*\d{2}-\d{2}.*', line):
             line = re.sub(r'(.*\d{2})(-\d{2}.*)', r'\1 \2', line)
         if re.match(r'.*\.\d{2}\d*\..*', line):
@@ -129,12 +124,6 @@ class Fpocket:
 
     @staticmethod
     def get_pockets(protein_folder, fpocket_folder):
-        """
-
-        :param protein_folder: folder with all pdb structure files
-        :param fpocket_folder: folder with all fpocket output files
-        :return: names of pdb files with the corresponding cavity
-        """
         list_proteins = os.listdir(protein_folder)
         list_fpocket = os.listdir(fpocket_folder)
         results = {}
