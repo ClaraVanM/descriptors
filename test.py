@@ -1,15 +1,11 @@
-import pandas as pd
-import distance_from_ligand
-import autocorrelation
-import process_file
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
+'''test if cavity in object change in Distance print self.cavity before and after calling getDescriptors()'''
+from sequence.Sequence import Sequence
+from Getdata.Cavity import Cavity
+from shape.Shape import Shape
+from Distance.Distance import Distance
 
-
-df = pd.read_csv("descriptors_ec3.2.1_old.csv")
-
-cavity_file = "1O8S_neighbor.pdb"
-cavity, ligand = process_file.load_pdb(cavity_file)
-
-
+protein = "C:/Users/32496/Desktop/not_3.2.1/structures/1A82.pdb"
+fpocket = "C:/Users/32496/Desktop/not_3.2.1/fpocket/1A82_out"
+pocket = 'pocket1_atm.pdb'
+c = Cavity(protein, fpocket, pocket)
+d = Distance(c.cavity, c.ligand)
