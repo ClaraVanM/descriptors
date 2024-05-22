@@ -7,11 +7,13 @@ from skopt import BayesSearchCV
 
 
 ########################################################################################################################
-df1 = pd.read_csv("descriptors_not3.2.1.csv", index_col=0)
+
+df1 = pd.read_csv("descriptors3.2.1_newest.csv", index_col=0)
+print(df1[df1['AAC_C'] == -2])
 df1 = df1[df1["AAC_C"] != -2]
 df1["group"] = 0
 
-df2 = pd.read_csv("descriptors_ec3.2.1.csv", index_col=0)
+"""df2 = pd.read_csv("descriptors_ec3.2.1.csv", index_col=0)
 df2 = df2[df2["AAC_C"] != -2]
 df2['group'] = 1
 df = pd.concat([df1, df2])
@@ -21,7 +23,7 @@ nan_df = df[df.isna().any(axis=1)]
 nan_columns = df.columns[df.isna().any()]
 nan_df = pd.concat([nan_df['name'], nan_df[nan_columns]], axis=1)
 nan_df.to_csv("nan.csv")
-print(list(nan[nan>0]))
+print(list(nan[nan>0]))"""
 
 
 
