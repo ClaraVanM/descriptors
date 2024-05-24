@@ -90,7 +90,8 @@ class Distance():
             descriptors.update(values)
         for values in ctd_groups.values():
             descriptors.update(values)
-        return descriptors
+        new_descriptors = {'distance_' + key:value for key, value in descriptors.items()}
+        return new_descriptors
 
     def ctd_comp(self):
         cavity =  self.cavity.copy()
@@ -100,7 +101,7 @@ class Distance():
             for i in cavity["group"].unique():
                 df_temp = cavity[cavity["group"] == i]
                 prop_count = df_temp['prop'].value_counts().to_dict()
-                ctd[prop + str(i)] = prop_count
+                ctd[prop + 'group'+ str(i)] = prop_count
         return ctd
 
     def AA_per_buriedness(self):

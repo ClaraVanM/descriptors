@@ -46,7 +46,7 @@ def ctd_composition(sequence):
         converted_sequence = str_to_num(sequence, prop)
         for i in range(1,4):
             count[i] = converted_sequence.count(str(i))
-        norm_count = {prop+str(i):count/len(sequence) for i, count in count.items()}
+        norm_count = {'comp'+prop+str(i):count/len(sequence) for i, count in count.items()}
         comp[prop] = norm_count
     return comp
 
@@ -92,7 +92,7 @@ def ctd_distribution(sequence):
             occurences = [i for i, number in enumerate(convert)]
             distr["0.01"] = occurences[0]
             for j in [0.25, 0.50, 0.75, 1]:
-                distr[prop + str(j)] = occurences[math.ceil(count*j)-1]
+                distr[prop+'dist' + str(j)] = occurences[math.ceil(count*j)-1]
         total_distr[prop] = distr
     return total_distr
 
