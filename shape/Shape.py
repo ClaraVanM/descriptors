@@ -202,7 +202,7 @@ class Shape:
         for i in self.cavity["buriedness"].unique():
             df_temp = self.cavity[self.cavity["buriedness"] == i]
             aa_count = df_temp['AA'].value_counts()
-            total_count[i] = {'buried_' + aa + str(i): aa_count.get(aa, 0) for aa in Shape.AA_symb}
+            total_count[i] = {'shape_buried_' + aa + str(i): aa_count.get(aa, 0) for aa in Shape.AA_symb}
         return total_count
 
     def exposed_aa(self, narrow_list):

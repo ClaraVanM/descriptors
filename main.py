@@ -6,6 +6,7 @@ from Getdata.Structures import Structures
 from Getdata.Cavity import Cavity
 from shape.Shape import Shape
 from FindCavity.fpocket import Fpocket
+from Distance.Distance import Distance
 
 
 def get_results(protein_file, fpocket, pocket):
@@ -16,14 +17,20 @@ def get_results(protein_file, fpocket, pocket):
     :return: calculates all descriptors and puts them in dictionary
     """
     results = dict()
+    #import structures
     protein = Structures(protein_file)
     cavity = Cavity(protein_file, fpocket, pocket)
     assert not cavity.ligand.empty
     results['name'] = protein.name
+    #get shape descriptors
     shape = Shape(cavity.cavity, cavity.ligand)
     results.update(shape.getDescriptors())
+    #get sequence descriptors
     seq = Sequence.Sequence(cavity.cavity)
     results.update(seq.sequence_descriptors())
+    # get distance descriptors
+    d = Distance(cavity.cavity, cavity.ligand)
+    results.update(d.getDescriptors())
     return results
 
 
@@ -61,8 +68,6 @@ def main():
 if __name__ == "__main__":
     """pockets = Fpocket("/home/r0934354/Downloads/not_3.2.1/structures", "/home/r0934354/Downloads/not_3.2.1/fpocket")
     pockets.pockets.to_csv("ids_with_pockets_not_3.2.1.csv")"""
-    df = main()
-    df.to_csv('out.csv')
-    #results = get_results("C:/Users/32496/Desktop/not_3.2.1/structures\\8PPZ.pdb", "C:/Users/32496/Desktop/not_3.2.1/fpocket\\8PPZ_out", "pocket1_atm.pdb")
-
-    #remove 5E68, 6ASD from files
+    '''df = main()
+    df.to_csv('out.csv')'''
+    results = get_results("C:/Users/32496/Desktop/not_3.2.1/structures\\8PPZ.pdb", "C:/Users/32496/Desktop/not_3.2.1/fpocket\\8PPZ_out", "pocket1_atm.pdb")
