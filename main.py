@@ -68,9 +68,9 @@ if __name__ == "__main__":
     pockets.pockets.to_csv("ids_with_pockets_not_3.2.1.csv")"""
 
     df1 = main("/home/r0934354/Downloads/not_3.2.1/structures","/home/r0934354/Downloads/not_3.2.1/fpocket",'ids_with_pockets_not_3.2.1.csv')
-    df1.to_csv('not3.2.1.csv')
+    df1.to_csv('not3.2.1.fuck.csv')
     df2 = main("/home/r0934354/Downloads/EC3.2.1/structures","/home/r0934354/Downloads/EC3.2.1/fpocket",'ids_with_pockets3.2.1.csv')
-    df2.to_csv('EC3.2.1.csv')
+    df2.to_csv('EC3.2.1_fuck.csv')
     df3 = main("/home/r0934354/Downloads/3.1.1/structures", "/home/r0934354/Downloads/3.1.1/fpocket",'ids_with_pockets3.1.1.csv')
-    df3.to_csv('EC3.1.1.csv')
+    df3.to_csv('EC3.1.1_fuck.csv')
 
