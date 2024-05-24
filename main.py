@@ -34,21 +34,19 @@ def get_results(protein_file, fpocket, pocket):
     return results
 
 
-def main():
+def main(protein_folder,fpocket_folder, pockets):
     # proces pdb files
     b = True
-    protein_folder = "/home/r0934354/Downloads/not_3.2.1/structures"
-    fpocket_folder = "/home/r0934354/Downloads/not_3.2.1/fpocket"
-    correspond = pd.read_csv('ids_with_pockets_not_3.2.1.csv', index_col=0)
+    correspond = pd.read_csv(pockets, index_col=0)
     fpocket_list = os.listdir(fpocket_folder)
     for file in os.listdir(protein_folder):
         print(file)
-        if pd.isna(list(correspond.loc[correspond['id'] == file, ['pocket']]['pocket'])[0]):
+        if pd.isna(list(correspond.loc[correspond['id'] == file]['pocket'])):
             continue
 
         else:
             try:
-                pocket = list(correspond.loc[correspond['id'] == file, ['pocket']]['pocket'])[0]
+                pocket = list(correspond.loc[correspond['id'] == file]['pocket'])[0]
                 print(pocket)
                 if os.path.isfile(os.path.join(protein_folder,file)):
                     name = file.replace('.pdb','_out')
@@ -68,6 +66,11 @@ def main():
 if __name__ == "__main__":
     """pockets = Fpocket("/home/r0934354/Downloads/not_3.2.1/structures", "/home/r0934354/Downloads/not_3.2.1/fpocket")
     pockets.pockets.to_csv("ids_with_pockets_not_3.2.1.csv")"""
-    '''df = main()
-    df.to_csv('out.csv')'''
-    results = get_results("C:/Users/32496/Desktop/not_3.2.1/structures\\8PPZ.pdb", "C:/Users/32496/Desktop/not_3.2.1/fpocket\\8PPZ_out", "pocket1_atm.pdb")
+
+    df1 = main("/home/r0934354/Downloads/not_3.2.1/structures","/home/r0934354/Downloads/not_3.2.1/fpocket",'ids_with_pockets_not_3.2.1.csv')
+    df1.to_csv('not3.2.1.csv')
+    df2 = main("/home/r0934354/Downloads/EC3.2.1/structures","/home/r0934354/Downloads/EC3.2.1/fpocket",'ids_with_pockets3.2.1.csv')
+    df2.to_csv('EC3.2.1.csv')
+    df3 = main("/home/r0934354/Downloads/3.1.1/structures", "/home/r0934354/Downloads/3.1.1/fpocket",'ids_with_pockets3.1.1.csv')
+    df3.to_csv('EC3.1.1.csv')
+
