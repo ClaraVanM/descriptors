@@ -90,7 +90,7 @@ class Distance():
             descriptors.update(values)
         for values in ctd_groups.values():
             descriptors.update(values)
-        new_descriptors = {'distance_' + key:value for key, value in descriptors.items()}
+        new_descriptors = {str('distance_') + str(key):value for key, value in descriptors.items()}
         return new_descriptors
 
     def ctd_comp(self):
