@@ -1,5 +1,7 @@
 from Getdata.Structures import Structures
 import pymolPy3
+import matplotlib
+import matplotlib.pyplot as plt
 
 class Cavity(Structures):
     def __init__(self,pdbfile, fpocket_out, pocket):

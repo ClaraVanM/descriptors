@@ -74,6 +74,17 @@ class Shape:
         df = Shape.cluster(df[['x', 'y', 'z']])
         vector = Shape.COG(df[['x', 'y', 'z']]) - self.center
         cavity_axis = Line(point=self.center, direction=vector)
+        matplotlib.use('TkAgg')
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+        ax.scatter(self.input['x'], self.input['y'], self.input['z'],s=2, c='sandybrown')
+        #ax.scatter(self.ligand['x'], self.ligand['y'], self.ligand['z'], s=1,c='coral')
+        #ax.scatter(projection_sphere['x'], projection_sphere['y'], projection_sphere['z'], s=2, c='springgreen', alpha=0.7)
+        #ax.scatter(df['x'], df['y'], df['z'], s=2,c='sandybrown')
+        cavity_axis.plot_3d(ax)
+        ax.set_axis_off()
+        ax.patch.set_alpha(0)
+        plt.show()
         return cavity_axis
 
     @staticmethod
