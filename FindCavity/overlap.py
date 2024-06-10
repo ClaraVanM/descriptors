@@ -15,6 +15,14 @@ def get_max_min(point_cloud):
 
 
 def intersection(xmin, xmax, ymin, ymax):
+    """
+
+    :param xmin: minimum axis value for structure x
+    :param xmax: maximum axis value for structure x
+    :param ymin: minimum axis value for structure y
+    :param ymax: maximum axis value for structure y
+    :return: intersection of the two structures for the specific axis
+    """
     intersect = 0
     if xmin > ymin and xmin < ymax:
         if xmax > ymax:
@@ -39,10 +47,23 @@ def intersection(xmin, xmax, ymin, ymax):
 
 
 def overlap(intercept, ligand_max, ligand_min):
+    """
+
+    :param intercept: the intersection between cavity and ligand for specific axis
+    :param ligand_max: the max axis value for the ligand on the specific axis
+    :param ligand_min: the min axis value for the ligand on the specific axis
+    :return: normalized intersection
+    """
     return intercept / (ligand_max-ligand_min)
 
 
 def total_overlap(ligand, cavity):
+    """
+    calculates intersection for x, y and z axis between ligand and a cavity
+    :param ligand: ligand dataframe
+    :param cavity: cavity dataframe
+    :return: normalized overlap
+    """
     ligand, cavity = pca(ligand,cavity)
     cavity_max, cavity_min = get_max_min(cavity)
     ligand_max, ligand_min = get_max_min(ligand)
@@ -60,6 +81,12 @@ def total_overlap(ligand, cavity):
 
 
 def pca(ligand, cavity):
+    """
+
+    :param ligand: ligand dataset
+    :param cavity: cavity dataset
+    :return: rotated ligand and cavity following 3 pc"s for cavity
+    """
     pca = PCA(n_components=3)
     pca.fit(cavity)
     ligand_transformed = pd.DataFrame(pca.transform(ligand), columns = ["x", "y", "z"])

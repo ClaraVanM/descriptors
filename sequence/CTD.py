@@ -75,7 +75,7 @@ def ctd_transition(sequence):
         total_trans[prop] = trans
     return total_trans
 
-#should devide by length to normalize
+
 def ctd_distribution(sequence):
     """
     for every property there are 3 categories. this function calculates where the first, the first 25%, 50%, 75% and 100% of

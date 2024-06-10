@@ -25,12 +25,19 @@ class Shape:
 
 
     def get_buriedness(self):
+        """
+        calculates buriedness of each amino acid in the cavity and calculates the length of the cavity
+        :return: dataset of cavity with added buriedness and a float representing the total length
+        """
         df = self.residue_dist_from_axis()
         cavity_projection = self.projection(df)
         df, depth = self.add_buriedness(df, cavity_projection)
         return df, depth
 
     def getDescriptors(self):
+        """
+        :return: shape-based descriptors.
+        """
         descripors = dict()
         list_narrowness = self.list_narrowness()
         AA_comp = self.AA_per_buriedness()
@@ -89,6 +96,11 @@ class Shape:
 
     @staticmethod
     def cluster(opening):
+        """
+
+        :param opening: grid points that are selected as the opening of the cavity by the find_cavity_axis method
+        :return: grid points with filtered out outliers
+        """
         # do clustering on points that represent opening of cavity in find_cavity_axis.
         opening = opening.reset_index(drop=True)
         dist = cdist(opening, opening, 'euclidean')
@@ -121,6 +133,10 @@ class Shape:
         return opening[['x', 'y', 'z']]
 
     def residue_dist_from_axis(self):
+        """
+
+        :return: distance from every amino acid to the cavity axis
+        """
         df = self.input.copy()
         df.loc[:,'dist_from_axis'] = float(0)
         for index, row in df.iterrows():

@@ -38,6 +38,11 @@ def tripeptide_composition(sequence):
 
 
 def conjoint_triad(sequence):
+    """
+
+    :param sequence: protein sequence
+    :return: conjoint_traid descriptors
+    """
     for i in sequence:
         if i != 'X':
             sequence = sequence.replace(i, str(groups[i]))

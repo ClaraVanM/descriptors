@@ -31,12 +31,27 @@ class Cavity(Structures):
 
     @staticmethod
     def get_cavity(pdbfile, fpocket_out, pocket):
+        """
+
+        :param pdbfile: structure pdb file
+        :param fpocket_out: folder with predicted cavities from fpocket
+        :param pocket: the corresponding cavity
+        :return: filename if the cavity
+        """
         file = Cavity.get_neighborhood(pdbfile, fpocket_out, pocket)
         return file
 
     def extract_cavity(self):
+        """
+
+        :return: cavity without ligand
+        """
         return self.structures[self.structures['type'] == 'ATOM']
 
     def extract_ligand(self):
+        """
+
+        :return: ligand
+        """
         return self.structures[self.structures['type'] == 'HETATM']
 

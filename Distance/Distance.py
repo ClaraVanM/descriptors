@@ -55,6 +55,12 @@ class Distance():
 
     @staticmethod
     def get_sequence(cavity, ligand):
+        """
+
+        :param cavity: cavity dataframe
+        :param ligand: ligand dataframe
+        :return: sequence based on distance from ligand and cavity with filtered out duplicate aminoacids
+        """
         COG_ligand = Distance.COG(ligand)
         # drop dublicate AA number by taking center of gravity of every AA
         cog = cavity.groupby('AA_number')[['x', 'y', 'z']].mean()
@@ -68,6 +74,11 @@ class Distance():
 
     @staticmethod
     def divide_cavity(cavity):
+        """
+
+        :param cavity: cavity dataset
+        :return: cavity with added row for group depending on distance from ligand
+        """
         deepness = cavity['dist_lig'].max() - cavity['dist_lig'].min()
         # make 5 intervals
         jumps = deepness / 5
@@ -82,6 +93,10 @@ class Distance():
         return cavity
 
     def getDescriptors(self):
+        """
+
+        :return: distance-based descriptors
+        """
         descriptors = dict()
         descriptors.update(self.sequence.partial_descriptors())
         AA_groups = self.AA_per_buriedness()
@@ -94,6 +109,10 @@ class Distance():
         return new_descriptors
 
     def ctd_comp(self):
+        """
+
+        :return: ctd descriptors
+        """
         cavity =  self.cavity.copy()
         ctd = {}
         for prop in Distance.properties.keys():

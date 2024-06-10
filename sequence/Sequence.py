@@ -34,6 +34,10 @@ class Sequence:
         return sequence
 
     def sequence_descriptors(self):
+        """
+
+        :return: sequence-based descriptors
+        """
         seq_descr = dict()
         seq_descr.update(composition.aa_composition(self.seq))
         seq_descr.update(composition.dipeptide_composition(self.seq))
@@ -63,6 +67,10 @@ class Sequence:
         return seq_descr
 
     def partial_descriptors(self):
+        '''
+
+        :return: partial set of sequence-based descriptors
+        '''
         descriptors = dict()
         pseaac = pseAAC.pseaac(self.seq)
         moran = autocorrelation.autocorrelation(self.seq, autocorrelation.moran_ac)
