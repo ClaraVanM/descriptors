@@ -2,7 +2,7 @@ from sequence.autocorrelation import get_normalized_props
 from sequence.composition import aa_composition
 
 # list of amino acids
-amino_acids = ["A", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "Y", "X"]
+amino_acids = ["A", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "Y"]
 
 
 def pseaac(sequence, l=30, weight=0.05, properties=['PRAM900101', 'GRAR740102', 'PONJ960101']):
@@ -55,9 +55,8 @@ def sequence_order_correlation_factor(sequence, props, k=1):
     cor = float(0)
     count = 0
     for i in range(len(sequence)-k):
-        if not 'X' in (sequence[i], sequence[i+k]):
-            count += 1
-            cor += correlation(sequence[i], sequence[i+k], props)
+        count += 1
+        cor += correlation(sequence[i], sequence[i+k], props)
     if count == 0:
         cor = 0
     else:

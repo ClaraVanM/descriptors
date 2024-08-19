@@ -28,11 +28,10 @@ def am_sequence_order_cor_factor(sequence, k=1):
     philic = 0
     count = 0
     for i in range(len(sequence)-k):
-        if not 'X' in (sequence[i], sequence[i+k]) :
-            count +=1
-            theta1, theta2 = am_correlation(sequence[i], sequence[i+k])
-            phoob += theta1
-            philic += theta2
+        count +=1
+        theta1, theta2 = am_correlation(sequence[i], sequence[i+k])
+        phoob += theta1
+        philic += theta2
     if count != 0:
         phoob = phoob/count
         philic = philic/count

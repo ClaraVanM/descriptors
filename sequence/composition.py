@@ -1,4 +1,5 @@
 from itertools import product
+import re
 
 
 # list of amino acids
@@ -22,8 +23,7 @@ def dipeptide_composition(sequence):
     :param sequence: sequence of protein
     :return: dictionary with dipeptide frequencies
     """
-    #drawback: does not count overlaps, 'AAA' is 1 count for 'AA'
-    dipeptide_composition= {i+j: sequence.count(i+j)/(len(sequence)/2) for i in amino_acids for j in amino_acids}
+    dipeptide_composition= {i+j: len(re.findall(f'(?={i+j})', sequence)) / (len(sequence)-1) for i in amino_acids for j in amino_acids}
     return dipeptide_composition
 
 
@@ -33,19 +33,17 @@ def tripeptide_composition(sequence):
     :param sequence: protein sequence
     :return: dictionary with tripeptide frequencies
     """
-    tripep_comp = {i+j+h : sequence.count(i+j+h)/(len(sequence)/3) for i in amino_acids for j in amino_acids for h in amino_acids}
+    tripep_comp = {i+j+h : len(re.findall(f'(?={i+j+h})', sequence)) / (len(sequence)-2) for i in amino_acids for j in amino_acids for h in amino_acids}
     return tripep_comp
 
 
 def conjoint_triad(sequence):
     for i in sequence:
-        if i != 'X':
-            sequence = sequence.replace(i, str(groups[i]))
+        sequence = sequence.replace(i, str(groups[i]))
     possible_triads = [''.join(map(str,triad)) for triad in product(range(1,8), repeat=3)]
     conjoint = {triad:0 for triad in possible_triads}
     for i in range(len(sequence)-2):
-        if not 'X' in sequence[i:i+3]:
-            conjoint[sequence[i:i+3]] +=1
+        conjoint[sequence[i:i+3]] +=1
     #normalize
     norm_conjoint = {triad:count/(len(sequence)-2) for triad, count in conjoint.items()}
     return norm_conjoint

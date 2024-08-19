@@ -27,9 +27,8 @@ def moreaubroto_ac(sequence, prop_values, k=1):
     count = 0
     ac = float(0)
     for i in range(len(sequence)-k):
-        if not "X" in (sequence[i], sequence[i+k]):
-            count +=1
-            ac += prop_values[sequence[i]] * prop_values[sequence[i+k]]
+        count +=1
+        ac += prop_values[sequence[i]] * prop_values[sequence[i+k]]
     if count !=0:
         ac/count
     else:
@@ -49,9 +48,8 @@ def moran_ac(sequence, prop_values, k=1):
     count = 0
     mean = np.mean(list(prop_values.values()))
     for i in range(len(sequence)-k):
-        if not 'X' in (sequence[i], sequence[i+k]):
-            count += 1
-            numerator += (prop_values[sequence[i]] - mean * (prop_values[sequence[i+k]] - mean))
+        count += 1
+        numerator += (prop_values[sequence[i]] - mean * (prop_values[sequence[i+k]] - mean))
     if count != 0:
           numerator /= count
     else:
@@ -59,9 +57,8 @@ def moran_ac(sequence, prop_values, k=1):
     devider = 0
     count = 0
     for i in range(len(sequence)):
-        if sequence[i] != "X":
-            count +=1
-            devider += (prop_values[sequence[i]] - mean)**2
+        count +=1
+        devider += (prop_values[sequence[i]] - mean)**2
     devider /= count
     return numerator/devider
 
@@ -77,9 +74,8 @@ def geary_ac(sequence, prop_values, k=1):
     numerator = float(0)
     count = 0
     for i in range(len(sequence)-k):
-        if not 'X' in (sequence[i], sequence[i+k]):
-            count +=1
-            numerator += (prop_values[sequence[i]] - prop_values[sequence[i+k]])**2
+        count +=1
+        numerator += (prop_values[sequence[i]] - prop_values[sequence[i+k]])**2
     if count !=0:
         numerator /= 2*count
     else: count = 0
@@ -87,9 +83,8 @@ def geary_ac(sequence, prop_values, k=1):
     count = 0
     mean = np.mean(list(prop_values.values()))
     for i in range(len(sequence)):
-        if sequence[i] != "X":
-            count += 1
-            devider += (prop_values[sequence[i]] - mean)**2
+        count += 1
+        devider += (prop_values[sequence[i]] - mean)**2
     devider /= count
     return numerator/devider
 

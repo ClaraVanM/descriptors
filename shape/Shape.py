@@ -1,7 +1,5 @@
 import pandas as pd
 import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
 from skspatial.objects import Line
 from skspatial.objects import Plane
 from skspatial.objects import Sphere

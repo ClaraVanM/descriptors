@@ -414,8 +414,7 @@ def tau_soc_number(sequence, d=1):
     """
     tau = 0.0
     for i in range(len(sequence)-d):
-        if not "X" in (sequence[i], sequence[i+d]):
-            tau += schneider_wrede_matrix[sequence[i]+sequence[i+d]]
+        tau += schneider_wrede_matrix[sequence[i]+sequence[i+d]]
     return tau
 
 
@@ -442,7 +441,7 @@ def tau_qsoc(sequence, lag=30, w=0.1):
     """
     comp = aa_composition(sequence)
     total_weighted_tau = w*sum(soc_numbers(sequence, lag).values())
-    total_comp = sum(comp.values()) - comp["AAC_X"]
+    total_comp = sum(comp.values())
     devider = total_comp+total_weighted_tau
     QSO = {'QSO_'+ i:comp['AAC_'+i]/devider for i in amino_acids}
     for i in range(lag):

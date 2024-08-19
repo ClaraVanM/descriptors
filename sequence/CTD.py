@@ -27,10 +27,7 @@ def str_to_num(sequence, prop):
     """
     seq=""
     for i in sequence:
-        if i != 'X':
-            seq += str(properties[prop][i])
-        else:
-            seq += "X"
+        seq += str(properties[prop][i])
     return seq
 
 
@@ -43,9 +40,9 @@ def ctd_composition(sequence):
     comp = {}
     count = {}
     for prop, values in properties.items():
-        converted_sequence = str_to_num(sequence, prop)
+        convert = str_to_num(sequence, prop)
         for i in range(1,4):
-            count[i] = converted_sequence.count(str(i))
+            count[i] = convert.count(str(i))
         norm_count = {'comp'+prop+str(i):count/len(sequence) for i, count in count.items()}
         comp[prop] = norm_count
     return comp
@@ -60,18 +57,13 @@ def ctd_transition(sequence):
     total_trans = {}
     for prop, values in properties.items():
         trans_values = {''.join(map(str, triad)): 0 for triad in product(range(1, 4), repeat=2)}
-        trans_values['gap'] = 0
         convert = str_to_num(sequence, prop)
         for i in range(len(convert)-1):
-            if not 'X' in convert[i:i+2]:
-                trans_values[convert[i:i+2]] += 1
-            else:
-                trans_values['gap'] += 1
+            trans_values[convert[i:i+2]] += 1
         trans = {}
-        trans[prop + 'trans' + str(1)] = trans_values['12'] + trans_values['21']
-        trans[prop+ 'trans' + str(2)] = trans_values['13'] + trans_values['31']
-        trans[prop+ 'trans' + str(3)] = trans_values['23'] + trans_values['32']
-        trans[prop+ 'trans' + str(4)] = trans_values['gap']
+        trans[prop + 'trans' + str(1)] = (trans_values['12'] + trans_values['21']) / (len(convert)-1)
+        trans[prop+ 'trans' + str(2)] = (trans_values['13'] + trans_values['31']) / (len(convert)-1)
+        trans[prop+ 'trans' + str(3)] = (trans_values['23'] + trans_values['32']) / (len(convert)-1)
         total_trans[prop] = trans
     return total_trans
 
@@ -85,14 +77,13 @@ def ctd_distribution(sequence):
     """
     total_distr = {}
     for prop, values in properties.items():
-        convert = str_to_num(sequence, prop).replace('X','')
+        convert = str_to_num(sequence, prop)
         distr = {}
         for i in set(values.values()):
             count = convert.count(str(i))
-            occurences = [i for i, number in enumerate(convert)]
-            distr["0.01"] = occurences[0]
-            for j in [0.25, 0.50, 0.75, 1]:
-                distr[prop+'dist' + str(j)] = occurences[math.ceil(count*j)-1]
+            occurences = [j for j, number in enumerate(convert) if int(number) == int(i)]
+            for j in [0.01, 0.25, 0.50, 0.75, 1]:
+                distr[prop+'_' +str(i)+'_'+ str(j)] = occurences[math.ceil(count*j)-1] / len(convert)
         total_distr[prop] = distr
     return total_distr
 
