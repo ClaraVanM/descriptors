@@ -5,6 +5,8 @@ from skspatial.objects import Plane
 from skspatial.objects import Sphere
 from skspatial.objects import Point
 from scipy.spatial.distance import cdist
+import matplotlib.pyplot as plt
+import matplotlib
 
 class Shape:
 
@@ -60,52 +62,110 @@ class Shape:
         for point in self.input[["x", "y", "z"]].to_numpy():
             pr = sphere1.project_point(point)
             projection_sphere.loc[len(projection_sphere)] = pr
-        grid_sphere = Sphere(point=Shape.COG(self.ligand), radius=15).to_points(n_angles=30).unique()
+        grid_sphere = Shape.fibonacci_sphere(center=Shape.COG(self.ligand))
         # compute pairwise distance
         distances = cdist(grid_sphere, projection_sphere)
         # filter distances with threshold and sum remaining number, so only pr close enough are taken into account (<4 in neighbourhood), and are summed together, --> distance = distance of grid points to all neighbouring pr points
-        distances = np.sum(distances < 2, axis=1)
+        distances = np.sum(distances < 3, axis=1)
         df = pd.DataFrame(grid_sphere, columns=['x', 'y', 'z'])
         df['distance'] = distances
         df = df[df['distance'] == 0]
         # do clustering and extract the point group with most members as ultimate cavity opening
-        df = Shape.cluster(df[['x', 'y', 'z']])
-        vector = Shape.COG(df[['x', 'y', 'z']]) - self.center
+        df2 = Shape.cluster(df[['x', 'y', 'z']])
+        vector = Shape.COG(df2[['x', 'y', 'z']]) - self.center
         cavity_axis = Line(point=self.center, direction=vector)
+
+        matplotlib.use('TkAgg')
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+        #ax.scatter(grid_sphere[:,0], grid_sphere[:,1], grid_sphere[:,2], s=1)
+        ax.scatter(projection_sphere["x"], projection_sphere["y"], projection_sphere["z"], s=1)
+        ax.scatter(df2['x'], df2['y'], df2['z'], s=2)
+        cavity_axis.plot_3d(ax)
+        ax.set_axis_off()
+        ax.patch.set_alpha(0)
+        plt.show()
+
         return cavity_axis
+
+
+    @staticmethod
+    def fibonacci_sphere(samples=800, center=(0, 0, 0), radius=15):
+        points=[]
+        phi= np.pi*(3. - np.sqrt(5.))
+        for i in range(samples):
+            y = 1 - (i / float(samples-1)) *2
+            r = np.sqrt(1 - y*y)
+            theta = phi*i
+            x = np.cos(theta) * r
+            z = np.sin(theta) * r
+
+            x= center.iloc[0] + radius * x
+            y = center.iloc[1] + radius * y
+            z = center.iloc[2] + radius * z
+            points.append((x,y,z))
+        return np.array(points)
 
     @staticmethod
     def cluster(opening):
         # do clustering on points that represent opening of cavity in find_cavity_axis.
         opening = opening.reset_index(drop=True)
         dist = cdist(opening, opening, 'euclidean')
-        point_pairs = np.argwhere(dist < 6)
+        point_pairs = np.argwhere(dist < 4)
         clusters = []
         for pairs in point_pairs:
             # if point is with itself
             if pairs[0] == pairs[1]:
-                b = False
-                for list in clusters:
-                    # check if that point already clustered if so , b = true
-                    if pairs[0] in list:
-                        b = True
-                # if b = true continue, otherwise add
-                if not b:
-                    clusters.append([pairs[0]])
-            # now add elements to their cluster, skip doubles by saying <
-            elif pairs[0] < pairs[1]:
-                for list in clusters:
-                    if pairs[0] in list and not pairs[1] in list:
-                        list.append(pairs[1])
-        # put indexes of the points together with their cluster label in a dictionary
+                continue
+            # check which clusters the points are in
+            clusters_with_p0 = [cluster for cluster in clusters if pairs[0] in cluster]
+            clusters_with_p1 = [cluster for cluster in clusters if pairs[1] in cluster]
+
+            if not clusters_with_p0 and not clusters_with_p1:
+                #neither points in in a cluster, create new cluster
+                clusters.append(set(pairs))
+            elif clusters_with_p0 and not clusters_with_p1:
+                #only p0 in cluster, add P1 to cluster
+                clusters_with_p0[0].add(pairs[1])
+            elif not clusters_with_p0 and clusters_with_p1:
+                clusters_with_p1[0].add(pairs[0])
+            else:
+                #both points in different clusters, merge clusters
+                if clusters_with_p0[0] != clusters_with_p1[0]:
+                    merged_cluster = clusters_with_p0[0].union(clusters_with_p1[0])
+                    clusters = [cluster for cluster in clusters if cluster not in clusters_with_p0 + clusters_with_p1]
+                    clusters.append(merged_cluster)
+        # convert clusters from sets to sorted lists
+        clusters = [sorted(list(cluster)) for cluster in clusters]
+
+        #assign cluster numbers to the points
         cluster_number = {}
         for group, cluster in enumerate(clusters):
             for i in cluster:
                 cluster_number[i] = group
-        # add to pandas df
-        opening['cluster'] = cluster_number
-        opening = opening[opening['cluster'] == opening['cluster'].value_counts().idxmax()]
-        return opening[['x', 'y', 'z']]
+
+        # add to df
+        opening['cluster'] = opening.index.map(cluster_number)
+
+        """matplotlib.use('TkAgg')
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+
+        unique_clusters = opening['cluster'].unique()
+        # Assign a color to each cluster
+        colors = plt.cm.jet(np.linspace(0, 1, len(unique_clusters)))
+        # Scatter plot for each cluster with a different color
+        for cluster_id, color in zip(unique_clusters, colors):
+            cluster_data = opening[opening['cluster'] == cluster_id]
+            ax.scatter(cluster_data['x'], cluster_data['y'], cluster_data['z'], s=3, color=color,
+                       label=f'Cluster {cluster_id}')
+            #ax.scatter(projection["x"], projection["y"], projection["z"], s=1)
+        ax.set_axis_off()
+        ax.patch.set_alpha(0)
+        plt.show()"""
+
+        largest_cluster_id = opening['cluster'].value_counts().idxmax()
+        return opening[opening['cluster'] == largest_cluster_id][['x', 'y', 'z']]
 
     def residue_dist_from_axis(self):
         df = self.input.copy()
