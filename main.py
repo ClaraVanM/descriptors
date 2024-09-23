@@ -20,7 +20,7 @@ def get_results(protein_file, fpocket, pocket):
     #import structures
     protein = Structures(protein_file)
     cavity = Cavity(protein_file, fpocket, pocket)
-    assert not cavity.ligand.empty
+    print('No ligand provided in pdb file.')
     results['name'] = protein.name
     #get shape descriptors
     shape = Shape(cavity.cavity, cavity.ligand)
@@ -67,6 +67,7 @@ if __name__ == "__main__":
     """pockets = Fpocket("/home/r0934354/Downloads/not_3.2.1/structures", "/home/r0934354/Downloads/not_3.2.1/fpocket")
     pockets.pockets.to_csv("ids_with_pockets_not_3.2.1.csv")"""
 
-    df1 = main("/home/r0934354/Downloads/test/structures","/home/r0934354/Downloads/test/fpocket",'ids_with_pockets3.2.1.csv')
+    #df1 = main("/home/r0934354/Downloads/test/structures","/home/r0934354/Downloads/test/fpocket",'ids_with_pockets3.2.1.csv')
     #df1.to_csv('testing_clustering.csv')
 
+    get_results("/home/r0934354/Downloads/test/structures/test.pdb", "/home/r0934354/Downloads/test/fpocket/1UH2_out", "pocket1_atm.pdb")

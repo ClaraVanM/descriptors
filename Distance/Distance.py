@@ -18,6 +18,7 @@ class Distance():
     'ALA': 'A', 'VAL':'V', 'GLU': 'E', 'TYR': 'Y', 'MET': 'M'}
 
     def __init__(self,cavity, ligand):
+        self.center = self.COG(cavity)
         self.sequence, df = self.get_sequence(cavity, ligand)
         self.cavity = self.divide_cavity(df)
 
@@ -53,9 +54,11 @@ class Distance():
         sequence = ''.join(sorted_cavity['AA'].map(Distance.AA_symb))
         return sequence
 
-    @staticmethod
-    def get_sequence(cavity, ligand):
-        COG_ligand = Distance.COG(ligand)
+    def get_sequence(self, cavity, ligand):
+        if ligand.empty:
+            COG_ligand = self.center
+        else:
+            COG_ligand = Distance.COG(ligand)
         # drop dublicate AA number by taking center of gravity of every AA
         cog = cavity.groupby('AA_number')[['x', 'y', 'z']].mean()
         cavity = pd.merge(cavity, cog, on='AA_number', suffixes=('', 'center'))

@@ -38,3 +38,4 @@ class Cavity(Structures):
     def extract_ligand(self):
         return self.structures[self.structures['type'] == 'HETATM']
 
+

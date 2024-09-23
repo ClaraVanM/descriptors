@@ -19,9 +19,16 @@ class Shape:
     def __init__(self, cavity, ligand):
         self.center = self.COG(cavity)
         self.input = cavity
-        self.ligand = ligand
+        self.ligand = self.check(ligand)
         self.axis = self.find_cavity_axis()
         self.cavity, self.depth = self.get_buriedness()
+
+
+    def check(self,ligand):
+        if ligand.empty:
+            return None
+        else:
+            return ligand
 
 
     def get_buriedness(self):
@@ -57,12 +64,18 @@ class Shape:
         :return:axis that goes through middle of cavity
         """
         # find the most appropriate line that represents the middle of the cavity.
-        sphere1 = Sphere(point=Shape.COG(self.ligand), radius=15)
+        if self.ligand == None:
+            sphere1 = Sphere(point=self.center, radius=15)
+        else:
+            sphere1 = Sphere(point=Shape.COG(self.ligand), radius=15)
         projection_sphere = pd.DataFrame(columns=["x", "y", "z"])
         for point in self.input[["x", "y", "z"]].to_numpy():
             pr = sphere1.project_point(point)
             projection_sphere.loc[len(projection_sphere)] = pr
-        grid_sphere = Shape.fibonacci_sphere(center=Shape.COG(self.ligand))
+        if self.ligand == None:
+            grid_sphere = Shape.fibonacci_sphere(center=self.center)
+        else:
+            grid_sphere = Shape.fibonacci_sphere(center=Shape.COG(self.ligand))
         # compute pairwise distance
         distances = cdist(grid_sphere, projection_sphere)
         # filter distances with threshold and sum remaining number, so only pr close enough are taken into account (<4 in neighbourhood), and are summed together, --> distance = distance of grid points to all neighbouring pr points
@@ -75,16 +88,14 @@ class Shape:
         vector = Shape.COG(df2[['x', 'y', 'z']]) - self.center
         cavity_axis = Line(point=self.center, direction=vector)
 
-        matplotlib.use('TkAgg')
+        '''matplotlib.use('TkAgg')
         fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
-        #ax.scatter(grid_sphere[:,0], grid_sphere[:,1], grid_sphere[:,2], s=1)
-        ax.scatter(projection_sphere["x"], projection_sphere["y"], projection_sphere["z"], s=1)
-        ax.scatter(df2['x'], df2['y'], df2['z'], s=2)
+        ax.scatter(self.input["x"], self.input["y"], self.input["z"], s=1)
         cavity_axis.plot_3d(ax)
         ax.set_axis_off()
         ax.patch.set_alpha(0)
-        plt.show()
+        plt.show()'''
 
         return cavity_axis
 
@@ -225,6 +236,16 @@ class Shape:
         center = Point(self.center)
         plane_pr["distance"] = [center.distance_point(x) for x in plane_pr.to_numpy()]
         # shortest distance gives radius of biggest circle that fits
+
+        matplotlib.use('TkAgg')
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+        ax.scatter(plane_pr['x'], plane_pr['y'], plane_pr['z'])
+        self.axis.plot_3d(ax)
+        ax.set_axis_off()
+        ax.patch.set_alpha(0)
+        plt.show()
+
         return np.min(plane_pr["distance"])
 
     def list_narrowness(self):
@@ -249,6 +270,7 @@ class Shape:
             else:
                 boolean = True
                 l[l.index(i)] = 0
+        print(l)
         return l
 
     def AA_per_buriedness(self):
